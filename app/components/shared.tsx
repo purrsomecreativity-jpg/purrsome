@@ -233,7 +233,7 @@ export function Nav({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => vo
         </div>
 
         {/* Center — logo */}
-        <a href="/" className="flex justify-center group">
+        <a href="/" className="col-start-2 flex justify-center group">
           <div className="relative">
             <div
               className="bg-white group-hover:bg-[#050507] transition-colors duration-300"
