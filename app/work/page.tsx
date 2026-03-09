@@ -19,17 +19,17 @@ function Work({ t }: { t: typeof T.en }) {
   ];
 
   return (
-    <section ref={ref} className="relative z-10 pt-40 pb-32">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className={`flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4 transition-all duration-700 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+    <section ref={ref} className="relative z-10 pt-28 md:pt-40 pb-20 md:pb-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+        <div className={`flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-16 gap-4 transition-all duration-700 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           <div>
             <span className="text-[11px] tracking-[0.3em] uppercase text-teal-400/80 font-medium">{t.work.tag}</span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mt-4 leading-[1.02] tracking-tight">{t.work.title}</h2>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mt-4 leading-[1.02] tracking-tight">{t.work.title}</h2>
           </div>
           <a href="#" className="hidden md:inline-flex text-sm text-white/25 hover:text-white/50 transition-colors tracking-wide">{t.work.cta}</a>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid sm:grid-cols-2 gap-4 md:gap-5">
           {t.work.items.map((p, i) => (
             <a
               key={i}
@@ -40,9 +40,9 @@ function Work({ t }: { t: typeof T.en }) {
               <div className={`aspect-[16/10] bg-gradient-to-br ${grads[i]} relative overflow-hidden`}>
                 <EvervaultCard accentFrom={accents[i][0]} accentTo={accents[i][1]} />
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/[0.02] to-white/0 group-hover:via-white/[0.07] transition-all duration-700" />
-                <span className="absolute top-5 right-7 text-[5rem] font-extrabold text-white/[0.025] group-hover:text-white/[0.06] transition-all duration-700 leading-none">0{i + 1}</span>
+                <span className="absolute top-5 right-5 md:right-7 text-[2.5rem] md:text-[5rem] font-extrabold text-white/[0.025] group-hover:text-white/[0.06] transition-all duration-700 leading-none">0{i + 1}</span>
                 <div className={`absolute -bottom-10 -right-10 w-32 h-32 rounded-full blur-[60px] opacity-0 group-hover:opacity-30 transition-all duration-700 ${i % 2 === 0 ? "bg-amber-500" : "bg-teal-500"}`} />
-                <div className="absolute inset-0 flex flex-col justify-end p-8 lg:p-10">
+                <div className="absolute inset-0 flex flex-col justify-end p-5 sm:p-8 lg:p-10">
                   <div className="flex items-center gap-3 mb-3">
                     <span className="text-[10px] tracking-[0.25em] uppercase text-white/20 font-medium">{p.cat}</span>
                     <span className="text-[10px] text-white/10">{p.year}</span>

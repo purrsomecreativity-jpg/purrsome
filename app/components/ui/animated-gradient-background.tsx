@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useMemo } from "react";
 
 interface AnimatedGradientBackgroundProps {
   startingGap?: number;
@@ -41,25 +41,27 @@ const AnimatedGradientBackground: React.FC<AnimatedGradientBackgroundProps> = ({
 
   const containerRef = useRef<HTMLDivElement | null>(null);
 
+  // Memoize the static color stops string — recomputed only when colors/stops change
+  const gradientStopsString = useMemo(
+    () => gradientStops.map((stop, i) => `${gradientColors[i]} ${stop}%`).join(", "),
+    [gradientColors, gradientStops]
+  );
+
   useEffect(() => {
     let animationFrame: number;
     let width = startingGap;
-    let directionWidth = 1;
+    let directionWidth = Breathing ? 1 : 0;
 
     const animateGradient = () => {
-      if (width >= startingGap + breathingRange) directionWidth = -1;
-      if (width <= startingGap - breathingRange) directionWidth = 1;
-      if (!Breathing) directionWidth = 0;
-      width += directionWidth * animationSpeed;
-
-      const gradientStopsString = gradientStops
-        .map((stop, index) => `${gradientColors[index]} ${stop}%`)
-        .join(", ");
-
-      const gradient = `radial-gradient(${width}% ${width + topOffset}% at 50% 20%, ${gradientStopsString})`;
+      if (Breathing) {
+        if (width >= startingGap + breathingRange) directionWidth = -1;
+        if (width <= startingGap - breathingRange) directionWidth = 1;
+        width += directionWidth * animationSpeed;
+      }
 
       if (containerRef.current) {
-        containerRef.current.style.background = gradient;
+        containerRef.current.style.background =
+          `radial-gradient(${width}% ${width + topOffset}% at 50% 20%, ${gradientStopsString})`;
       }
 
       animationFrame = requestAnimationFrame(animateGradient);
@@ -67,23 +69,22 @@ const AnimatedGradientBackground: React.FC<AnimatedGradientBackgroundProps> = ({
 
     animationFrame = requestAnimationFrame(animateGradient);
     return () => cancelAnimationFrame(animationFrame);
-  }, [startingGap, Breathing, gradientColors, gradientStops, animationSpeed, breathingRange, topOffset]);
+  }, [startingGap, Breathing, animationSpeed, breathingRange, topOffset, gradientStopsString]);
 
   return (
     <motion.div
       key="animated-gradient-background"
-      initial={{ opacity: 0, scale: 1.5 }}
+      initial={{ opacity: 0 }}
       animate={{
         opacity: 1,
-        scale: 1,
-        transition: { duration: 2, ease: [0.25, 0.1, 0.25, 1] },
+        transition: { duration: 1.5, ease: [0.25, 0.1, 0.25, 1] },
       }}
-      className={`absolute inset-0 overflow-hidden ${containerClassName}`}
+      className={`absolute inset-0 overflow-hidden pointer-events-none ${containerClassName}`}
     >
       <div
         ref={containerRef}
         style={containerStyle}
-        className="absolute inset-0 transition-transform"
+        className="absolute inset-0"
       />
     </motion.div>
   );

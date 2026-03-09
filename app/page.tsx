@@ -133,8 +133,8 @@ function Testimonials({ lang }: { lang: "en" | "es" }) {
   }, []);
 
   return (
-    <section className="relative z-10 py-24 bg-[#050507]">
-      <div className="max-w-6xl mx-auto px-6 lg:px-12">
+    <section className="relative z-10 py-16 md:py-24 bg-[#050507]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
         <div
           ref={headerRef}
           className="mb-16 transition-all duration-700 flex items-center justify-between gap-8"
@@ -144,7 +144,7 @@ function Testimonials({ lang }: { lang: "en" | "es" }) {
             <span className="text-[11px] tracking-[0.3em] uppercase text-white/25 font-medium block mb-4">
               {lang === "en" ? "What Clients Say" : "Lo Que Dicen los Clientes"}
             </span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.02] tracking-tight mb-3">
+            <h2 className="text-2xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.02] tracking-tight mb-3">
               {lang === "en" ? "Results they didn't expect." : "Resultados que no esperaban."}
             </h2>
             <p className="text-white/30 text-lg">
@@ -158,12 +158,12 @@ function Testimonials({ lang }: { lang: "en" | "es" }) {
           />
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-2 gap-3 md:gap-4">
           {TESTIMONIALS.map((card, i) => (
             <div
               key={i}
               ref={el => { cardRefs.current[i] = el; }}
-              className="bg-white/[0.05] border border-white/[0.08] rounded-2xl p-8 hover:bg-white/[0.08] hover:border-white/[0.18] transition-colors duration-300"
+              className="bg-white/[0.05] border border-white/[0.08] rounded-2xl p-6 md:p-8 hover:bg-white/[0.08] hover:border-white/[0.18] transition-colors duration-300"
               style={{
                 opacity: revealed[i] ? 1 : 0,
                 transform: `translateY(${revealed[i] ? 0 : 30}px)`,
@@ -242,8 +242,8 @@ function StackedNavCards({ t, lang }: { t: typeof T.en; lang: "en" | "es" }) {
         <div
           key={card.key}
           ref={el => { refs.current[i] = el; }}
-          style={{ position: "sticky", top: 80, zIndex: i + 1, height: "44vh" }}
-          className="px-5 pb-3 flex justify-center"
+          style={{ position: "sticky", top: 80, zIndex: i + 1, height: "clamp(220px, 44vh, 380px)" }}
+          className="px-3 sm:px-5 pb-3 flex justify-center"
         >
           <div
             className="w-full max-w-lg h-full"
@@ -275,7 +275,7 @@ function StackedNavCards({ t, lang }: { t: typeof T.en; lang: "en" | "es" }) {
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 style={{ background: `radial-gradient(ellipse 80% 60% at 30% 70%, ${card.accent}22, transparent)` }}
               />
-              <div className="relative z-10 h-full p-8 lg:p-10 flex flex-col justify-between">
+              <div className="relative z-10 h-full p-5 sm:p-8 lg:p-10 flex flex-col justify-between">
                 <div className="flex items-start justify-between">
                   <span className="text-[11px] font-mono tracking-[0.25em] text-white/15">{card.num}</span>
                   <span className="text-white/20 group-hover:text-white/60 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 text-xl">↗</span>
@@ -284,7 +284,7 @@ function StackedNavCards({ t, lang }: { t: typeof T.en; lang: "en" | "es" }) {
                   <p className="text-xs tracking-[0.3em] uppercase mb-4 font-bold text-white/50">
                     {CARD_DESC[card.key][lang]}
                   </p>
-                  <h3 className="text-4xl lg:text-5xl font-extrabold text-white/80 group-hover:text-white transition-colors duration-300 tracking-tight leading-[0.9]">
+                  <h3 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white/80 group-hover:text-white transition-colors duration-300 tracking-tight leading-[0.9]">
                     {t.nav[card.key]}
                   </h3>
                 </div>

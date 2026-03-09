@@ -5,20 +5,20 @@ import AnimatedGradientBackground from "../components/ui/animated-gradient-backg
 function Services({ t }: { t: typeof T.en }) {
   const [ref, vis] = useReveal();
   return (
-    <section ref={ref} className="relative z-10 pt-40 pb-32 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-        <div className={`max-w-2xl mb-20 transition-all duration-700 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+    <section ref={ref} className="relative z-10 pt-28 md:pt-40 pb-20 md:pb-32 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+        <div className={`max-w-2xl mb-12 md:mb-20 transition-all duration-700 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           <span className="text-[11px] tracking-[0.3em] uppercase text-teal-400/80 font-medium">{t.services.tag}</span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mt-4 mb-6 leading-[1.02] tracking-tight">{t.services.title}</h2>
-          <p className="text-white/25 text-lg leading-relaxed">{t.services.sub}</p>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mt-4 mb-4 md:mb-6 leading-[1.02] tracking-tight">{t.services.title}</h2>
+          <p className="text-white/25 text-base md:text-lg leading-relaxed">{t.services.sub}</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-2 gap-3 md:gap-4">
           {t.services.items.map((s, i) => {
             return (
             <div
               key={i}
-              className={`liquid-glass-btn group relative rounded-2xl p-8 lg:p-10 transition-all duration-700 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+              className={`liquid-glass-btn group relative rounded-2xl p-6 md:p-8 lg:p-10 transition-all duration-700 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
               style={{ transitionDelay: `${200 + i * 120}ms` }}
             >
               <div className="flex items-start justify-between mb-8">

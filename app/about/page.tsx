@@ -7,42 +7,42 @@ import { SocialLinks } from "../components/ui/social-links";
 function About({ t }: { t: typeof T.en }) {
   const [ref, vis] = useReveal();
   return (
-    <section ref={ref} className="relative z-10 pt-40 pb-32 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+    <section ref={ref} className="relative z-10 pt-28 md:pt-40 pb-20 md:pb-32 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
 
         {/* Header */}
-        <div className={`max-w-4xl mb-20 transition-all duration-700 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+        <div className={`max-w-4xl mb-12 md:mb-20 transition-all duration-700 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           <span className="text-[11px] tracking-[0.3em] uppercase text-teal-400/80 font-medium">{t.about.tag}</span>
-          <h2 className="text-3xl md:text-4xl lg:text-6xl font-extrabold text-white mt-4 mb-0 leading-[1.06] tracking-tight">{t.about.title}</h2>
+          <h2 className="text-2xl md:text-4xl lg:text-6xl font-extrabold text-white mt-4 mb-0 leading-[1.06] tracking-tight">{t.about.title}</h2>
         </div>
 
         {/* Story — 3 columns */}
-        <div className={`grid md:grid-cols-3 gap-8 mb-20 transition-all duration-700 delay-100 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+        <div className={`grid md:grid-cols-3 gap-5 md:gap-8 mb-12 md:mb-20 transition-all duration-700 delay-100 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           <p className="text-white/35 text-base leading-[1.85]">{t.about.p1}</p>
           <p className="text-white/35 text-base leading-[1.85]">{t.about.p2}</p>
           <p className="text-white/35 text-base leading-[1.85]">{t.about.p3}</p>
         </div>
 
         {/* Mission */}
-        <div className={`border-l-2 border-amber-500/40 pl-8 mb-20 transition-all duration-700 delay-150 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-          <p className="text-white/70 text-xl md:text-2xl leading-[1.6] font-medium max-w-3xl">{t.about.mission}</p>
+        <div className={`border-l-2 border-amber-500/40 pl-6 md:pl-8 mb-12 md:mb-20 transition-all duration-700 delay-150 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+          <p className="text-white/70 text-lg md:text-2xl leading-[1.6] font-medium max-w-3xl">{t.about.mission}</p>
         </div>
 
         {/* Why the cat */}
-        <div className={`mb-20 transition-all duration-700 delay-200 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+        <div className={`mb-12 md:mb-20 transition-all duration-700 delay-200 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <span className="text-[11px] tracking-[0.3em] uppercase text-pink-400/70 font-medium block mb-4">{t.about.catTitle}</span>
               <p className="text-white/35 text-base leading-[1.85]">{t.about.catWhy}</p>
             </div>
             <div className="flex justify-center md:justify-end">
-              <img src="/stocks/purrsome-isotipo.png" alt="Purrsome" className="w-48 lg:w-64 opacity-[0.08] object-contain" />
+              <img src="/stocks/purrsome-isotipo.png" alt="Purrsome" className="w-32 sm:w-48 lg:w-64 opacity-[0.08] object-contain" />
             </div>
           </div>
         </div>
 
         {/* Values */}
-        <div className={`grid grid-cols-2 md:grid-cols-4 gap-3 mb-20 transition-all duration-700 delay-300 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+        <div className={`grid grid-cols-2 md:grid-cols-4 gap-3 mb-12 md:mb-20 transition-all duration-700 delay-300 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           {t.about.values.map((v, i) => {
             const valAccents: [string, string][] = [
               ["#f59e0b", "#ef4444"],
@@ -51,7 +51,7 @@ function About({ t }: { t: typeof T.en }) {
               ["#f97316", "#f59e0b"],
             ];
             return (
-            <div key={i} className="group relative border border-white/[0.05] rounded-xl p-6 hover:border-amber-500/15 transition-all duration-500 bg-white/[0.01] hover:bg-white/[0.02] overflow-hidden">
+            <div key={i} className="group relative border border-white/[0.05] rounded-xl p-4 sm:p-6 hover:border-amber-500/15 transition-all duration-500 bg-white/[0.01] hover:bg-white/[0.02] overflow-hidden">
               <EvervaultCard accentFrom={valAccents[i][0]} accentTo={valAccents[i][1]} />
               <h4 className="relative z-10 text-lg font-bold text-white/75 mb-1.5 group-hover:iri-text transition-all duration-500">{v.title}</h4>
               <p className="relative z-10 text-[13px] text-white/20">{v.desc}</p>
@@ -61,10 +61,10 @@ function About({ t }: { t: typeof T.en }) {
         </div>
 
         {/* Stats */}
-        <div className={`grid grid-cols-2 md:grid-cols-4 gap-10 pt-16 border-t border-white/[0.04] transition-all duration-700 delay-400 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+        <div className={`grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 pt-12 md:pt-16 border-t border-white/[0.04] transition-all duration-700 delay-400 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           {t.stats.map((s, i) => (
             <div key={i}>
-              <div className="text-4xl md:text-5xl font-extrabold iri-text">{s.num}</div>
+              <div className="text-3xl md:text-5xl font-extrabold iri-text">{s.num}</div>
               <div className="text-sm text-white/20 mt-1.5 tracking-wide">{s.label}</div>
             </div>
           ))}
@@ -113,8 +113,8 @@ function Contact({ t }: { t: typeof T.en }) {
   };
 
   return (
-    <section id="contact" ref={ref} className="relative z-10 py-32 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+    <section id="contact" ref={ref} className="relative z-10 py-20 md:py-32 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         <div className={`text-center max-w-2xl mx-auto mb-16 transition-all duration-700 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           <span className="text-[11px] tracking-[0.3em] uppercase text-teal-600 font-medium">{t.contact.tag}</span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#050507] mt-4 mb-6 leading-[1.08] tracking-tight">{t.contact.title}</h2>

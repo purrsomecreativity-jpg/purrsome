@@ -141,7 +141,7 @@
 .animate-drift { animation: drift 14s ease-in-out infinite; }
 
 /* ─── Marquee ─── */
-.marquee-track { animation: mrq 21.6s linear infinite; }
+.marquee-track { animation: mrq 21.6s linear infinite; will-change: transform; }
 @keyframes mrq {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-25%); }
@@ -154,27 +154,6 @@
 }
 .animate-fadeSlide { animation: fadeSlide 0.3s ease-out; }
 
-/* ─── Cursor readability — all text darkens on hover ─── */
-*:hover {
-  color: #050507 !important;
-  transition: color 0.25s ease;
-}
-.iri-text:hover {
-  color: transparent !important;
-}
-
-/* ─── Isotipo color animation ─── */
-@keyframes isotipo-colors {
-  0%   { filter: drop-shadow(0 0 40px rgba(245,158,11,0.7))  hue-rotate(0deg)   saturate(4) brightness(2.2); }
-  20%  { filter: drop-shadow(0 0 40px rgba(20,184,166,0.7))  hue-rotate(72deg)  saturate(4) brightness(2.2); }
-  40%  { filter: drop-shadow(0 0 40px rgba(236,72,153,0.7))  hue-rotate(144deg) saturate(4) brightness(2.2); }
-  60%  { filter: drop-shadow(0 0 40px rgba(147,51,234,0.7))  hue-rotate(216deg) saturate(4) brightness(2.2); }
-  80%  { filter: drop-shadow(0 0 40px rgba(249,115,22,0.7))  hue-rotate(288deg) saturate(4) brightness(2.2); }
-  100% { filter: drop-shadow(0 0 40px rgba(245,158,11,0.7))  hue-rotate(360deg) saturate(4) brightness(2.2); }
-}
-.isotipo-glow {
-  animation: isotipo-colors 8s linear infinite;
-}
 
 /* ─── Liquid glass button ─── */
 .liquid-glass-btn {

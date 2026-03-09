@@ -6,22 +6,22 @@ import { GradientBackground } from "../components/ui/gradient-background";
 function Pricing({ t }: { t: typeof T.en }) {
   const [ref, vis] = useReveal();
   return (
-    <section ref={ref} className="relative z-10 pt-40 pb-32 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-        <div className={`max-w-2xl mb-20 transition-all duration-700 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+    <section ref={ref} className="relative z-10 pt-28 md:pt-40 pb-20 md:pb-32 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
+        <div className={`max-w-2xl mb-12 md:mb-20 transition-all duration-700 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           <span className="text-[11px] tracking-[0.3em] uppercase text-teal-400/80 font-medium">{t.pricing.tag}</span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mt-4 mb-6 leading-[1.02] tracking-tight">{t.pricing.title}</h2>
-          <p className="text-white/25 text-lg leading-relaxed">{t.pricing.sub}</p>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white mt-4 mb-4 md:mb-6 leading-[1.02] tracking-tight">{t.pricing.title}</h2>
+          <p className="text-white/25 text-base md:text-lg leading-relaxed">{t.pricing.sub}</p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
           {t.pricing.plans.map((plan, i) => (
             <SpotlightCard
               key={i}
               glowColor={plan.highlight ? "orange" : "blue"}
               backupBorder={plan.highlight ? "rgba(245,158,11,0.25)" : "rgba(255,255,255,0.06)"}
               backdrop={plan.highlight ? "rgba(255,255,255,0.04)" : "rgba(255,255,255,0.01)"}
-              className={`p-8 flex flex-col transition-[opacity,transform] duration-700 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} ${
+              className={`p-6 md:p-8 flex flex-col transition-[opacity,transform] duration-700 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} ${
                 plan.highlight ? "shadow-[0_0_50px_rgba(245,158,11,0.07)]" : ""
               }`}
               style={{ transitionDelay: `${200 + i * 100}ms` }}
