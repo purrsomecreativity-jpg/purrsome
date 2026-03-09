@@ -204,18 +204,16 @@ export function Nav({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => vo
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-700 ${scrolled ? "nav-glass" : ""}`}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12 h-20 grid grid-cols-3 items-center">
-        {/* Mobile hamburger — first in DOM so it auto-places in col 1 */}
-        <button onClick={() => setOpen(!open)} className="md:hidden text-white/50 hover:text-white justify-self-start">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            {open ? <path d="M18 6L6 18M6 6l12 12" /> : <><line x1="4" y1="7" x2="20" y2="7" /><line x1="4" y1="17" x2="14" y2="17" /></>}
-          </svg>
-        </button>
-
-        {/* Left — home icon + nav links (desktop only) */}
-        <div className="hidden md:flex items-center gap-0">
+        {/* Col 1 — always visible: hamburger (mobile) + home icon + nav links (desktop) */}
+        <div className="flex items-center gap-0">
+          <button onClick={() => setOpen(!open)} className="md:hidden text-white/50 hover:text-white">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+              {open ? <path d="M18 6L6 18M6 6l12 12" /> : <><line x1="4" y1="7" x2="20" y2="7" /><line x1="4" y1="17" x2="14" y2="17" /></>}
+            </svg>
+          </button>
           <a
             href="/"
-            className={`transition-all duration-300 ${
+            className={`hidden md:flex transition-all duration-300 ${
               isActive("/") ? "text-white" : "text-white/35 hover:text-white"
             }`}
             aria-label="Home"
@@ -228,7 +226,7 @@ export function Nav({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => vo
             <a
               key={k}
               href={`/${k}`}
-              className={`text-[12px] tracking-[0.12em] uppercase font-medium px-3 py-1.5 rounded-full border transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+              className={`hidden md:flex text-[12px] tracking-[0.12em] uppercase font-medium px-3 py-1.5 rounded-full border transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
                 isActive(`/${k}`)
                   ? "text-white bg-white/[0.13] backdrop-blur-md border-white/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_4px_16px_rgba(0,0,0,0.2)]"
                   : "text-white/40 border-transparent hover:text-[#050507] hover:bg-white hover:border-white/0"
@@ -239,8 +237,8 @@ export function Nav({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => vo
           ))}
         </div>
 
-        {/* Center — logo */}
-        <a href="/" className="col-start-2 flex justify-center group">
+        {/* Col 2 — always visible: logo (always centered, always 2nd grid child) */}
+        <a href="/" className="flex justify-center group">
           <div className="relative">
             <div
               className="bg-white group-hover:bg-[#050507] transition-colors duration-300"
@@ -260,13 +258,13 @@ export function Nav({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => vo
           </div>
         </a>
 
-        {/* Right — lang toggle + CTA (desktop only) */}
-        <div className="hidden md:flex items-center gap-1 justify-end">
-          <a href="/about#contact" className="text-[12px] tracking-[0.12em] uppercase font-medium px-3 py-1.5 rounded-full border border-transparent text-white/40 hover:text-[#050507] hover:bg-white hover:border-white/0 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">{t.nav.contact}</a>
-          <button onClick={() => setLang(lang === "en" ? "es" : "en")} className="text-[11px] tracking-[0.2em] font-medium px-3 py-1.5 rounded-full border border-transparent text-white/40 hover:text-[#050507] hover:bg-white hover:border-white/0 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">
+        {/* Col 3 — always visible: right nav (desktop) / empty spacer (mobile) */}
+        <div className="flex items-center gap-1 justify-end">
+          <a href="/about#contact" className="hidden md:flex text-[12px] tracking-[0.12em] uppercase font-medium px-3 py-1.5 rounded-full border border-transparent text-white/40 hover:text-[#050507] hover:bg-white hover:border-white/0 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">{t.nav.contact}</a>
+          <button onClick={() => setLang(lang === "en" ? "es" : "en")} className="hidden md:flex text-[11px] tracking-[0.2em] font-medium px-3 py-1.5 rounded-full border border-transparent text-white/40 hover:text-[#050507] hover:bg-white hover:border-white/0 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">
             {lang === "en" ? "ES" : "EN"}
           </button>
-          <a href="/start" className="text-[12px] tracking-[0.12em] uppercase font-semibold px-4 py-1.5 rounded-full border text-white bg-white/[0.13] backdrop-blur-md border-white/25 hover:bg-white hover:text-[#050507] hover:border-white/0 hover:shadow-none transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">{t.nav.cta}</a>
+          <a href="/start" className="hidden md:flex text-[12px] tracking-[0.12em] uppercase font-semibold px-4 py-1.5 rounded-full border text-white bg-white/[0.13] backdrop-blur-md border-white/25 hover:bg-white hover:text-[#050507] hover:border-white/0 hover:shadow-none transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">{t.nav.cta}</a>
         </div>
       </div>
 
