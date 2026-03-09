@@ -262,7 +262,7 @@ export function Nav({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => vo
           <a href="/start" className="text-[12px] tracking-[0.12em] uppercase font-semibold px-4 py-1.5 rounded-full border text-white bg-white/[0.13] backdrop-blur-md border-white/25 hover:bg-white hover:text-[#050507] hover:border-white/0 hover:shadow-none transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">{t.nav.cta}</a>
         </div>
 
-        <button onClick={() => setOpen(!open)} className="md:hidden text-white/50 hover:text-white col-start-3 justify-self-end">
+        <button onClick={() => setOpen(!open)} className="md:hidden text-white/50 hover:text-white col-start-1 justify-self-start">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
             {open ? <path d="M18 6L6 18M6 6l12 12" /> : <><line x1="4" y1="7" x2="20" y2="7" /><line x1="4" y1="17" x2="14" y2="17" /></>}
           </svg>
