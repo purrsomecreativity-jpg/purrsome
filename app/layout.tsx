@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${articulat.variable} ${dmSans.variable}`}>
-      <body style={{ fontFamily: "var(--font-sans), system-ui, sans-serif" }}>
+      <body style={{ fontFamily: "var(--font-sans), system-ui, sans-serif", isolation: "isolate" }}>
         <CursorProvider />
         {children}
       </body>

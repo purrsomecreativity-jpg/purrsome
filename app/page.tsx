@@ -196,12 +196,14 @@ function Testimonials({ lang }: { lang: "en" | "es" }) {
 
 /* ── Horizontal Scroll Nav Cards ─────────────────────────── */
 const NAV_CARDS = [
-  { key: "services", href: "/services", gradient: "from-teal-950 via-indigo-950 to-pink-950",   accent: "#14B8A6", num: "01", waves: ["#14B8A6", "#4F46E5", "#EC4899", "#0F766E"], bgFill: "#071A1F" },
-  { key: "pricing",  href: "/pricing",  gradient: "from-purple-950 via-pink-950 to-amber-950",  accent: "#9333EA", num: "02", waves: ["#9333EA", "#EC4899", "#F59E0B", "#7C3AED"], bgFill: "#0E0620" },
-  { key: "about",    href: "/about",    gradient: "from-indigo-950 via-teal-950 to-orange-950", accent: "#4F46E5", num: "03", waves: ["#4F46E5", "#14B8A6", "#DC4A0A", "#0EA5E9"], bgFill: "#07101E" },
+  { key: "work",     href: "/work",     gradient: "from-pink-950 via-amber-950 to-purple-950",  accent: "#EC4899", num: "01", waves: ["#EC4899", "#F59E0B", "#9333EA", "#DC4A0A"], bgFill: "#1A0614" },
+  { key: "services", href: "/services", gradient: "from-teal-950 via-indigo-950 to-pink-950",   accent: "#14B8A6", num: "02", waves: ["#14B8A6", "#4F46E5", "#EC4899", "#0F766E"], bgFill: "#071A1F" },
+  { key: "pricing",  href: "/pricing",  gradient: "from-purple-950 via-pink-950 to-amber-950",  accent: "#9333EA", num: "03", waves: ["#9333EA", "#EC4899", "#F59E0B", "#7C3AED"], bgFill: "#0E0620" },
+  { key: "about",    href: "/about",    gradient: "from-indigo-950 via-teal-950 to-orange-950", accent: "#4F46E5", num: "04", waves: ["#4F46E5", "#14B8A6", "#DC4A0A", "#0EA5E9"], bgFill: "#07101E" },
 ] as const;
 
 const CARD_DESC: Record<string, { en: string; es: string }> = {
+  work:     { en: "Selected design mockups.", es: "Mockups de diseño seleccionados." },
   services: { en: "Design, SEO, ads & branding.", es: "Diseño, SEO, anuncios y branding." },
   pricing:  { en: "Clear packages, no surprises.", es: "Paquetes claros, sin sorpresas." },
   about:    { en: "Who we are and how we think.", es: "Quiénes somos y cómo pensamos." },
@@ -209,8 +211,8 @@ const CARD_DESC: Record<string, { en: string; es: string }> = {
 
 function StackedNavCards({ t, lang }: { t: typeof T.en; lang: "en" | "es" }) {
   const refs = useRef<(HTMLDivElement | null)[]>([]);
-  const [depths, setDepths] = useState<number[]>([0, 0, 0]);
-  const [revealed, setRevealed] = useState<boolean[]>([false, false, false]);
+  const [depths, setDepths] = useState<number[]>(() => NAV_CARDS.map(() => 0));
+  const [revealed, setRevealed] = useState<boolean[]>(() => NAV_CARDS.map(() => false));
 
   useEffect(() => {
     const NAV_TOP = 82;

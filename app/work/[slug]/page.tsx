@@ -1,6 +1,7 @@
 "use client";
 import { useParams } from "next/navigation";
 import { T, Nav, Footer, useLang } from "../../components/shared";
+import { GradientDots } from "../../components/ui/gradient-dots";
 
 type Project = {
   num: string;
@@ -11,91 +12,98 @@ type Project = {
   heroGradient: string;
   accent: string;
   lede: string;
-  challenge: string;
-  solution: string;
+  direction: string;
+  approach: string;
   services: string[];
-  results: { stat: string; label: string; sub?: string }[];
+  highlights: { stat: string; label: string; sub?: string }[];
+  showcase?: string[];
+  heroMockup?: string;
+  palette?: { name: string; hex: string }[];
 };
 
 const PROJECTS: Record<string, Project> = {
-  "bella-cucina": {
+  "magic-pets": {
     num: "01",
-    title: "Bella",
-    titleLine2: "Cucina",
-    category: "Restaurant · Web Design",
+    title: "Magic",
+    titleLine2: "Pets",
+    category: "Grooming Studio · Concept Mockup",
     year: "2026",
-    heroGradient: "linear-gradient(150deg, #5A0A0A 0%, #3D0E3A 45%, #2C1660 100%)",
-    accent: "#F59E0B",
-    lede: "A neighborhood Italian restaurant with exceptional food and a website that was holding them back. We gave them a digital presence as good as their pasta.",
-    challenge:
-      "Bella Cucina had great food but a website stuck in 2014 — no mobile optimization, no online reservations, and zero local SEO presence. Competitors with inferior menus were showing up first on Google.",
-    solution:
-      "We rebuilt their site from scratch with a modern, mobile-first design, integrated reservation system, full menu showcase, and a local SEO strategy targeting their neighborhood. Every page was optimized for Google Maps discovery.",
-    services: ["Web Design", "Mobile Optimization", "Local SEO", "Google Business"],
-    results: [
-      { stat: "+40%", label: "Foot Traffic", sub: "Within 60 days of launch" },
-      { stat: "3×", label: "Online Reservations", sub: "vs. phone bookings" },
-      { stat: "Page 1", label: "Google Maps", sub: "For 12 local keywords" },
-    ],
-  },
-  "profix-plumbing": {
-    num: "02",
-    title: "ProFix",
-    titleLine2: "Plumbing",
-    category: "Contractor · Web + SEO",
-    year: "2026",
-    heroGradient: "linear-gradient(150deg, #071E38 0%, #102030 45%, #1E1040 100%)",
-    accent: "#14B8A6",
-    lede: "A reliable plumbing contractor invisible online. We turned zero digital presence into page 1 rankings and a steady stream of inbound calls — in 90 days.",
-    challenge:
-      "ProFix was relying entirely on word of mouth. No website, no Google presence, and losing jobs to competitors who showed up first in search. Every missed click was a missed job.",
-    solution:
-      "Built a clean, fast website with a service area map, emergency contact CTA, and a 90-day SEO strategy focused on high-intent local keywords. Google Business profile fully optimized with photos and weekly posts.",
-    services: ["Web Design", "SEO Strategy", "Google Business", "Speed Optimization"],
-    results: [
-      { stat: "Page 1", label: "in 3 Months", sub: "For 20+ local keywords" },
-      { stat: "+65%", label: "Inbound Calls", sub: "Monthly average increase" },
-      { stat: "4.9★", label: "Google Rating", sub: "From 0 to 47 reviews" },
-    ],
-  },
-  "luma-skin-studio": {
-    num: "03",
-    title: "Luma Skin",
-    titleLine2: "Studio",
-    category: "Medspa · Branding + Web",
-    year: "2026",
-    heroGradient: "linear-gradient(150deg, #3A0A28 0%, #1E1040 50%, #0E0E30 100%)",
+    heroGradient: "linear-gradient(150deg, #1A0A1F 0%, #2C0E2A 45%, #0E0E30 100%)",
     accent: "#EC4899",
-    lede: "A boutique skin studio with a loyal clientele and no brand to show for it. We built them an identity as premium as the treatments they offer — in two languages.",
-    challenge:
-      "Luma had a loyal clientele but no brand identity to match the premium experience they delivered. Their old site looked generic and didn't speak to their bilingual South Florida audience.",
-    solution:
-      "Created a complete brand system — logo, color palette, typography — and a bilingual website in English and Spanish that reflects the studio's luxury feel. Every touchpoint elevated.",
-    services: ["Brand Identity", "Web Design", "Bilingual Copy", "Social Media Kit"],
-    results: [
-      { stat: "+55%", label: "New Client Bookings", sub: "3 months post-launch" },
-      { stat: "2×", label: "Bilingual Reach", sub: "English + Spanish audience" },
-      { stat: "100%", label: "Brand Cohesion", sub: "Across all touchpoints" },
+    lede: "A concept mockup for a premium pet grooming studio — playful, bold, and built around an interactive drag-to-discover hero.",
+    direction:
+      "Pet grooming sites tend to lean clinical or cookie-cutter. The brief was to imagine something that feels as warm and fun as the in-studio experience while still reading premium.",
+    approach:
+      "Bold pink + cream palette, character-driven photography, and a draggable hero that lets visitors swipe through featured pups. Designed bilingual EN/ES from the ground up, mobile-first.",
+    services: ["UI Design", "Brand Visuals", "Bilingual Copy Direction", "Interaction Design"],
+    highlights: [
+      { stat: "Drag", label: "Hero Interaction", sub: "Custom swipe-to-explore" },
+      { stat: "EN/ES", label: "Bilingual Layout", sub: "Built into the system" },
+      { stat: "Mobile", label: "First", sub: "Responsive across breakpoints" },
+    ],
+    showcase: ["/work/magic-pets.png", "/work/magic-pets-2.png"],
+    heroMockup: "/work/magic-pets-laptop.png?v=7",
+    palette: [
+      { name: "Hot Pink", hex: "#EC4899" },
+      { name: "Cream", hex: "#F5E6D3" },
+      { name: "Charcoal", hex: "#0A0A0A" },
+      { name: "White", hex: "#FFFFFF" },
     ],
   },
-  "verdant-market": {
-    num: "04",
-    title: "Verdant",
-    titleLine2: "Market",
-    category: "Retail · Full Package",
+  "lumiere-studio": {
+    num: "02",
+    title: "Lumière",
+    titleLine2: "Studio",
+    category: "Beauty Atelier · Concept Mockup",
     year: "2026",
-    heroGradient: "linear-gradient(150deg, #0A2010 0%, #101A18 50%, #1A1040 100%)",
-    accent: "#9333EA",
-    lede: "An organic grocery store with strong community roots and no digital presence. We gave them a brand, a website, and a campaign that tripled weekend foot traffic.",
-    challenge:
-      "Verdant had strong community roots but no digital presence to match. Foot traffic was inconsistent and they had no way to reach new customers beyond their block.",
-    solution:
-      "Delivered a full brand refresh, new website with store info and weekly specials, plus an Instagram ad campaign targeting health-conscious locals within 10 miles. New identity drove real-world results.",
-    services: ["Branding", "Web Design", "Instagram Ads", "Photography Direction"],
-    results: [
-      { stat: "3×", label: "Weekend Visits", sub: "vs. pre-campaign baseline" },
-      { stat: "+800", label: "Instagram Followers", sub: "In first 6 weeks" },
-      { stat: "$4.20", label: "ROAS on Ad Spend", sub: "Instagram campaign avg." },
+    heroGradient: "linear-gradient(150deg, #1F1612 0%, #2A1E17 45%, #140D0A 100%)",
+    accent: "#B08060",
+    lede: "A concept mockup for a Miami beauty atelier — slow, considered, and built around the idea that the first twenty minutes of listening matter more than the haircut.",
+    direction:
+      "Beauty sites tend to shout. The brief was to imagine a hair house that reads like an editorial — serif typography, generous whitespace, and pacing that signals craft without announcing it.",
+    approach:
+      "Cream palette, italic serif display type, and a layout that prioritizes philosophy and specialists before services. A booking CTA is always in reach, but never the loudest thing on the page.",
+    services: ["UI Design", "Typography System", "Editorial Art Direction", "Booking Flow"],
+    highlights: [
+      { stat: "Editorial", label: "Serif System", sub: "Display italic + quiet sans" },
+      { stat: "Slow", label: "Pacing", sub: "Philosophy → specialists → services" },
+      { stat: "Cream", label: "Neutral Palette", sub: "Warm, skin-friendly tones" },
+    ],
+    showcase: ["/work/lumiere-studio.png", "/work/lumiere-studio-2.png", "/work/lumiere-studio-3.png", "/work/lumiere-studio-4.png"],
+    heroMockup: "/work/lumiere-studio-laptop.png",
+    palette: [
+      { name: "Cream", hex: "#F6EAD4" },
+      { name: "Warm Taupe", hex: "#B08060" },
+      { name: "Dusty Rose", hex: "#D4A5A5" },
+      { name: "Ink", hex: "#1A1410" },
+    ],
+  },
+  "ame": {
+    num: "03",
+    title: "Angel Mechanic",
+    titleLine2: "Expert",
+    category: "Automotive · Concept Mockup",
+    year: "2026",
+    heroGradient: "linear-gradient(150deg, #1A0A05 0%, #2C1508 45%, #0F0804 100%)",
+    accent: "#E85102",
+    lede: "A concept mockup for an independent auto shop — bold, trust-forward, and designed to make 36 years of craft impossible to ignore.",
+    direction:
+      "Independent mechanics compete with chains that have huge marketing budgets. The brief was to design something that reads professional and established without feeling corporate or sterile.",
+    approach:
+      "Persimmon-on-black hero with the owner front and center, stats that prove experience, and a service grid that lets visitors self-qualify fast. Bilingual toggle built in from day one.",
+    services: ["UI Design", "Brand Visuals", "Bilingual Layout", "Trust Architecture"],
+    highlights: [
+      { stat: "36+", label: "Years Front-and-Center", sub: "Experience as the lead story" },
+      { stat: "Owner", label: "Led Hero", sub: "Face of the business up top" },
+      { stat: "EN/ES", label: "Bilingual", sub: "Toggle in the nav" },
+    ],
+    showcase: ["/work/ame.png", "/work/ame-2.png", "/work/ame-3.png", "/work/ame-4.png"],
+    heroMockup: "/work/ame-laptop.png",
+    palette: [
+      { name: "Persimmon", hex: "#E85102" },
+      { name: "Smoky Black", hex: "#0F0F0F" },
+      { name: "Ghost White", hex: "#F9F9F9" },
+      { name: "Inferno", hex: "#DC4A0A" },
     ],
   },
 };
@@ -122,7 +130,7 @@ export default function ProjectPage() {
 
       {/* ── Hero ─────────────────────────────────────────── */}
       <section
-        className="relative min-h-screen flex flex-col justify-between overflow-hidden pt-28 pb-16"
+        className="relative min-h-[60vh] flex flex-col justify-between overflow-hidden pt-28 pb-16"
         style={{ background: p.heroGradient }}
       >
         {/* Ambient glow */}
@@ -130,14 +138,6 @@ export default function ProjectPage() {
           className="absolute inset-0 pointer-events-none"
           style={{ background: `radial-gradient(ellipse 70% 60% at 70% 80%, ${p.accent}15, transparent)` }}
         />
-
-        {/* Watermark number */}
-        <span
-          className="absolute right-0 bottom-0 font-extrabold leading-none select-none pointer-events-none translate-y-8 translate-x-8"
-          style={{ fontSize: "30vw", color: "rgba(255,255,255,0.03)" }}
-        >
-          {p.num}
-        </span>
 
         {/* Top meta row */}
         <div className="relative z-10 max-w-7xl mx-auto px-8 lg:px-16 w-full flex items-center justify-between">
@@ -148,27 +148,44 @@ export default function ProjectPage() {
             ← Work
           </a>
           <span className="text-[11px] tracking-[0.2em] uppercase text-white/20 font-mono">
-            {p.num} / 04
+            {p.num} / 03
           </span>
         </div>
 
         {/* Title block */}
         <div className="relative z-10 max-w-7xl mx-auto px-8 lg:px-16 w-full">
-          <div
-            className="text-[11px] tracking-[0.35em] uppercase font-medium mb-8 flex items-center gap-4"
-            style={{ color: p.accent }}
-          >
-            <span className="inline-block w-8 h-px" style={{ background: p.accent }} />
-            {p.category} — {p.year}
-          </div>
-          <h1 className="font-extrabold leading-[0.88] tracking-tight" style={{ fontSize: "clamp(4rem, 12vw, 11rem)" }}>
-            <span className="block text-white">{p.title}</span>
-            {p.titleLine2 && (
-              <span className="block" style={{ WebkitTextStroke: `2px rgba(255,255,255,0.25)`, color: "transparent" }}>
-                {p.titleLine2}
-              </span>
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div>
+              <div
+                className="text-[11px] tracking-[0.35em] uppercase font-medium mb-8 flex items-center gap-4"
+                style={{ color: p.accent }}
+              >
+                <span className="inline-block w-8 h-px" style={{ background: p.accent }} />
+                {p.category} — {p.year}
+              </div>
+              <h1 className="font-extrabold leading-[0.88] tracking-tight" style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}>
+                <span className="block text-white">{p.title}</span>
+                {p.titleLine2 && (
+                  <span className="block" style={{ WebkitTextStroke: `2px rgba(255,255,255,0.25)`, color: "transparent" }}>
+                    {p.titleLine2}
+                  </span>
+                )}
+              </h1>
+            </div>
+            {p.heroMockup && (
+              <div className="hidden lg:flex justify-end items-end">
+                <img
+                  src={p.heroMockup}
+                  alt={`${p.title} laptop mockup`}
+                  className="w-full max-w-[420px] h-auto object-contain"
+                  style={{
+                    filter: `drop-shadow(0 0 30px ${p.accent}40) drop-shadow(0 0 80px ${p.accent}30) drop-shadow(0 30px 60px rgba(0,0,0,0.6)) drop-shadow(0 60px 100px rgba(0,0,0,0.4))`,
+                    animation: "float 2.8s ease-in-out infinite",
+                  }}
+                />
+              </div>
             )}
-          </h1>
+          </div>
         </div>
 
         {/* Bottom fade */}
@@ -184,32 +201,77 @@ export default function ProjectPage() {
         </div>
       </section>
 
+      {/* ── Showcase ─────────────────────────────────────── */}
+      {p.showcase && p.showcase.length > 0 && (
+        <section className="relative overflow-hidden pb-20 lg:pb-28">
+          <GradientDots duration={24} colorCycleDuration={10} backgroundColor="#050507" />
+          <div className="relative z-10 max-w-7xl mx-auto px-8 lg:px-16 space-y-6 lg:space-y-8 pt-10">
+            {p.showcase.map((src, i) => (
+              <div
+                key={src}
+                className="rounded-2xl overflow-hidden border border-white/[0.06] shadow-[0_30px_80px_rgba(0,0,0,0.5)]"
+              >
+                <img
+                  src={src}
+                  alt={`${p.title} screenshot ${i + 1}`}
+                  className="w-full h-auto block"
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* ── Divider ──────────────────────────────────────── */}
       <div className="max-w-7xl mx-auto px-8 lg:px-16">
         <div className="h-px bg-white/[0.06]" />
       </div>
 
-      {/* ── Challenge / Solution ─────────────────────────── */}
+      {/* ── Direction / Approach ─────────────────────────── */}
       <section className="max-w-7xl mx-auto px-8 lg:px-16 py-20 lg:py-28">
         <div className="grid md:grid-cols-2 gap-16 lg:gap-32">
           <div>
             <div className="flex items-center gap-3 mb-8">
               <span className="text-[10px] tracking-[0.35em] uppercase text-white/20 font-medium">01</span>
               <span className="h-px flex-1 bg-white/[0.08]" />
-              <span className="text-[10px] tracking-[0.35em] uppercase text-white/20 font-medium">Challenge</span>
+              <span className="text-[10px] tracking-[0.35em] uppercase text-white/20 font-medium">Direction</span>
             </div>
-            <p className="text-white/55 text-lg leading-relaxed">{p.challenge}</p>
+            <p className="text-white/55 text-lg leading-relaxed">{p.direction}</p>
           </div>
           <div>
             <div className="flex items-center gap-3 mb-8">
               <span className="text-[10px] tracking-[0.35em] uppercase text-white/20 font-medium">02</span>
               <span className="h-px flex-1 bg-white/[0.08]" />
-              <span className="text-[10px] tracking-[0.35em] uppercase text-white/20 font-medium">Solution</span>
+              <span className="text-[10px] tracking-[0.35em] uppercase text-white/20 font-medium">Approach</span>
             </div>
-            <p className="text-white/55 text-lg leading-relaxed">{p.solution}</p>
+            <p className="text-white/55 text-lg leading-relaxed">{p.approach}</p>
           </div>
         </div>
       </section>
+
+      {/* ── Palette ──────────────────────────────────────── */}
+      {p.palette && p.palette.length > 0 && (
+        <section className="max-w-7xl mx-auto px-8 lg:px-16 pb-20 lg:pb-28">
+          <div className="flex items-center gap-3 mb-12">
+            <span className="text-[10px] tracking-[0.35em] uppercase text-white/20 font-medium">Palette</span>
+            <span className="h-px flex-1 bg-white/[0.06]" />
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 lg:gap-6">
+            {p.palette.map((c) => (
+              <div key={c.hex} className="group">
+                <div
+                  className="aspect-square rounded-2xl border border-white/[0.06] transition-transform duration-300 group-hover:scale-[1.02]"
+                  style={{ background: c.hex }}
+                />
+                <div className="mt-3 flex flex-col gap-0.5">
+                  <span className="text-white/80 text-sm font-semibold tracking-wide">{c.name}</span>
+                  <span className="text-white/40 text-xs tracking-wider font-mono uppercase">{c.hex}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* ── Services ─────────────────────────────────────── */}
       <section
@@ -231,14 +293,14 @@ export default function ProjectPage() {
         </div>
       </section>
 
-      {/* ── Results ──────────────────────────────────────── */}
+      {/* ── Design Highlights ────────────────────────────── */}
       <section className="max-w-7xl mx-auto px-8 lg:px-16 py-24 lg:py-32">
         <div className="flex items-center gap-3 mb-16">
-          <span className="text-[10px] tracking-[0.35em] uppercase text-white/20 font-medium">Results</span>
+          <span className="text-[10px] tracking-[0.35em] uppercase text-white/20 font-medium">Design Highlights</span>
           <span className="h-px flex-1 bg-white/[0.06]" />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-white/[0.06] rounded-2xl overflow-hidden">
-          {p.results.map((r) => (
+          {p.highlights.map((r) => (
             <div
               key={r.label}
               className="bg-[#050507] p-10 lg:p-12 flex flex-col gap-3"

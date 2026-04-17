@@ -26,15 +26,14 @@ export const T = {
       ]
     },
     work: {
-      tag: "Selected Work",
-      title: "Our Projects Gallery.",
+      tag: "Concept Mockups",
+      title: "Selected Design Mockups.",
       items: [
-        { title: "Bella Cucina", cat: "Restaurant · Web Design", year: "2026", accent: "#F59E0B", desc: "Modern restaurant site with online reservations, menu showcase, and local SEO setup that increased foot traffic by 40%." },
-        { title: "ProFix Plumbing", cat: "Contractor · Web + SEO", year: "2026", accent: "#14B8A6", desc: "Full website redesign and Google Business optimization for a local plumbing company. Went from invisible to page 1 in 3 months." },
-        { title: "Luma Skin Studio", cat: "Medspa · Branding + Web", year: "2026", accent: "#EC4899", desc: "Complete brand identity and bilingual website for a boutique skin studio targeting clients in South Florida." },
-        { title: "Verdant Market", cat: "Retail · Full Package", year: "2026", accent: "#9333EA", desc: "Branding, website, and Instagram ad campaign for an organic grocery store. New identity drove 3× more weekend visits." },
+        { title: "Magic Pets", cat: "Grooming Studio · Concept Mockup", year: "2026", accent: "#EC4899", desc: "Concept design for a premium pet grooming studio — bilingual layout, drag-to-discover hero, and a playful character-driven visual system.", image: "/work/magic-pets.png" },
+        { title: "Lumière Studio", cat: "Beauty Atelier · Concept Mockup", year: "2026", accent: "#B08060", desc: "Concept design for a Miami beauty atelier — editorial serif typography, slow considered pacing, and a listening-first experience that reads premium without being cold.", image: "/work/lumiere-studio.png" },
+        { title: "Angel Mechanic Expert", cat: "Automotive · Concept Mockup", year: "2026", accent: "#E85102", desc: "Concept design for an independent auto shop — bold persimmon accent, trust-first layout with 36+ years of experience front and center, and a bilingual service flow.", image: "/work/ame.png" },
       ],
-      cta: "View All Projects →"
+      cta: "View All Mockups →"
     },
     pricing: {
       tag: "Pricing",
@@ -101,15 +100,14 @@ export const T = {
       ]
     },
     work: {
-      tag: "Proyectos",
-      title: "Our Projects Gallery.",
+      tag: "Mockups Conceptuales",
+      title: "Mockups de Diseño.",
       items: [
-        { title: "Bella Cucina", cat: "Restaurante · Diseño Web", year: "2026", accent: "#F59E0B", desc: "Sitio de restaurante moderno con reservaciones en línea, menú y SEO local que aumentó las visitas un 40%." },
-        { title: "ProFix Plumbing", cat: "Contratista · Web + SEO", year: "2026", accent: "#14B8A6", desc: "Rediseño web completo y optimización de Google Business. De invisible a página 1 en 3 meses." },
-        { title: "Luma Skin Studio", cat: "Medspa · Branding + Web", year: "2026", accent: "#EC4899", desc: "Identidad de marca completa y sitio bilingüe para un estudio boutique en el sur de Florida." },
-        { title: "Verdant Market", cat: "Retail · Paquete Completo", year: "2026", accent: "#9333EA", desc: "Branding, web y campaña de Instagram para tienda orgánica. Nueva identidad que triplicó las visitas de fin de semana." },
+        { title: "Magic Pets", cat: "Estudio de Grooming · Mockup", year: "2026", accent: "#EC4899", desc: "Mockup conceptual para un estudio premium de grooming canino — diseño bilingüe, hero interactivo tipo drag y un sistema visual juguetón.", image: "/work/magic-pets.png" },
+        { title: "Lumière Studio", cat: "Atelier de Belleza · Mockup", year: "2026", accent: "#B08060", desc: "Mockup conceptual para un atelier de belleza en Miami — tipografía serif editorial, ritmo pausado y una experiencia que escucha primero, premium sin ser fría.", image: "/work/lumiere-studio.png" },
+        { title: "Angel Mechanic Expert", cat: "Automotriz · Mockup", year: "2026", accent: "#E85102", desc: "Mockup conceptual para un taller mecánico independiente — acento persimmon, layout enfocado en confianza con 36+ años de experiencia al frente, y flujo de servicios bilingüe.", image: "/work/ame.png" },
       ],
-      cta: "Ver Todos →"
+      cta: "Ver Todos los Mockups →"
     },
     pricing: {
       tag: "Precios",
@@ -213,16 +211,20 @@ export function Nav({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => vo
           </button>
           <a
             href="/"
-            className={`hidden md:flex transition-all duration-300 ${
-              isActive("/") ? "text-white" : "text-white/35 hover:text-white"
+            className={`hidden md:flex items-center justify-center px-3 transition-all duration-300 ${
+              isActive("/") ? "opacity-100" : "opacity-40 hover:opacity-100"
             }`}
             aria-label="Home"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-            </svg>
+            <img
+              src="/stocks/purrsome-isotipo.png"
+              alt="Home"
+              width={40}
+              height={40}
+              className="object-contain"
+            />
           </a>
-          {(["services", "pricing", "about"] as const).map(k => (
+          {(["work", "services", "pricing", "about"] as const).map(k => (
             <a
               key={k}
               href={`/${k}`}
@@ -270,7 +272,7 @@ export function Nav({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => vo
 
       {open && (
         <div className="md:hidden bg-[#050507]/95 backdrop-blur-2xl border-t border-white/[0.04] px-6 py-10 flex flex-col gap-6 animate-fadeSlide">
-          {(["services", "pricing", "about"] as const).map(k => (
+          {(["work", "services", "pricing", "about"] as const).map(k => (
             <a key={k} href={`/${k}`} onClick={() => setOpen(false)} className="text-lg text-white/50 hover:text-white tracking-wide">{t.nav[k]}</a>
           ))}
           <a href="/about#contact" onClick={() => setOpen(false)} className="text-lg text-white/50 hover:text-white tracking-wide">{t.nav.contact}</a>
