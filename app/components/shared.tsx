@@ -76,7 +76,7 @@ export const T = {
       form: { name: "Name", email: "Email", biz: "Business", msg: "Tell us about your vision...", send: "Send Message", sent: "Message Sent ✓" },
       info: { email: "purrsome@purrsomecrete.com", phone: "+1 (407) 693-8364", loc: "Remote · Worldwide" }
     },
-    footer: { copy: "© 2026 Purrsome™", tagline: "We see what others don't." }
+    footer: { copy: "© 2026 Purrsome™", tagline: "Refuse to Blend In." }
   },
   es: {
     nav: { work: "Trabajo", services: "Servicios", pricing: "Precios", about: "Nosotros", contact: "Contacto", cta: "Hablemos" },
@@ -150,7 +150,7 @@ export const T = {
       form: { name: "Nombre", email: "Email", biz: "Negocio", msg: "Cuéntanos sobre tu visión...", send: "Enviar Mensaje", sent: "Enviado ✓" },
       info: { email: "purrsome@purrsomecrete.com", phone: "+1 (407) 693-8364", loc: "Remoto · Mundial" }
     },
-    footer: { copy: "© 2026 Purrsome™", tagline: "Vemos lo que otros no." }
+    footer: { copy: "© 2026 Purrsome™", tagline: "Refuse to Blend In." }
   }
 };
 
@@ -290,6 +290,9 @@ export function Nav({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => vo
 
 /* ─── FOOTER ─── */
 export function Footer({ t }: { t: typeof T.en }) {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const textColorClass = isHome ? "text-white" : "text-black";
   return (
     <footer className="relative border-t border-white/[0.03] py-16">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -312,9 +315,9 @@ export function Footer({ t }: { t: typeof T.en }) {
                 }}
               />
             </div>
-            <p className="text-[10px] text-white/10 tracking-[0.15em]">{t.footer.tagline}</p>
+            <p className={`text-[10px] tracking-[0.15em] ${textColorClass}`}>{t.footer.tagline}</p>
           </div>
-          <p className="text-[11px] text-white/10 tracking-[0.15em]">{t.footer.copy}</p>
+          <p className={`text-[11px] tracking-[0.15em] ${textColorClass}`}>{t.footer.copy}</p>
         </div>
       </div>
     </footer>

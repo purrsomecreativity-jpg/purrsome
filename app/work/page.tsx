@@ -42,9 +42,9 @@ function Work({ t }: { t: typeof T.en }) {
                     <img
                       src={(p as { image: string }).image}
                       alt={p.title}
-                      className="absolute inset-0 w-full h-full object-cover object-top blur-sm scale-105 transition-all duration-700 group-hover:blur-none group-hover:scale-105"
+                      className="absolute inset-0 w-full h-full object-cover object-center blur-sm scale-105 transition-all duration-700 group-hover:blur-none group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-black/10" />
                   </>
                 ) : (
                   <EvervaultCard accentFrom={accents[i][0]} accentTo={accents[i][1]} />

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { DM_Sans } from "next/font/google";
+import { DM_Sans, Syne } from "next/font/google";
 import "./globals.css";
 import { CursorProvider } from "./components/ui/cursor-provider";
 
@@ -17,6 +17,13 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
+const syne = Syne({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-syne",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Purrsome™ — We see what others don't.",
   description: "Creative agency for businesses that refuse to blend in. Web design, SEO & paid advertising.",
@@ -24,7 +31,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${articulat.variable} ${dmSans.variable}`}>
+    <html lang="en" className={`${articulat.variable} ${dmSans.variable} ${syne.variable}`}>
       <body style={{ fontFamily: "var(--font-sans), system-ui, sans-serif", isolation: "isolate" }}>
         <CursorProvider />
         {children}

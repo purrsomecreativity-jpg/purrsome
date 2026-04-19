@@ -10,7 +10,7 @@ function Hero({ t }: { t: typeof T.en }) {
   const [ref, vis] = useReveal(0.05);
   return (
     <section ref={ref} className="relative z-10 min-h-[82vh] md:min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full text-center mt-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full text-center">
 
         <h1 className={`mb-2 text-white font-bold text-[clamp(2rem,4vw,4.5rem)] leading-none tracking-tight transition-all duration-700 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`} style={{ transitionDelay: "150ms" }}>
           {t.hero.h1[0]}
@@ -28,15 +28,15 @@ function Hero({ t }: { t: typeof T.en }) {
             {t.hero.cta2}
           </a>
         </div>
+      </div>
 
-        {/* Scroll hint */}
-        <div className={`mt-16 md:mt-20 flex justify-center transition-all duration-700 ${vis ? "opacity-100" : "opacity-0"}`} style={{ transitionDelay: "1000ms" }}>
-          <div className="flex flex-col items-center gap-1 animate-bounce">
-            <span className="text-[10px] tracking-[0.3em] uppercase text-white/15 font-medium">Scroll</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-white/15">
-              <path d="M12 5v14M5 12l7 7 7-7" />
-            </svg>
-          </div>
+      {/* Scroll hint */}
+      <div className={`absolute bottom-10 left-1/2 -translate-x-1/2 transition-all duration-700 ${vis ? "opacity-100" : "opacity-0"}`} style={{ transitionDelay: "1000ms" }}>
+        <div className="flex flex-col items-center gap-1 animate-bounce">
+          <span className="text-[10px] tracking-[0.3em] uppercase text-white/15 font-medium">Scroll</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-white/15">
+            <path d="M12 5v14M5 12l7 7 7-7" />
+          </svg>
         </div>
       </div>
     </section>
