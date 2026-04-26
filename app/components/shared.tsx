@@ -163,6 +163,14 @@ export function useReveal(th = 0.12) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    const rect = el.getBoundingClientRect();
+    const inView = rect.top < window.innerHeight && rect.bottom > 0;
+    if (inView) {
+      setV(true);
+      return;
+    }
+
     const obs = new IntersectionObserver(([e]) => {
       if (e.isIntersecting) { setV(true); obs.unobserve(el); }
     }, { threshold: th });

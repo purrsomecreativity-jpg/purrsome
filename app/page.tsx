@@ -9,7 +9,7 @@ import { GradientBackground } from "./components/ui/gradient-background";
 function Hero({ t }: { t: typeof T.en }) {
   const [ref, vis] = useReveal(0.05);
   return (
-    <section ref={ref} className="relative z-10 min-h-[82vh] md:min-h-screen flex items-center justify-center overflow-hidden">
+    <section ref={ref} className="relative z-10 min-h-svh md:min-h-screen flex items-center justify-center overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full text-center">
 
         <h1 className={`mb-2 text-white font-bold text-[clamp(2rem,4vw,4.5rem)] leading-none tracking-tight transition-all duration-700 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`} style={{ transitionDelay: "150ms" }}>
@@ -47,7 +47,7 @@ function Hero({ t }: { t: typeof T.en }) {
 function Marquee({ text }: { text: string }) {
   const words = text.split("·").map(w => w.trim()).filter(Boolean);
   return (
-    <div className="relative py-5 overflow-hidden border-y border-white/[0.03]">
+    <div className="relative py-5 overflow-hidden border-y border-white/[0.03] bg-[#050507]">
       <div className="absolute inset-y-0 left-0 w-32 z-10 pointer-events-none" style={{ background: "linear-gradient(to right, #050507, transparent)" }} />
       <div className="absolute inset-y-0 right-0 w-32 z-10 pointer-events-none" style={{ background: "linear-gradient(to left, #050507, transparent)" }} />
       <div className="marquee-track flex whitespace-nowrap items-center">

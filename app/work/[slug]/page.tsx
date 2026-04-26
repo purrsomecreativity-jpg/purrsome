@@ -173,11 +173,11 @@ export default function ProjectPage() {
               </h1>
             </div>
             {p.heroMockup && (
-              <div className="hidden lg:flex justify-end items-end">
+              <div className="flex justify-center lg:justify-end items-end mt-8 lg:mt-0">
                 <img
                   src={p.heroMockup}
                   alt={`${p.title} laptop mockup`}
-                  className="w-full max-w-[420px] h-auto object-contain"
+                  className="w-full max-w-[320px] sm:max-w-[380px] lg:max-w-[420px] h-auto object-contain"
                   style={{
                     filter: `drop-shadow(0 0 30px ${p.accent}40) drop-shadow(0 0 80px ${p.accent}30) drop-shadow(0 30px 60px rgba(0,0,0,0.6)) drop-shadow(0 60px 100px rgba(0,0,0,0.4))`,
                     animation: "float 2.8s ease-in-out infinite",
