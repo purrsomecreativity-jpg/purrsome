@@ -29,13 +29,10 @@ type Project = {
 /**
  * Interactive "browser frame": full-page screenshot that slowly scrolls to the
  * bottom on hover (desktop) or loops automatically when in view (touch).
- * On desktop, "Live Demo" swaps the screenshot for the real site in an iframe
- * (mounted only on click). On mobile the demo button opens the site directly.
  */
 function LiveSiteFrame({ url, fullpage, accent, title }: { url: string; fullpage?: string; accent: string; title: string }) {
   const frameRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
-  const [demo, setDemo] = useState(false);
   const [inView, setInView] = useState(false);
   const [travel, setTravel] = useState(0);
   const [imgOk, setImgOk] = useState(true);
@@ -59,26 +56,9 @@ function LiveSiteFrame({ url, fullpage, accent, title }: { url: string; fullpage
 
   return (
     <section className="max-w-7xl mx-auto px-8 lg:px-16 pb-20 lg:pb-28">
-      <div className="flex items-center justify-between gap-4 mb-6">
-        <div className="flex items-center gap-3 flex-1">
-          <span className="text-[10px] tracking-[0.35em] uppercase text-white/20 font-medium">Live Site</span>
-          <span className="h-px flex-1 bg-white/[0.06]" />
-        </div>
-        {/* Desktop: toggle the embedded live demo. Mobile: open the site in a new tab. */}
-        <button
-          onClick={() => setDemo(d => !d)}
-          className="hidden md:inline-flex items-center gap-2 text-[11px] tracking-[0.15em] uppercase font-semibold px-4 py-2 rounded-full border border-white/15 text-white/70 hover:text-white hover:border-white/40 transition-all"
-        >
-          {demo ? "← Screenshot" : "Live Demo ↗"}
-        </button>
-        <a
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="md:hidden inline-flex items-center gap-2 text-[11px] tracking-[0.15em] uppercase font-semibold px-4 py-2 rounded-full border border-white/15 text-white/70"
-        >
-          Live Demo ↗
-        </a>
+      <div className="flex items-center gap-3 mb-6">
+        <span className="text-[10px] tracking-[0.35em] uppercase text-white/20 font-medium">Live Site</span>
+        <span className="h-px flex-1 bg-white/[0.06]" />
       </div>
 
       <div className="rounded-2xl overflow-hidden border border-white/[0.08] shadow-[0_30px_80px_rgba(0,0,0,0.5)]">
@@ -94,14 +74,7 @@ function LiveSiteFrame({ url, fullpage, accent, title }: { url: string; fullpage
         </div>
 
         <div ref={frameRef} className="relative aspect-[16/10] md:aspect-[16/9] overflow-hidden bg-[#0A0A0C] group">
-          {demo ? (
-            <iframe
-              src={url}
-              title={`${title} — live site`}
-              loading="lazy"
-              className="absolute inset-0 w-full h-full border-0 bg-white"
-            />
-          ) : fullpage && imgOk ? (
+          {fullpage && imgOk ? (
             <img
               ref={imgRef}
               src={fullpage}
