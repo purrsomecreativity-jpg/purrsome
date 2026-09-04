@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "next/navigation";
 import { T, Nav, Footer, useLang } from "../../components/shared";
 import { GradientDots } from "../../components/ui/gradient-dots";
@@ -19,7 +20,133 @@ type Project = {
   showcase?: string[];
   heroMockup?: string;
   palette?: { name: string; hex: string }[];
+  /** Live client site URL — renders the interactive browser frame + visit link. */
+  liveUrl?: string;
+  /** Full-page screenshot used inside the browser frame (scrolls on hover / loops on mobile). */
+  fullpage?: string;
 };
+
+/**
+ * Interactive "browser frame": full-page screenshot that slowly scrolls to the
+ * bottom on hover (desktop) or loops automatically when in view (touch).
+ * On desktop, "Live Demo" swaps the screenshot for the real site in an iframe
+ * (mounted only on click). On mobile the demo button opens the site directly.
+ */
+function LiveSiteFrame({ url, fullpage, accent, title }: { url: string; fullpage?: string; accent: string; title: string }) {
+  const frameRef = useRef<HTMLDivElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
+  const [demo, setDemo] = useState(false);
+  const [inView, setInView] = useState(false);
+  const [travel, setTravel] = useState(0);
+  const [imgOk, setImgOk] = useState(true);
+  const host = url.replace(/^https?:\/\//, "").replace(/\/$/, "");
+
+  useEffect(() => {
+    const el = frameRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.25 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  const measure = () => {
+    const frame = frameRef.current;
+    const img = imgRef.current;
+    if (!frame || !img || !img.naturalHeight) return;
+    const scaled = (img.naturalHeight / img.naturalWidth) * frame.clientWidth;
+    setTravel(Math.max(0, scaled - frame.clientHeight));
+  };
+
+  return (
+    <section className="max-w-7xl mx-auto px-8 lg:px-16 pb-20 lg:pb-28">
+      <div className="flex items-center justify-between gap-4 mb-6">
+        <div className="flex items-center gap-3 flex-1">
+          <span className="text-[10px] tracking-[0.35em] uppercase text-white/20 font-medium">Live Site</span>
+          <span className="h-px flex-1 bg-white/[0.06]" />
+        </div>
+        {/* Desktop: toggle the embedded live demo. Mobile: open the site in a new tab. */}
+        <button
+          onClick={() => setDemo(d => !d)}
+          className="hidden md:inline-flex items-center gap-2 text-[11px] tracking-[0.15em] uppercase font-semibold px-4 py-2 rounded-full border border-white/15 text-white/70 hover:text-white hover:border-white/40 transition-all"
+        >
+          {demo ? "← Screenshot" : "Live Demo ↗"}
+        </button>
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="md:hidden inline-flex items-center gap-2 text-[11px] tracking-[0.15em] uppercase font-semibold px-4 py-2 rounded-full border border-white/15 text-white/70"
+        >
+          Live Demo ↗
+        </a>
+      </div>
+
+      <div className="rounded-2xl overflow-hidden border border-white/[0.08] shadow-[0_30px_80px_rgba(0,0,0,0.5)]">
+        {/* Browser chrome bar */}
+        <div className="flex items-center gap-3 px-4 py-3 bg-white/[0.04] border-b border-white/[0.06]">
+          <span className="flex gap-1.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
+            <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
+            <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
+          </span>
+          <span className="flex-1 text-center text-[11px] tracking-wide text-white/35 font-mono truncate">{host}</span>
+          <span className="w-12" />
+        </div>
+
+        <div ref={frameRef} className="relative aspect-[16/10] md:aspect-[16/9] overflow-hidden bg-[#0A0A0C] group">
+          {demo ? (
+            <iframe
+              src={url}
+              title={`${title} — live site`}
+              loading="lazy"
+              className="absolute inset-0 w-full h-full border-0 bg-white"
+            />
+          ) : fullpage && imgOk ? (
+            <img
+              ref={imgRef}
+              src={fullpage}
+              alt={`${title} — full page`}
+              onLoad={measure}
+              onError={() => setImgOk(false)}
+              className="absolute top-0 left-0 w-full h-auto scroll-screenshot"
+              style={{
+                // Desktop: scroll on hover (CSS class). Mobile/touch: loop while in view.
+                ["--travel" as string]: `-${travel}px`,
+                animation: inView && travel > 0 ? undefined : "none",
+              }}
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center" style={{ background: `linear-gradient(150deg, #0A0A0C 0%, ${accent}22 100%)` }}>
+              <a href={url} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold" style={{ color: accent }}>
+                {host} ↗
+              </a>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <style jsx>{`
+        .scroll-screenshot {
+          transition: transform 8s ease-in-out;
+        }
+        .group:hover .scroll-screenshot {
+          transform: translateY(var(--travel));
+        }
+        @media (hover: none) {
+          .scroll-screenshot {
+            transition: none;
+            animation: fullpage-loop 22s ease-in-out infinite;
+          }
+        }
+        @keyframes fullpage-loop {
+          0%, 12% { transform: translateY(0); }
+          50%, 62% { transform: translateY(var(--travel)); }
+          100% { transform: translateY(0); }
+        }
+      `}</style>
+    </section>
+  );
+}
 
 const PROJECTS: Record<string, Project> = {
   "magic-pets": {
@@ -106,6 +233,90 @@ const PROJECTS: Record<string, Project> = {
       { name: "Inferno", hex: "#DC4A0A" },
     ],
   },
+  "claudia-garcia": {
+    num: "04",
+    title: "Claudia",
+    titleLine2: "García",
+    category: "Fitness Coach · Client Work",
+    year: "2026",
+    heroGradient: "linear-gradient(150deg, #16060A 0%, #2A0B10 45%, #1A0505 100%)",
+    accent: "#FF4D2E",
+    lede: "From Instagram-only to a complete brand with its own members app — branding, a fully bilingual site, and paid memberships in a single project.",
+    direction:
+      "Claudia had a 5.0★ following in Charlotte and zero web presence: no branding, no site, and no way to offer exclusive content to paying members — everything ran by hand over WhatsApp.",
+    approach:
+      "We built the 'Tropical Heat' identity from scratch — ink, coral, sun and magenta with bold editorial type — then a bilingual site with real class footage and integrated booking, plus a private members portal: her clients log in to see the day's routine, and Claudia runs everything from her phone. Paid memberships handled with Stripe.",
+    services: ["Brand Identity", "Web Design & Dev", "Member Portal", "Stripe Memberships", "SEO"],
+    highlights: [
+      { stat: "−97%", label: "Site Weight", sub: "156 MB → 5.3 MB" },
+      { stat: "EN/ES", label: "100% Bilingual", sub: "Full language switch" },
+      { stat: "5.0★", label: "Client's ClassPass Rating", sub: "66 reviews" },
+    ],
+    palette: [
+      { name: "Ink", hex: "#0D0D0D" },
+      { name: "Coral", hex: "#FF4D2E" },
+      { name: "Sun", hex: "#FFC93C" },
+      { name: "Magenta", hex: "#D63BA8" },
+    ],
+    liveUrl: "https://claudiavgarcia.com",
+    fullpage: "/work/claudia-garcia-fullpage.webp",
+  },
+  "riveros-street": {
+    num: "05",
+    title: "Rivero's",
+    titleLine2: "Street",
+    category: "Food Truck & Restaurant · Client Work",
+    year: "2026",
+    heroGradient: "linear-gradient(150deg, #1A0608 0%, #2A0A0E 45%, #12040A 100%)",
+    accent: "#E63946",
+    lede: "A dealer-fast, bilingual home for a Venezuelan street food family with three Florida locations — menus, catering, and online ordering in one place.",
+    direction:
+      "Rivero's Street was growing across the Florida panhandle, but its online presence lived on a generic ordering page. The family needed a site that carried the brand's loud, street-food energy and funneled real orders.",
+    approach:
+      "A fast Next.js build with all three locations managed from a single source, a catering request flow that lands straight in their inbox, and online ordering built on Square — orders drop into the same dashboard and POS the trucks already use.",
+    services: ["Web Design & Dev", "Online Ordering (Square)", "Local SEO", "Catering Flow"],
+    highlights: [
+      { stat: "100/100", label: "Lighthouse SEO", sub: "Perfect score" },
+      { stat: "100", label: "Best Practices", sub: "Lighthouse audit" },
+      { stat: "3", label: "Locations, One Site", sub: "Freeport · Miramar · FWB" },
+    ],
+    palette: [
+      { name: "Street Red", hex: "#E63946" },
+      { name: "Bone", hex: "#F5F0EA" },
+      { name: "Charcoal", hex: "#141414" },
+      { name: "Gold Fry", hex: "#E9A319" },
+    ],
+    liveUrl: "https://riverosstreet.com",
+    fullpage: "/work/riveros-street-fullpage.webp",
+  },
+  "angie-auto-sales": {
+    num: "06",
+    title: "Angie",
+    titleLine2: "Auto Sales",
+    category: "Commercial Van Dealer · Client Work",
+    year: "2026",
+    heroGradient: "linear-gradient(150deg, #050B1A 0%, #0A142E 45%, #04070F 100%)",
+    accent: "#1D4ED8",
+    lede: "A dealer site that works like the business does — direct, trustworthy, and in both languages.",
+    direction:
+      "Prime One Auto Sales moves commercial vans to working buyers who research in English and Spanish. The site had to present inventory clearly and build trust fast, without dealership clutter.",
+    approach:
+      "A clean bilingual build focused on the vans themselves: clear inventory presentation, direct contact paths, and local SEO so buyers searching in either language find Angie first.",
+    services: ["Web Design & Dev", "Inventory Layout", "Bilingual EN/ES", "Local SEO"],
+    highlights: [
+      { stat: "EN/ES", label: "Bilingual", sub: "Both markets, one site" },
+      { stat: "Vans", label: "Inventory First", sub: "Clear, honest presentation" },
+      { stat: "Local", label: "SEO", sub: "Found in both languages" },
+    ],
+    palette: [
+      { name: "Fleet Blue", hex: "#1D4ED8" },
+      { name: "Steel", hex: "#64748B" },
+      { name: "White", hex: "#FFFFFF" },
+      { name: "Ink", hex: "#0B0F19" },
+    ],
+    liveUrl: "https://angieautosales.com",
+    fullpage: "/work/angie-auto-sales-fullpage.webp",
+  },
 };
 
 export default function ProjectPage() {
@@ -148,7 +359,7 @@ export default function ProjectPage() {
             ← Work
           </a>
           <span className="text-[11px] tracking-[0.2em] uppercase text-white/20 font-mono">
-            {p.num} / 03
+            {p.num} / {String(Object.keys(PROJECTS).length).padStart(2, "0")}
           </span>
         </div>
 
@@ -200,6 +411,11 @@ export default function ProjectPage() {
           </p>
         </div>
       </section>
+
+      {/* ── Live site (client work) ──────────────────────── */}
+      {p.liveUrl && (
+        <LiveSiteFrame url={p.liveUrl} fullpage={p.fullpage} accent={p.accent} title={p.title} />
+      )}
 
       {/* ── Showcase ─────────────────────────────────────── */}
       {p.showcase && p.showcase.length > 0 && (
@@ -328,12 +544,25 @@ export default function ProjectPage() {
           >
             ← Back to Work
           </a>
-          <a
-            href="/start"
-            className="cta-btn font-semibold px-8 py-3.5 rounded-full text-sm flex items-center gap-2"
-          >
-            Start a Project <span>→</span>
-          </a>
+          <div className="flex items-center gap-4">
+            {p.liveUrl && (
+              <a
+                href={p.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-semibold tracking-wide flex items-center gap-2 transition-colors"
+                style={{ color: p.accent }}
+              >
+                Visit live site ↗
+              </a>
+            )}
+            <a
+              href="/start"
+              className="cta-btn font-semibold px-8 py-3.5 rounded-full text-sm flex items-center gap-2"
+            >
+              Start a Project <span>→</span>
+            </a>
+          </div>
         </div>
       </section>
 

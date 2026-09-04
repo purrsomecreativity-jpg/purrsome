@@ -5,13 +5,13 @@ import { usePathname } from "next/navigation";
 /* ─── TRANSLATIONS ─── */
 export const T = {
   en: {
-    nav: { work: "Work", services: "Services", pricing: "Pricing", about: "About", contact: "Contact", cta: "Let's Talk" },
+    nav: { work: "Work", services: "Services", about: "About", contact: "Contact", cta: "Let's Talk" },
     hero: {
       tagline: "We see what others don't.",
       h1: ["Built to be seen.", "Designed to convert."],
       sub: "Branding, web design, campaigns, SEO & ads. Everything a business needs to stop being invisible.",
-      cta1: "Pricing",
-      cta2: "Start a Project"
+      cta1: "Start a Project",
+      cta2: "See Our Work"
     },
     marquee: "Design · Strategy · Code · SEO · Ads · Branding · ",
     services: {
@@ -22,29 +22,37 @@ export const T = {
         { num: "01", title: "Web Design & Dev", desc: "Custom-coded websites built with Next.js. Fast, beautiful, and engineered to convert. No templates, no compromises.", icon: "✦" },
         { num: "02", title: "Search Engine Optimization", desc: "We make Google notice you. Technical SEO, content strategy, and local optimization that puts you on the map.", icon: "◉" },
         { num: "03", title: "Paid Advertising", desc: "Meta Ads and Google Ads that bring the right people to your door. Strategy, creative, and optimization — all handled.", icon: "◈" },
-        { num: "04", title: "Brand Identity", desc: "Logo, color palette, typography, and brand guidelines that capture who you are and make you unforgettable.", icon: "❋" }
+        { num: "04", title: "Brand Identity", desc: "Logo, color palette, typography, and brand guidelines that capture who you are and make you unforgettable.", icon: "❋" },
+        { num: "05", title: "Landing Pages + Member Portals", desc: "A landing page that sells, plus a private members area — user accounts, exclusive content, and paid subscriptions handled for you. Built for coaches, trainers, and nutritionists.", icon: "⬡" }
       ]
     },
     work: {
       tag: "Concept Mockups",
       title: "Selected Design Mockups.",
+      casesTag: "Client Work",
+      casesTitle: "Real projects, real results.",
+      cases: [
+        { slug: "claudia-garcia", title: "Claudia García", cat: "Fitness Coach · Branding + Web + Member Portal", year: "2026", accent: "#FF4D2E", desc: "Complete 'Tropical Heat' brand identity, a fully bilingual website, and a members-only portal with workout routines, an admin panel, and paid memberships — for a 5.0★ fitness coach in Charlotte, NC.", image: "/work/claudia-garcia.png" },
+        { slug: "riveros-street", title: "Rivero's Street", cat: "Food Truck & Restaurant · Website + Online Ordering", year: "2026", accent: "#E63946", desc: "A fast, bilingual site for a Florida food-truck family with three locations — live menus, catering requests, and online ordering built on Square.", image: "/work/riveros-street.png" },
+        { slug: "angie-auto-sales", title: "Angie Auto Sales", cat: "Commercial Van Dealer · Bilingual Website", year: "2026", accent: "#1D4ED8", desc: "Bilingual site for Prime One Auto Sales — commercial van inventory presented clearly, built to turn browsers into buyers in a market that speaks two languages.", image: "/work/angie-auto-sales.png" },
+      ],
       items: [
         { title: "Magic Pets", cat: "Grooming Studio · Concept Mockup", year: "2026", accent: "#EC4899", desc: "Concept design for a premium pet grooming studio — bilingual layout, drag-to-discover hero, and a playful character-driven visual system.", image: "/work/magic-pets.png" },
         { title: "Lumière Studio", cat: "Beauty Atelier · Concept Mockup", year: "2026", accent: "#B08060", desc: "Concept design for a Miami beauty atelier — editorial serif typography, slow considered pacing, and a listening-first experience that reads premium without being cold.", image: "/work/lumiere-studio.png" },
         { title: "Angel Mechanic Expert", cat: "Automotive · Concept Mockup", year: "2026", accent: "#E85102", desc: "Concept design for an independent auto shop — bold persimmon accent, trust-first layout with 36+ years of experience front and center, and a bilingual service flow.", image: "/work/ame.png" },
       ],
-      cta: "View All Mockups →"
+      cta: "View All Work →"
     },
-    pricing: {
-      tag: "Pricing",
-      title: "Simple, transparent pricing.",
-      sub: "No surprises. Pick the package that fits your goals — or let's build something custom.",
-      popular: "Most Popular",
-      plans: [
-        { price: "$1,500", name: "Website Refresh", desc: "Great for businesses with an existing site that needs a modern, professional update.", features: ["Design overhaul", "Mobile optimization", "Speed improvements", "Basic SEO setup", "1 round of revisions"], cta: "Get Started", highlight: false },
-        { price: "$3,000+", name: "Online Presence Starter", desc: "Everything you need to get found online and turn visitors into paying customers.", features: ["Custom website up to 6 pages", "Local SEO setup", "Google Business optimization", "Analytics + contact form", "2 rounds of revisions"], cta: "Get Started", highlight: true },
-        { price: "$5,000+", name: "Full Branding + Website", desc: "A complete brand identity and website built to make you impossible to forget.", features: ["Logo + full brand identity", "Custom website up to 10 pages", "Full SEO strategy", "Brand guidelines", "30-day post-launch support"], cta: "Get Started", highlight: false },
-        { price: "Custom", name: "Custom Package", desc: "Unique needs? Let's build a package tailored exactly to your business and budget.", features: ["Flexible scope", "Mix any services", "Dedicated strategy session", "Priority support", "Custom timeline"], cta: "Let's Talk", highlight: false },
+    faq: {
+      tag: "FAQ",
+      title: "Questions, answered.",
+      items: [
+        { q: "How long does a project take?", a: "Most websites go live in 2–4 weeks once we have your content. Larger builds — like member portals or online ordering — run on a custom timeline we agree on upfront." },
+        { q: "What does the process look like?", a: "A free discovery call, then a proposal. Once approved: design and build with your real content, two rounds of revisions, and launch. You approve every step." },
+        { q: "How much does it cost?", a: "Every business is different, so we quote each project individually. Book a free call, tell us what you need, and you'll get a clear, fixed proposal — no surprises." },
+        { q: "Do you work in English and Spanish?", a: "Both, always. Every site we build is fully bilingual by default, because your customers don't all speak the same language." },
+        { q: "What happens after launch?", a: "You own everything. We hand over access, a visual guide, and training — and if you want us to keep maintaining and growing the site, we offer monthly support." },
+        { q: "I don't have professional photos or copy. Is that a problem?", a: "Not at all. We work with what you have, direct the visuals, and write the copy with you. That's part of the job." },
       ]
     },
     about: {
@@ -64,10 +72,10 @@ export const T = {
       ]
     },
     stats: [
-      { num: "50+", label: "Projects" },
-      { num: "3×", label: "Avg. Traffic Boost" },
-      { num: "98%", label: "Satisfaction" },
-      { num: "7d", label: "Avg. Delivery" }
+      { num: "100%", label: "Bilingual Builds" },
+      { num: "100/100", label: "Lighthouse SEO" },
+      { num: "−97%", label: "Site Weight Optimized" },
+      { num: "2–4wk", label: "Typical Delivery" }
     ],
     contact: {
       tag: "Contact",
@@ -79,13 +87,13 @@ export const T = {
     footer: { copy: "© 2026 Purrsome™", tagline: "Refuse to Blend In." }
   },
   es: {
-    nav: { work: "Trabajo", services: "Servicios", pricing: "Precios", about: "Nosotros", contact: "Contacto", cta: "Hablemos" },
+    nav: { work: "Trabajo", services: "Servicios", about: "Nosotros", contact: "Contacto", cta: "Hablemos" },
     hero: {
       tagline: "Vemos lo que otros no.",
       h1: ["Hecho para ser visto.", "Diseñado para convertir."],
       sub: "Branding, diseño web, campañas, SEO y anuncios. Todo lo que un negocio necesita para dejar de ser invisible.",
-      cta1: "Precios",
-      cta2: "Iniciar Proyecto"
+      cta1: "Iniciar Proyecto",
+      cta2: "Ver Trabajo"
     },
     marquee: "Diseño · Estrategia · Código · SEO · Ads · Branding · ",
     services: {
@@ -96,29 +104,37 @@ export const T = {
         { num: "01", title: "Diseño & Desarrollo Web", desc: "Sitios web custom con Next.js. Rápidos, hermosos, e ingeniados para convertir. Sin templates, sin compromisos.", icon: "✦" },
         { num: "02", title: "Optimización SEO", desc: "Hacemos que Google te note. SEO técnico, estrategia de contenido y optimización local que te pone en el mapa.", icon: "◉" },
         { num: "03", title: "Publicidad Digital", desc: "Meta Ads y Google Ads que traen a las personas correctas. Estrategia, creativos y optimización — todo incluido.", icon: "◈" },
-        { num: "04", title: "Identidad de Marca", desc: "Logo, paleta de color, tipografía y guías de marca que capturan quién eres y te hacen inolvidable.", icon: "❋" }
+        { num: "04", title: "Identidad de Marca", desc: "Logo, paleta de color, tipografía y guías de marca que capturan quién eres y te hacen inolvidable.", icon: "❋" },
+        { num: "05", title: "Landing + Portal de Miembros", desc: "Una landing que vende, más un área privada de miembros — cuentas, contenido exclusivo y suscripciones pagas sin que muevas un dedo. Hecho para coaches, entrenadores y nutricionistas.", icon: "⬡" }
       ]
     },
     work: {
       tag: "Mockups Conceptuales",
       title: "Mockups de Diseño.",
+      casesTag: "Casos Reales",
+      casesTitle: "Proyectos reales, resultados reales.",
+      cases: [
+        { slug: "claudia-garcia", title: "Claudia García", cat: "Coach de Fitness · Branding + Web + Portal de Miembros", year: "2026", accent: "#FF4D2E", desc: "Identidad de marca 'Tropical Heat' completa, sitio 100% bilingüe y portal privado de miembros con rutinas, panel de administración y membresías pagas — para una coach de fitness 5.0★ en Charlotte, NC.", image: "/work/claudia-garcia.png" },
+        { slug: "riveros-street", title: "Rivero's Street", cat: "Food Truck & Restaurante · Web + Pedidos Online", year: "2026", accent: "#E63946", desc: "Sitio rápido y bilingüe para una familia de food trucks en Florida con tres locaciones — menús, solicitudes de catering y pedidos online con Square.", image: "/work/riveros-street.png" },
+        { slug: "angie-auto-sales", title: "Angie Auto Sales", cat: "Concesionario de Vans · Sitio Bilingüe", year: "2026", accent: "#1D4ED8", desc: "Sitio bilingüe para Prime One Auto Sales — inventario de vans comerciales presentado con claridad, hecho para convertir visitas en compradores en un mercado que habla dos idiomas.", image: "/work/angie-auto-sales.png" },
+      ],
       items: [
         { title: "Magic Pets", cat: "Estudio de Grooming · Mockup", year: "2026", accent: "#EC4899", desc: "Mockup conceptual para un estudio premium de grooming canino — diseño bilingüe, hero interactivo tipo drag y un sistema visual juguetón.", image: "/work/magic-pets.png" },
         { title: "Lumière Studio", cat: "Atelier de Belleza · Mockup", year: "2026", accent: "#B08060", desc: "Mockup conceptual para un atelier de belleza en Miami — tipografía serif editorial, ritmo pausado y una experiencia que escucha primero, premium sin ser fría.", image: "/work/lumiere-studio.png" },
         { title: "Angel Mechanic Expert", cat: "Automotriz · Mockup", year: "2026", accent: "#E85102", desc: "Mockup conceptual para un taller mecánico independiente — acento persimmon, layout enfocado en confianza con 36+ años de experiencia al frente, y flujo de servicios bilingüe.", image: "/work/ame.png" },
       ],
-      cta: "Ver Todos los Mockups →"
+      cta: "Ver Todo el Trabajo →"
     },
-    pricing: {
-      tag: "Precios",
-      title: "Precios claros, sin sorpresas.",
-      sub: "Elige el paquete que se adapta a tus metas — o construimos algo completamente a tu medida.",
-      popular: "Más Popular",
-      plans: [
-        { price: "$1,500", name: "Website Refresh", desc: "Ideal para negocios con sitio existente que necesita una actualización moderna y profesional.", features: ["Rediseño completo", "Optimización móvil", "Mejoras de velocidad", "SEO básico", "1 ronda de revisiones"], cta: "Empezar", highlight: false },
-        { price: "$3,000+", name: "Online Presence Starter", desc: "Todo lo que necesitas para que te encuentren online y convertir visitas en clientes.", features: ["Sitio web hasta 6 páginas", "SEO local", "Optimización Google Business", "Analytics + formulario de contacto", "2 rondas de revisiones"], cta: "Empezar", highlight: true },
-        { price: "$5,000+", name: "Branding Completo + Web", desc: "Identidad de marca completa y sitio web diseñados para hacerte inolvidable.", features: ["Logo + identidad de marca", "Sitio web hasta 10 páginas", "Estrategia SEO completa", "Guías de marca", "Soporte 30 días post-lanzamiento"], cta: "Empezar", highlight: false },
-        { price: "Custom", name: "Paquete Personalizado", desc: "Necesidades únicas? Construimos un paquete hecho exactamente para tu negocio y presupuesto.", features: ["Alcance flexible", "Combina cualquier servicio", "Sesión de estrategia dedicada", "Soporte prioritario", "Timeline personalizado"], cta: "Hablemos", highlight: false },
+    faq: {
+      tag: "FAQ",
+      title: "Preguntas, respondidas.",
+      items: [
+        { q: "¿Cuánto tarda un proyecto?", a: "La mayoría de los sitios salen en vivo en 2–4 semanas desde que tenemos tu contenido. Proyectos grandes — como portales de miembros o pedidos online — llevan un timeline a medida que acordamos desde el inicio." },
+        { q: "¿Cómo es el proceso?", a: "Una llamada gratuita de descubrimiento y luego una propuesta. Aprobada: diseño y desarrollo con tu contenido real, dos rondas de revisiones y lanzamiento. Tú apruebas cada paso." },
+        { q: "¿Cuánto cuesta?", a: "Cada negocio es distinto, así que cotizamos cada proyecto individualmente. Agenda una llamada gratis, cuéntanos qué necesitas y recibes una propuesta clara y fija — sin sorpresas." },
+        { q: "¿Trabajan en inglés y español?", a: "Siempre los dos. Cada sitio que construimos es 100% bilingüe por defecto, porque tus clientes no hablan todos el mismo idioma." },
+        { q: "¿Qué pasa después del lanzamiento?", a: "Todo es tuyo. Entregamos accesos, guía visual y capacitación — y si quieres que sigamos manteniendo y creciendo el sitio, ofrecemos soporte mensual." },
+        { q: "No tengo fotos profesionales ni textos. ¿Es problema?", a: "Para nada. Trabajamos con lo que tengas, dirigimos los visuales y escribimos los textos contigo. Es parte del trabajo." },
       ]
     },
     about: {
@@ -138,10 +154,10 @@ export const T = {
       ]
     },
     stats: [
-      { num: "50+", label: "Proyectos" },
-      { num: "3×", label: "Más Tráfico" },
-      { num: "98%", label: "Satisfacción" },
-      { num: "7d", label: "Entrega Promedio" }
+      { num: "100%", label: "Sitios Bilingües" },
+      { num: "100/100", label: "SEO Lighthouse" },
+      { num: "−97%", label: "Peso Optimizado" },
+      { num: "2–4sem", label: "Entrega Típica" }
     ],
     contact: {
       tag: "Contacto",
@@ -232,7 +248,7 @@ export function Nav({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => vo
               className="object-contain"
             />
           </a>
-          {(["work", "services", "pricing", "about"] as const).map(k => (
+          {(["work", "services", "about"] as const).map(k => (
             <a
               key={k}
               href={`/${k}`}
@@ -280,7 +296,7 @@ export function Nav({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => vo
 
       {open && (
         <div className="md:hidden bg-[#050507]/95 backdrop-blur-2xl border-t border-white/[0.04] px-6 py-10 flex flex-col gap-6 animate-fadeSlide">
-          {(["work", "services", "pricing", "about"] as const).map(k => (
+          {(["work", "services", "about"] as const).map(k => (
             <a key={k} href={`/${k}`} onClick={() => setOpen(false)} className="text-lg text-white/50 hover:text-white tracking-wide">{t.nav[k]}</a>
           ))}
           <a href="/about#contact" onClick={() => setOpen(false)} className="text-lg text-white/50 hover:text-white tracking-wide">{t.nav.contact}</a>

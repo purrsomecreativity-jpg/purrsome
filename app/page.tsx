@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { T, Nav, Footer, useReveal, useLang } from "./components/shared";
+import { FAQ } from "./components/FAQ";
 import { MeshGradientBackground } from "./components/ui/hero-section-with-smooth-bg-shader";
 import { WavyBackground } from "./components/ui/wavy-background";
 import { GradientBackground } from "./components/ui/gradient-background";
@@ -21,10 +22,10 @@ function Hero({ t }: { t: typeof T.en }) {
         </p>
 
         <div className={`flex flex-wrap justify-center gap-4 transition-all duration-700 ${vis ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`} style={{ transitionDelay: "750ms" }}>
-          <a href="/pricing" className="group cta-btn font-semibold px-10 py-4 rounded-full text-sm flex items-center gap-2.5">
+          <a href="/start" className="group cta-btn font-semibold px-10 py-4 rounded-full text-sm flex items-center gap-2.5">
             {t.hero.cta1} <span className="group-hover:translate-x-1.5 transition-transform duration-300">→</span>
           </a>
-          <a href="/start" className="liquid-glass-btn font-medium px-10 py-4 rounded-full text-sm text-white/60">
+          <a href="/work" className="liquid-glass-btn font-medium px-10 py-4 rounded-full text-sm text-white/60">
             {t.hero.cta2}
           </a>
         </div>
@@ -198,14 +199,14 @@ function Testimonials({ lang }: { lang: "en" | "es" }) {
 const NAV_CARDS = [
   { key: "work",     href: "/work",     gradient: "from-pink-950 via-amber-950 to-purple-950",  accent: "#EC4899", num: "01", waves: ["#EC4899", "#F59E0B", "#9333EA", "#DC4A0A"], bgFill: "#1A0614" },
   { key: "services", href: "/services", gradient: "from-teal-950 via-indigo-950 to-pink-950",   accent: "#14B8A6", num: "02", waves: ["#14B8A6", "#4F46E5", "#EC4899", "#0F766E"], bgFill: "#071A1F" },
-  { key: "pricing",  href: "/pricing",  gradient: "from-purple-950 via-pink-950 to-amber-950",  accent: "#9333EA", num: "03", waves: ["#9333EA", "#EC4899", "#F59E0B", "#7C3AED"], bgFill: "#0E0620" },
+  { key: "contact",  href: "/start",    gradient: "from-purple-950 via-pink-950 to-amber-950",  accent: "#9333EA", num: "03", waves: ["#9333EA", "#EC4899", "#F59E0B", "#7C3AED"], bgFill: "#0E0620" },
   { key: "about",    href: "/about",    gradient: "from-indigo-950 via-teal-950 to-orange-950", accent: "#4F46E5", num: "04", waves: ["#4F46E5", "#14B8A6", "#DC4A0A", "#0EA5E9"], bgFill: "#07101E" },
 ] as const;
 
 const CARD_DESC: Record<string, { en: string; es: string }> = {
-  work:     { en: "Selected design mockups.", es: "Mockups de diseño seleccionados." },
+  work:     { en: "Real client work & concept mockups.", es: "Casos reales y mockups de diseño." },
   services: { en: "Design, SEO, ads & branding.", es: "Diseño, SEO, anuncios y branding." },
-  pricing:  { en: "Clear packages, no surprises.", es: "Paquetes claros, sin sorpresas." },
+  contact:  { en: "Tell us about your project.", es: "Cuéntanos sobre tu proyecto." },
   about:    { en: "Who we are and how we think.", es: "Quiénes somos y cómo pensamos." },
 };
 
@@ -345,6 +346,7 @@ export default function PurrsomePage() {
         <StackedNavCards t={t} lang={lang} />
       </div>
       <Testimonials lang={lang} />
+      <FAQ t={t} />
       <Footer t={t} />
     </main>
   );

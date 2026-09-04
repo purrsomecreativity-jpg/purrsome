@@ -1,5 +1,7 @@
 "use client";
 import { useState } from "react";
+import { T as SHARED_T } from "../components/shared";
+import { FAQ } from "../components/FAQ";
 
 /* ─── TYPES ─── */
 type Lang = "en" | "es";
@@ -682,6 +684,11 @@ export default function StartProject() {
           </p>
         )}
       </form>
+
+      {/* FAQ */}
+      <div className="relative z-10">
+        <FAQ t={SHARED_T[lang]} />
+      </div>
     </div>
   );
 }
