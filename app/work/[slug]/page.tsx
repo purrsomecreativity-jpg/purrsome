@@ -27,8 +27,9 @@ type Project = {
 };
 
 /**
- * Interactive "browser frame": full-page screenshot that slowly scrolls to the
- * bottom on hover (desktop) or loops automatically when in view (touch).
+ * "Browser frame" con el sitio real embebido: en desktop es un iframe
+ * navegable (puedes scrollear el sitio completo dentro del marco); en movil
+ * muestra la captura full-page en loop y el link abre el sitio real.
  */
 function LiveSiteFrame({ url, fullpage, accent, title }: { url: string; fullpage?: string; accent: string; title: string }) {
   const frameRef = useRef<HTMLDivElement>(null);
@@ -59,6 +60,14 @@ function LiveSiteFrame({ url, fullpage, accent, title }: { url: string; fullpage
       <div className="flex items-center gap-3 mb-6">
         <span className="text-[10px] tracking-[0.35em] uppercase text-white/20 font-medium">Live Site</span>
         <span className="h-px flex-1 bg-white/[0.06]" />
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[11px] tracking-[0.15em] uppercase font-semibold text-white/40 hover:text-white transition-colors"
+        >
+          {host} ↗
+        </a>
       </div>
 
       <div className="rounded-2xl overflow-hidden border border-white/[0.08] shadow-[0_30px_80px_rgba(0,0,0,0.5)]">
@@ -73,47 +82,51 @@ function LiveSiteFrame({ url, fullpage, accent, title }: { url: string; fullpage
           <span className="w-12" />
         </div>
 
-        <div ref={frameRef} className="relative aspect-[16/10] md:aspect-[16/9] overflow-hidden bg-[#0A0A0C] group">
-          {fullpage && imgOk ? (
-            <img
-              ref={imgRef}
-              src={fullpage}
-              alt={`${title} — full page`}
-              onLoad={measure}
-              onError={() => setImgOk(false)}
-              className="absolute top-0 left-0 w-full h-auto scroll-screenshot"
-              style={{
-                // Desktop: scroll on hover (CSS class). Mobile/touch: loop while in view.
-                ["--travel" as string]: `-${travel}px`,
-                animation: inView && travel > 0 ? undefined : "none",
-              }}
-            />
-          ) : (
-            <div className="absolute inset-0 flex items-center justify-center" style={{ background: `linear-gradient(150deg, #0A0A0C 0%, ${accent}22 100%)` }}>
-              <a href={url} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold" style={{ color: accent }}>
+        <div ref={frameRef} className="relative aspect-[16/10] md:aspect-[16/9] overflow-hidden bg-white group">
+          {/* Desktop: el sitio real, navegable dentro del marco */}
+          <iframe
+            src={url}
+            title={`${title} — live site`}
+            loading="lazy"
+            className="hidden md:block absolute inset-0 w-full h-full border-0 bg-white"
+          />
+          {/* Movil: captura full-page en loop (los iframes scrollean mal en touch) */}
+          <div className="md:hidden absolute inset-0 bg-[#0A0A0C]">
+            {fullpage && imgOk ? (
+              <img
+                ref={imgRef}
+                src={fullpage}
+                alt={`${title} — full page`}
+                onLoad={measure}
+                onError={() => setImgOk(false)}
+                className="absolute top-0 left-0 w-full h-auto scroll-screenshot"
+                style={{
+                  ["--travel" as string]: `-${travel}px`,
+                  animationPlayState: inView && travel > 0 ? "running" : "paused",
+                }}
+              />
+            ) : (
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute inset-0 flex items-center justify-center text-sm font-semibold"
+                style={{ background: `linear-gradient(150deg, #0A0A0C 0%, ${accent}22 100%)`, color: accent }}
+              >
                 {host} ↗
               </a>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
 
       <style jsx>{`
         .scroll-screenshot {
-          transition: transform 8s ease-in-out;
-        }
-        .group:hover .scroll-screenshot {
-          transform: translateY(var(--travel));
-        }
-        @media (hover: none) {
-          .scroll-screenshot {
-            transition: none;
-            animation: fullpage-loop 22s ease-in-out infinite;
-          }
+          animation: fullpage-loop 26s ease-in-out infinite;
         }
         @keyframes fullpage-loop {
-          0%, 12% { transform: translateY(0); }
-          50%, 62% { transform: translateY(var(--travel)); }
+          0%, 10% { transform: translateY(0); }
+          50%, 60% { transform: translateY(var(--travel)); }
           100% { transform: translateY(0); }
         }
       `}</style>
