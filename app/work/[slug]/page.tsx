@@ -24,6 +24,8 @@ type Project = {
   liveUrl?: string;
   /** Full-page screenshot used inside the browser frame (scrolls on hover / loops on mobile). */
   fullpage?: string;
+  /** false = el sitio no permite iframes (X-Frame-Options); se usa la captura en todos los tamanos. */
+  embed?: boolean;
 };
 
 /**
@@ -31,7 +33,7 @@ type Project = {
  * navegable (puedes scrollear el sitio completo dentro del marco); en movil
  * muestra la captura full-page en loop y el link abre el sitio real.
  */
-function LiveSiteFrame({ url, fullpage, accent, title }: { url: string; fullpage?: string; accent: string; title: string }) {
+function LiveSiteFrame({ url, fullpage, accent, title, embed = true }: { url: string; fullpage?: string; accent: string; title: string; embed?: boolean }) {
   const frameRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
   const [inView, setInView] = useState(false);
@@ -83,15 +85,17 @@ function LiveSiteFrame({ url, fullpage, accent, title }: { url: string; fullpage
         </div>
 
         <div ref={frameRef} className="relative aspect-[16/10] md:aspect-[16/9] overflow-hidden bg-white group">
-          {/* Desktop: el sitio real, navegable dentro del marco */}
-          <iframe
-            src={url}
-            title={`${title} — live site`}
-            loading="lazy"
-            className="hidden md:block absolute inset-0 w-full h-full border-0 bg-white"
-          />
-          {/* Movil: captura full-page en loop (los iframes scrollean mal en touch) */}
-          <div className="md:hidden absolute inset-0 bg-[#0A0A0C]">
+          {/* Desktop: el sitio real, navegable dentro del marco (si permite iframes) */}
+          {embed && (
+            <iframe
+              src={url}
+              title={`${title} — live site`}
+              loading="lazy"
+              className="hidden md:block absolute inset-0 w-full h-full border-0 bg-white"
+            />
+          )}
+          {/* Captura full-page en loop: siempre en movil, y en desktop si no hay iframe */}
+          <div className={`${embed ? "md:hidden" : ""} absolute inset-0 bg-[#0A0A0C]`}>
             {fullpage && imgOk ? (
               <img
                 ref={imgRef}
@@ -246,6 +250,7 @@ const PROJECTS: Record<string, Project> = {
     ],
     liveUrl: "https://claudiavgarcia.com",
     fullpage: "/work/claudia-garcia-fullpage.webp",
+    embed: false,
   },
   "riveros-street": {
     num: "05",
@@ -400,7 +405,7 @@ export default function ProjectPage() {
 
       {/* ── Live site (client work) ──────────────────────── */}
       {p.liveUrl && (
-        <LiveSiteFrame url={p.liveUrl} fullpage={p.fullpage} accent={p.accent} title={p.title} />
+        <LiveSiteFrame url={p.liveUrl} fullpage={p.fullpage} accent={p.accent} title={p.title} embed={p.embed} />
       )}
 
       {/* ── Showcase ─────────────────────────────────────── */}
