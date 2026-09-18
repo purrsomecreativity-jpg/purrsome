@@ -75,7 +75,7 @@ export default function Links() {
         </ul>
 
         <p className="mt-10 text-[11px] tracking-[0.15em] text-white/35 text-center">
-          Kissimmee, FL · Web · Branding · SEO · Ads · ES / EN
+          Web · Branding · SEO
         </p>
       </div>
     </main>

@@ -87,11 +87,9 @@ export const T = {
     footer: { copy: "© 2026 Purrsome™", tagline: "Refuse to Blend In." },
     links: {
       title: "Everything in one place.",
-      sub: "Bilingual web design, branding and SEO — built in Florida.",
+      sub: "Bilingual web design, branding and SEO.",
       items: [
         { key: "whatsapp",  label: "WhatsApp",        sub: "Message us directly",         href: "https://wa.me/14076938364",        external: true },
-        { key: "start",     label: "Start a Project", sub: "Free discovery call",         href: "/start",                           external: false },
-        { key: "work",      label: "See Our Work",    sub: "Real projects, real results", href: "/work",                            external: false },
         { key: "instagram", label: "Instagram",       sub: "@purrrrsome",                 href: "https://instagram.com/purrrrsome", external: true },
         { key: "email",     label: "Email",           sub: "info@purrsomecreate.com",     href: "mailto:info@purrsomecreate.com",   external: true }
       ]
@@ -180,11 +178,9 @@ export const T = {
     footer: { copy: "© 2026 Purrsome™", tagline: "Refuse to Blend In." },
     links: {
       title: "Todo en un solo lugar.",
-      sub: "Diseño web, branding y SEO bilingüe — hecho en Florida.",
+      sub: "Diseño web, branding y SEO bilingüe.",
       items: [
         { key: "whatsapp",  label: "WhatsApp",            sub: "Escríbenos directo",                  href: "https://wa.me/14076938364",        external: true },
-        { key: "start",     label: "Iniciar un Proyecto", sub: "Llamada de descubrimiento gratis",    href: "/start",                           external: false },
-        { key: "work",      label: "Ver Nuestro Trabajo", sub: "Proyectos reales, resultados reales", href: "/work",                            external: false },
         { key: "instagram", label: "Instagram",           sub: "@purrrrsome",                         href: "https://instagram.com/purrrrsome", external: true },
         { key: "email",     label: "Email",               sub: "info@purrsomecreate.com",             href: "mailto:info@purrsomecreate.com",   external: true }
       ]
