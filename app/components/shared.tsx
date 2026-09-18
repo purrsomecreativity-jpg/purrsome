@@ -84,7 +84,18 @@ export const T = {
       form: { name: "Name", email: "Email", biz: "Business", msg: "Tell us about your vision...", send: "Send Message", sent: "Message Sent ✓" },
       info: { email: "purrsome@purrsomecrete.com", phone: "+1 (407) 693-8364", loc: "Remote · Worldwide" }
     },
-    footer: { copy: "© 2026 Purrsome™", tagline: "Refuse to Blend In." }
+    footer: { copy: "© 2026 Purrsome™", tagline: "Refuse to Blend In." },
+    links: {
+      title: "Everything in one place.",
+      sub: "Bilingual web design, branding and SEO — built in Florida.",
+      items: [
+        { key: "whatsapp",  label: "WhatsApp",        sub: "Message us directly",         href: "https://wa.me/14076938364",        external: true },
+        { key: "start",     label: "Start a Project", sub: "Free discovery call",         href: "/start",                           external: false },
+        { key: "work",      label: "See Our Work",    sub: "Real projects, real results", href: "/work",                            external: false },
+        { key: "instagram", label: "Instagram",       sub: "@purrrrsome",                 href: "https://instagram.com/purrrrsome", external: true },
+        { key: "email",     label: "Email",           sub: "info@purrsomecreate.com",     href: "mailto:info@purrsomecreate.com",   external: true }
+      ]
+    }
   },
   es: {
     nav: { work: "Trabajo", services: "Servicios", about: "Nosotros", contact: "Contacto", cta: "Hablemos" },
@@ -166,7 +177,18 @@ export const T = {
       form: { name: "Nombre", email: "Email", biz: "Negocio", msg: "Cuéntanos sobre tu visión...", send: "Enviar Mensaje", sent: "Enviado ✓" },
       info: { email: "purrsome@purrsomecrete.com", phone: "+1 (407) 693-8364", loc: "Remoto · Mundial" }
     },
-    footer: { copy: "© 2026 Purrsome™", tagline: "Refuse to Blend In." }
+    footer: { copy: "© 2026 Purrsome™", tagline: "Refuse to Blend In." },
+    links: {
+      title: "Todo en un solo lugar.",
+      sub: "Diseño web, branding y SEO bilingüe — hecho en Florida.",
+      items: [
+        { key: "whatsapp",  label: "WhatsApp",            sub: "Escríbenos directo",                  href: "https://wa.me/14076938364",        external: true },
+        { key: "start",     label: "Iniciar un Proyecto", sub: "Llamada de descubrimiento gratis",    href: "/start",                           external: false },
+        { key: "work",      label: "Ver Nuestro Trabajo", sub: "Proyectos reales, resultados reales", href: "/work",                            external: false },
+        { key: "instagram", label: "Instagram",           sub: "@purrrrsome",                         href: "https://instagram.com/purrrrsome", external: true },
+        { key: "email",     label: "Email",               sub: "info@purrsomecreate.com",             href: "mailto:info@purrsomecreate.com",   external: true }
+      ]
+    }
   }
 };
 
