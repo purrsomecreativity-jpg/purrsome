@@ -46,7 +46,11 @@ function LiveSiteFrame({ url, fullpage, accent, title, embed = true }: { url: st
     if (!el) return;
     const obs = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.25 });
     obs.observe(el);
-    return () => obs.disconnect();
+    // Cached images may finish loading before React attaches onLoad — measure now.
+    if (imgRef.current?.complete) measure();
+    window.addEventListener("resize", measure);
+    return () => { obs.disconnect(); window.removeEventListener("resize", measure); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const measure = () => {
@@ -250,7 +254,6 @@ const PROJECTS: Record<string, Project> = {
     ],
     liveUrl: "https://claudiavgarcia.com",
     fullpage: "/work/claudia-garcia-fullpage.webp",
-    embed: false,
   },
   "riveros-street": {
     num: "05",
