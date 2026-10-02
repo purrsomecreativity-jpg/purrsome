@@ -62,7 +62,7 @@ function LiveSiteFrame({ url, fullpage, accent, title, embed = true }: { url: st
   };
 
   return (
-    <section className="max-w-7xl mx-auto px-8 lg:px-16 pb-20 lg:pb-28">
+    <section className="max-w-4xl mx-auto px-8 lg:px-16 pb-20 lg:pb-28">
       <div className="flex items-center gap-3 mb-6">
         <span className="text-[10px] tracking-[0.35em] uppercase text-white/20 font-medium">Live Site</span>
         <span className="h-px flex-1 bg-white/[0.06]" />
@@ -219,7 +219,7 @@ const PROJECTS: Record<string, Project> = {
       { stat: "EN/ES", label: "Bilingual", sub: "Toggle in the nav" },
     ],
     showcase: ["/work/ame.png", "/work/ame-2.png", "/work/ame-3.png", "/work/ame-4.png"],
-    heroMockup: "/work/ame-laptop.png",
+    heroMockup: "/work/ame-laptop.webp",
     palette: [
       { name: "Persimmon", hex: "#E85102" },
       { name: "Smoky Black", hex: "#0F0F0F" },
@@ -254,6 +254,7 @@ const PROJECTS: Record<string, Project> = {
     ],
     liveUrl: "https://claudiavgarcia.com",
     fullpage: "/work/claudia-garcia-fullpage.webp",
+    heroMockup: "/work/claudia-garcia-laptop.webp",
   },
   "riveros-street": {
     num: "05",
@@ -282,6 +283,7 @@ const PROJECTS: Record<string, Project> = {
     ],
     liveUrl: "https://riverosstreet.com",
     fullpage: "/work/riveros-street-fullpage.webp",
+    heroMockup: "/work/riveros-street-laptop.webp",
   },
   "angie-auto-sales": {
     num: "06",
@@ -290,7 +292,7 @@ const PROJECTS: Record<string, Project> = {
     category: "Commercial Van Dealer · Client Work",
     year: "2026",
     heroGradient: "linear-gradient(150deg, #050B1A 0%, #0A142E 45%, #04070F 100%)",
-    accent: "#1D4ED8",
+    accent: "#94A7FF",
     lede: "A dealer site that works like the business does — direct, trustworthy, and in both languages.",
     direction:
       "Prime One Auto Sales moves commercial vans to working buyers who research in English and Spanish. The site had to present inventory clearly and build trust fast, without dealership clutter.",
@@ -303,13 +305,14 @@ const PROJECTS: Record<string, Project> = {
       { stat: "Local", label: "SEO", sub: "Found in both languages" },
     ],
     palette: [
-      { name: "Fleet Blue", hex: "#1D4ED8" },
-      { name: "Steel", hex: "#64748B" },
-      { name: "White", hex: "#FFFFFF" },
-      { name: "Ink", hex: "#0B0F19" },
+      { name: "Periwinkle", hex: "#94A7FF" },
+      { name: "Tangerine", hex: "#FFA255" },
+      { name: "Silver", hex: "#B8B5B5" },
+      { name: "Mint", hex: "#D4FFD5" },
     ],
     liveUrl: "https://angieautosales.com",
     fullpage: "/work/angie-auto-sales-fullpage.webp",
+    heroMockup: "/work/angie-auto-sales-laptop.webp",
   },
 };
 

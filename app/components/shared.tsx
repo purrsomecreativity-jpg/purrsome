@@ -23,7 +23,8 @@ export const T = {
         { num: "02", title: "Search Engine Optimization", desc: "We make Google notice you. Technical SEO, content strategy, and local optimization that puts you on the map.", icon: "◉" },
         { num: "03", title: "Paid Advertising", desc: "Meta Ads and Google Ads that bring the right people to your door. Strategy, creative, and optimization — all handled.", icon: "◈" },
         { num: "04", title: "Brand Identity", desc: "Logo, color palette, typography, and brand guidelines that capture who you are and make you unforgettable.", icon: "❋" },
-        { num: "05", title: "Landing Pages + Member Portals", desc: "A landing page that sells, plus a private members area — user accounts, exclusive content, and paid subscriptions handled for you. Built for coaches, trainers, and nutritionists.", icon: "⬡" }
+        { num: "05", title: "Landing Pages and Member Portals", desc: "A landing page that sells, plus a private members area — user accounts, exclusive content, and paid subscriptions handled for you. Built for coaches, trainers, and nutritionists.", icon: "⬡" },
+        { num: "06", title: "AI Voice Receptionist", desc: "An AI phone agent that answers every call, books appointments straight into your calendar, and handles common questions — in English and Spanish, 24/7. No more missed calls, no more lost clients.", icon: "⬡" }
       ]
     },
     work: {
@@ -31,10 +32,12 @@ export const T = {
       title: "Selected Design Mockups.",
       casesTag: "Client Work",
       casesTitle: "Real projects, real results.",
+      casesSub: "Websites, branding and portals we\u2019ve shipped for real businesses \u2014 scroll through and click any project to see the full story.",
+      keepScrolling: "Keep scrolling",
       cases: [
-        { slug: "claudia-garcia", title: "Claudia García", cat: "Fitness Coach · Branding + Web + Member Portal", year: "2026", accent: "#FF4D2E", desc: "Complete 'Tropical Heat' brand identity, a fully bilingual website, and a members-only portal with workout routines, an admin panel, and paid memberships — for a 5.0★ fitness coach in Charlotte, NC.", image: "/work/claudia-garcia.png" },
-        { slug: "riveros-street", title: "Rivero's Street", cat: "Food Truck & Restaurant · Website + Online Ordering", year: "2026", accent: "#E63946", desc: "A fast, bilingual site for a Florida food-truck family with three locations — live menus, catering requests, and online ordering built on Square.", image: "/work/riveros-street.png" },
-        { slug: "angie-auto-sales", title: "Angie Auto Sales", cat: "Commercial Van Dealer · Bilingual Website", year: "2026", accent: "#1D4ED8", desc: "Bilingual site for Prime One Auto Sales — commercial van inventory presented clearly, built to turn browsers into buyers in a market that speaks two languages.", image: "/work/angie-auto-sales.png" },
+        { slug: "claudia-garcia", title: "Claudia García", cat: "Fitness Coach · Branding + Web + Member Portal", year: "2026", accent: "#FF4D2E", desc: "Complete 'Tropical Heat' brand identity, a fully bilingual website, and a members-only portal with workout routines, an admin panel, and paid memberships — for a 5.0★ fitness coach in Charlotte, NC.", image: "/work/claudia-garcia-card.webp" },
+        { slug: "riveros-street", title: "Rivero's Street", cat: "Food Truck & Restaurant · Website + Online Ordering", year: "2026", accent: "#E63946", desc: "A fast, bilingual site for a Florida food-truck family with three locations — live menus, catering requests, and online ordering built on Square.", image: "/work/riveros-street-card.webp" },
+        { slug: "angie-auto-sales", title: "Angie Auto Sales", cat: "Commercial Van Dealer · Bilingual Website", year: "2026", accent: "#94A7FF", desc: "Bilingual site for Prime One Auto Sales — commercial van inventory presented clearly, built to turn browsers into buyers in a market that speaks two languages.", image: "/work/angie-auto-sales-card.webp" },
       ],
       items: [
         { title: "Magic Pets", cat: "Grooming Studio · Concept Mockup", year: "2026", accent: "#EC4899", desc: "Concept design for a premium pet grooming studio — bilingual layout, drag-to-discover hero, and a playful character-driven visual system.", image: "/work/magic-pets.png" },
@@ -114,7 +117,8 @@ export const T = {
         { num: "02", title: "Optimización SEO", desc: "Hacemos que Google te note. SEO técnico, estrategia de contenido y optimización local que te pone en el mapa.", icon: "◉" },
         { num: "03", title: "Publicidad Digital", desc: "Meta Ads y Google Ads que traen a las personas correctas. Estrategia, creativos y optimización — todo incluido.", icon: "◈" },
         { num: "04", title: "Identidad de Marca", desc: "Logo, paleta de color, tipografía y guías de marca que capturan quién eres y te hacen inolvidable.", icon: "❋" },
-        { num: "05", title: "Landing + Portal de Miembros", desc: "Una landing que vende, más un área privada de miembros — cuentas, contenido exclusivo y suscripciones pagas sin que muevas un dedo. Hecho para coaches, entrenadores y nutricionistas.", icon: "⬡" }
+        { num: "05", title: "Landing y Portal de Miembros", desc: "Una landing que vende, más un área privada de miembros — cuentas, contenido exclusivo y suscripciones pagas sin que muevas un dedo. Hecho para coaches, entrenadores y nutricionistas.", icon: "⬡" },
+        { num: "06", title: "Recepcionista de Voz con IA", desc: "Un agente telefónico con IA que contesta cada llamada, agenda citas directo en tu calendario y responde preguntas frecuentes — en inglés y español, 24/7. Se acabaron las llamadas perdidas y los clientes que se van.", icon: "⬡" }
       ]
     },
     work: {
@@ -122,10 +126,12 @@ export const T = {
       title: "Mockups de Diseño.",
       casesTag: "Casos Reales",
       casesTitle: "Proyectos reales, resultados reales.",
+      casesSub: "Webs, branding y portales que hemos lanzado para negocios reales \u2014 scrollea y toca cualquier proyecto para ver la historia completa.",
+      keepScrolling: "Sigue bajando",
       cases: [
-        { slug: "claudia-garcia", title: "Claudia García", cat: "Coach de Fitness · Branding + Web + Portal de Miembros", year: "2026", accent: "#FF4D2E", desc: "Identidad de marca 'Tropical Heat' completa, sitio 100% bilingüe y portal privado de miembros con rutinas, panel de administración y membresías pagas — para una coach de fitness 5.0★ en Charlotte, NC.", image: "/work/claudia-garcia.png" },
-        { slug: "riveros-street", title: "Rivero's Street", cat: "Food Truck & Restaurante · Web + Pedidos Online", year: "2026", accent: "#E63946", desc: "Sitio rápido y bilingüe para una familia de food trucks en Florida con tres locaciones — menús, solicitudes de catering y pedidos online con Square.", image: "/work/riveros-street.png" },
-        { slug: "angie-auto-sales", title: "Angie Auto Sales", cat: "Concesionario de Vans · Sitio Bilingüe", year: "2026", accent: "#1D4ED8", desc: "Sitio bilingüe para Prime One Auto Sales — inventario de vans comerciales presentado con claridad, hecho para convertir visitas en compradores en un mercado que habla dos idiomas.", image: "/work/angie-auto-sales.png" },
+        { slug: "claudia-garcia", title: "Claudia García", cat: "Coach de Fitness · Branding + Web + Portal de Miembros", year: "2026", accent: "#FF4D2E", desc: "Identidad de marca 'Tropical Heat' completa, sitio 100% bilingüe y portal privado de miembros con rutinas, panel de administración y membresías pagas — para una coach de fitness 5.0★ en Charlotte, NC.", image: "/work/claudia-garcia-card.webp" },
+        { slug: "riveros-street", title: "Rivero's Street", cat: "Food Truck & Restaurante · Web + Pedidos Online", year: "2026", accent: "#E63946", desc: "Sitio rápido y bilingüe para una familia de food trucks en Florida con tres locaciones — menús, solicitudes de catering y pedidos online con Square.", image: "/work/riveros-street-card.webp" },
+        { slug: "angie-auto-sales", title: "Angie Auto Sales", cat: "Concesionario de Vans · Sitio Bilingüe", year: "2026", accent: "#94A7FF", desc: "Sitio bilingüe para Prime One Auto Sales — inventario de vans comerciales presentado con claridad, hecho para convertir visitas en compradores en un mercado que habla dos idiomas.", image: "/work/angie-auto-sales-card.webp" },
       ],
       items: [
         { title: "Magic Pets", cat: "Estudio de Grooming · Mockup", year: "2026", accent: "#EC4899", desc: "Mockup conceptual para un estudio premium de grooming canino — diseño bilingüe, hero interactivo tipo drag y un sistema visual juguetón.", image: "/work/magic-pets.png" },
