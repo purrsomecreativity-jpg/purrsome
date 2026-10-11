@@ -314,6 +314,38 @@ const PROJECTS: Record<string, Project> = {
     fullpage: "/work/angie-auto-sales-fullpage.webp",
     heroMockup: "/work/angie-auto-sales-laptop.webp",
   },
+  // TODO (humano): confirmacion POR ESCRITO de Jimena para publicar nombre, marca
+  // y capturas. Dio el si verbal en la llamada del 28-ago; falta el escrito.
+  // TODO: agregar liveUrl + fullpage cuando jimenamorapadilla.app este desplegado.
+  "jimena-mora": {
+    num: "07",
+    title: "Jimena",
+    titleLine2: "Mora Padilla",
+    category: "Sports & Bariatric Nutritionist · Client Work",
+    year: "2026",
+    heroGradient: "linear-gradient(150deg, #04120F 0%, #0A2520 45%, #030D0B 100%)",
+    accent: "#2BBAA6",
+    lede:
+      "One system for the whole practice: a site that explains her method, a portal where patients live their week, and an admin panel she runs from her phone.",
+    direction:
+      "Jimena's practice ran by hand over WhatsApp — the weekly plan, the follow-ups and every guide lived in scattered chats. She already had a finished brand manual that had never made it into a digital product, and she needed something that could carry daily follow-up without her spending the day copying messages.",
+    approach:
+      "Three pieces in one project. A public site that lays out her method, services, evidence-based myth-busting, downloadable guides and a booking flow that starts with the nutrition history. A patient portal shaped like an app: the week with a single focus, progress measured as muscle, fat and adherence rather than weight alone, a folder organised by bariatric stage, and a moderated community wall. And an admin panel where she builds plans from templates and manages her limited slots — all from her phone. Her JMP identity applied exactly as the manual specifies: mint as the base, coral reserved for calls to action, no gradients.",
+    services: ["Web Design & Dev", "Patient Portal", "Admin Panel", "Brand Application", "SEO"],
+    highlights: [
+      { stat: "3-in-1", label: "Site + Portal + Admin", sub: "One project" },
+      { stat: "21", label: "Screens Built", sub: "Public site, portal, admin" },
+      { stat: "JMP", label: "Her Own Brand, Applied", sub: "Manual v1.0, to the letter" },
+    ],
+    palette: [
+      { name: "Menta Profundo", hex: "#2BBAA6" },
+      { name: "Verde Fresco", hex: "#93D3B0" },
+      { name: "Cremoso Warm", hex: "#F9ECB8" },
+      { name: "Coral Energía", hex: "#F86635" },
+    ],
+    showcase: ["/work/jimena-mora-mobile.webp"],
+    heroMockup: "/work/jimena-mora-laptop.webp",
+  },
 };
 
 export default function ProjectPage() {
