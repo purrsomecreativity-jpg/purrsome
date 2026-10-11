@@ -343,7 +343,6 @@ const PROJECTS: Record<string, Project> = {
       { name: "Cremoso Warm", hex: "#F9ECB8" },
       { name: "Coral Energía", hex: "#F86635" },
     ],
-    showcase: ["/work/jimena-mora-mobile.webp"],
     heroMockup: "/work/jimena-mora-laptop.webp",
   },
 };
