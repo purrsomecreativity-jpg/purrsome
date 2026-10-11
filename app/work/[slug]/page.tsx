@@ -93,7 +93,7 @@ function LiveSiteFrame({ url, fullpage, accent, title, embed = true }: { url: st
           {embed && (
             <iframe
               src={url}
-              title={`${title} — live site`}
+              title={`${title} · live site`}
               loading="lazy"
               className="hidden md:block absolute inset-0 w-full h-full border-0 bg-white"
             />
@@ -104,7 +104,7 @@ function LiveSiteFrame({ url, fullpage, accent, title, embed = true }: { url: st
               <img
                 ref={imgRef}
                 src={fullpage}
-                alt={`${title} — full page`}
+                alt={`${title} · full page`}
                 onLoad={measure}
                 onError={() => setImgOk(false)}
                 className="absolute top-0 left-0 w-full h-auto scroll-screenshot"
@@ -151,7 +151,7 @@ const PROJECTS: Record<string, Project> = {
     year: "2026",
     heroGradient: "linear-gradient(150deg, #1A0A1F 0%, #2C0E2A 45%, #0E0E30 100%)",
     accent: "#EC4899",
-    lede: "A concept mockup for a premium pet grooming studio — playful, bold, and built around an interactive drag-to-discover hero.",
+    lede: "A playful, bold concept mockup for a premium pet grooming studio, built around an interactive drag-to-discover hero.",
     direction:
       "Pet grooming sites tend to lean clinical or cookie-cutter. The brief was to imagine something that feels as warm and fun as the in-studio experience while still reading premium.",
     approach:
@@ -179,9 +179,9 @@ const PROJECTS: Record<string, Project> = {
     year: "2026",
     heroGradient: "linear-gradient(150deg, #1F1612 0%, #2A1E17 45%, #140D0A 100%)",
     accent: "#B08060",
-    lede: "A concept mockup for a Miami beauty atelier — slow, considered, and built around the idea that the first twenty minutes of listening matter more than the haircut.",
+    lede: "A slow, considered concept mockup for a Miami beauty atelier, built around the idea that the first twenty minutes of listening matter more than the haircut.",
     direction:
-      "Beauty sites tend to shout. The brief was to imagine a hair house that reads like an editorial — serif typography, generous whitespace, and pacing that signals craft without announcing it.",
+      "Beauty sites tend to shout. The brief was to imagine a hair house that reads like an editorial: serif typography, generous whitespace, and pacing that signals craft without announcing it.",
     approach:
       "Cream palette, italic serif display type, and a layout that prioritizes philosophy and specialists before services. A booking CTA is always in reach, but never the loudest thing on the page.",
     services: ["UI Design", "Typography System", "Editorial Art Direction", "Booking Flow"],
@@ -207,7 +207,7 @@ const PROJECTS: Record<string, Project> = {
     year: "2026",
     heroGradient: "linear-gradient(150deg, #1A0A05 0%, #2C1508 45%, #0F0804 100%)",
     accent: "#E85102",
-    lede: "A concept mockup for an independent auto shop — bold, trust-forward, and designed to make 36 years of craft impossible to ignore.",
+    lede: "A bold, trust-forward concept mockup for an independent auto shop, designed to make 36 years of craft impossible to ignore.",
     direction:
       "Independent mechanics compete with chains that have huge marketing budgets. The brief was to design something that reads professional and established without feeling corporate or sterile.",
     approach:
@@ -235,11 +235,11 @@ const PROJECTS: Record<string, Project> = {
     year: "2026",
     heroGradient: "linear-gradient(150deg, #16060A 0%, #2A0B10 45%, #1A0505 100%)",
     accent: "#FF4D2E",
-    lede: "From Instagram-only to a complete brand with its own members app — branding, a fully bilingual site, and paid memberships in a single project.",
+    lede: "From Instagram-only to a complete brand with its own members app: branding, a fully bilingual site, and paid memberships in a single project.",
     direction:
-      "Claudia had a 5.0★ following in Charlotte and zero web presence: no branding, no site, and no way to offer exclusive content to paying members — everything ran by hand over WhatsApp.",
+      "Claudia had a 5.0★ following in Charlotte and zero web presence: no branding, no site, and no way to offer exclusive content to paying members. Everything ran by hand over WhatsApp.",
     approach:
-      "We built the 'Tropical Heat' identity from scratch — ink, coral, sun and magenta with bold editorial type — then a bilingual site with real class footage and integrated booking, plus a private members portal: her clients log in to see the day's routine, and Claudia runs everything from her phone. Paid memberships handled with Stripe.",
+      "We built the 'Tropical Heat' identity from scratch (ink, coral, sun and magenta with bold editorial type), then a bilingual site with real class footage and integrated booking, plus a private members portal: her clients log in to see the day's routine, and Claudia runs everything from her phone. Paid memberships handled with Stripe.",
     services: ["Brand Identity", "Web Design & Dev", "Member Portal", "Stripe Memberships", "SEO"],
     highlights: [
       { stat: "−97%", label: "Site Weight", sub: "156 MB → 5.3 MB" },
@@ -264,11 +264,11 @@ const PROJECTS: Record<string, Project> = {
     year: "2026",
     heroGradient: "linear-gradient(150deg, #1A0608 0%, #2A0A0E 45%, #12040A 100%)",
     accent: "#E63946",
-    lede: "A dealer-fast, bilingual home for a Venezuelan street food family with three Florida locations — menus, catering, and online ordering in one place.",
+    lede: "A dealer-fast, bilingual home for a Venezuelan street food family with three Florida locations, with menus, catering, and online ordering in one place.",
     direction:
       "Rivero's Street was growing across the Florida panhandle, but its online presence lived on a generic ordering page. The family needed a site that carried the brand's loud, street-food energy and funneled real orders.",
     approach:
-      "A fast Next.js build with all three locations managed from a single source, a catering request flow that lands straight in their inbox, and online ordering built on Square — orders drop into the same dashboard and POS the trucks already use.",
+      "A fast Next.js build with all three locations managed from a single source, a catering request flow that lands straight in their inbox, and online ordering built on Square, so orders drop into the same dashboard and POS the trucks already use.",
     services: ["Web Design & Dev", "Online Ordering (Square)", "Local SEO", "Catering Flow"],
     highlights: [
       { stat: "100/100", label: "Lighthouse SEO", sub: "Perfect score" },
@@ -293,7 +293,7 @@ const PROJECTS: Record<string, Project> = {
     year: "2026",
     heroGradient: "linear-gradient(150deg, #050B1A 0%, #0A142E 45%, #04070F 100%)",
     accent: "#94A7FF",
-    lede: "A dealer site that works like the business does — direct, trustworthy, and in both languages.",
+    lede: "A dealer site that works like the business does: direct, trustworthy, and in both languages.",
     direction:
       "Prime One Auto Sales moves commercial vans to working buyers who research in English and Spanish. The site had to present inventory clearly and build trust fast, without dealership clutter.",
     approach:
@@ -328,9 +328,9 @@ const PROJECTS: Record<string, Project> = {
     lede:
       "One system for the whole practice: a site that explains her method, a portal where patients live their week, and an admin panel she runs from her phone.",
     direction:
-      "Jimena's practice ran by hand over WhatsApp — the weekly plan, the follow-ups and every guide lived in scattered chats. She already had a finished brand manual that had never made it into a digital product, and she needed something that could carry daily follow-up without her spending the day copying messages.",
+      "Jimena's practice ran by hand over WhatsApp. The weekly plan, the follow-ups and every guide lived in scattered chats. She already had a finished brand manual that had never made it into a digital product, and she needed something that could carry daily follow-up without her spending the day copying messages.",
     approach:
-      "Three pieces in one project. A public site that lays out her method, services, evidence-based myth-busting, downloadable guides and a booking flow that starts with the nutrition history. A patient portal shaped like an app: the week with a single focus, progress measured as muscle, fat and adherence rather than weight alone, a folder organised by bariatric stage, and a moderated community wall. And an admin panel where she builds plans from templates and manages her limited slots — all from her phone. Her JMP identity applied exactly as the manual specifies: mint as the base, coral reserved for calls to action, no gradients.",
+      "Three pieces in one project. A public site that lays out her method, services, evidence-based myth-busting, downloadable guides and a booking flow that starts with the nutrition history. A patient portal shaped like an app: the week with a single focus, progress measured as muscle, fat and adherence rather than weight alone, a folder organised by bariatric stage, and a moderated community wall. And an admin panel where she builds plans from templates and manages her limited slots, all from her phone. Her JMP identity applied exactly as the manual specifies: mint as the base, coral reserved for calls to action, no gradients.",
     services: ["Web Design & Dev", "Patient Portal", "Admin Panel", "Brand Application", "SEO"],
     highlights: [
       { stat: "3-in-1", label: "Site + Portal + Admin", sub: "One project" },
@@ -400,7 +400,7 @@ export default function ProjectPage() {
                 style={{ color: p.accent }}
               >
                 <span className="inline-block w-8 h-px" style={{ background: p.accent }} />
-                {p.category} — {p.year}
+                {p.category} · {p.year}
               </div>
               <h1 className="font-extrabold leading-[0.88] tracking-tight" style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)" }}>
                 <span className="block text-white">{p.title}</span>

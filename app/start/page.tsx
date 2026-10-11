@@ -77,7 +77,7 @@ const T = {
               { value: "seo",     label: "SEO (Get found on Google)" },
               { value: "ads",     label: "Paid Ads (Meta / Google)" },
               { value: "brand",   label: "Logo / Brand Identity" },
-              { value: "unsure",  label: "Not sure yet — advise me" },
+              { value: "unsure",  label: "Not sure yet, advise me" },
             ],
           } as Question,
         ],
@@ -105,7 +105,7 @@ const T = {
           {
             id: "budget",
             question: "What's your approximate budget?",
-            subtitle: "No judgment — this helps us recommend the right package",
+            subtitle: "No judgment, this helps us recommend the right package",
             type: "select",
             options: [
               { value: "under1000", label: "Under $1,000" },
@@ -119,10 +119,10 @@ const T = {
             question: "How soon do you need this?",
             type: "select",
             options: [
-              { value: "asap",     label: "ASAP — yesterday if possible" },
+              { value: "asap",     label: "ASAP, yesterday if possible" },
               { value: "2weeks",   label: "Within 1-2 weeks" },
               { value: "month",    label: "Within a month" },
-              { value: "no_rush",  label: "No rush — just exploring" },
+              { value: "no_rush",  label: "No rush, just exploring" },
             ],
           } as Question,
         ],
@@ -133,7 +133,7 @@ const T = {
       name:  { question: "Your name",           placeholder: "John Smith" },
       email: { question: "Email",               placeholder: "john@business.com" },
       phone: { question: "Phone (optional)",    placeholder: "+1 (555) 000-0000" },
-      extra: { question: "Anything else you'd like us to know?", placeholder: "Tell us anything — your vision, inspiration, frustrations with your current site..." },
+      extra: { question: "Anything else you'd like us to know?", placeholder: "Tell us anything: your vision, inspiration, frustrations with your current site..." },
     },
     submit: "Send & Book Your Free Consultation",
     submitted: {
@@ -202,7 +202,7 @@ const T = {
               { value: "seo",     label: "SEO (Aparecer en Google)" },
               { value: "ads",     label: "Publicidad (Meta / Google Ads)" },
               { value: "brand",   label: "Logo / Identidad de Marca" },
-              { value: "unsure",  label: "No estoy seguro — aconséjenme" },
+              { value: "unsure",  label: "No estoy seguro, aconséjenme" },
             ],
           } as Question,
         ],
@@ -230,7 +230,7 @@ const T = {
           {
             id: "budget",
             question: "¿Cuál es tu presupuesto aproximado?",
-            subtitle: "Sin juicio — esto nos ayuda a recomendar el paquete correcto",
+            subtitle: "Sin juicio, esto nos ayuda a recomendar el paquete correcto",
             type: "select",
             options: [
               { value: "under1000", label: "Menos de $1,000" },
@@ -244,10 +244,10 @@ const T = {
             question: "¿Qué tan pronto lo necesitas?",
             type: "select",
             options: [
-              { value: "asap",    label: "ASAP — ayer si fuera posible" },
+              { value: "asap",    label: "ASAP, ayer si fuera posible" },
               { value: "2weeks",  label: "En 1-2 semanas" },
               { value: "month",   label: "En un mes" },
-              { value: "no_rush", label: "Sin prisa — solo estoy explorando" },
+              { value: "no_rush", label: "Sin prisa, solo estoy explorando" },
             ],
           } as Question,
         ],

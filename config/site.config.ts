@@ -85,7 +85,7 @@ export const siteConfig = {
         icon: "⊞",
         title: "Print & Packaging",
         description:
-          "Tactile brand touchpoints — packaging, stationery, and editorial design.",
+          "Tactile brand touchpoints: packaging, stationery, and editorial design.",
       },
     ],
   },
@@ -131,7 +131,7 @@ export const siteConfig = {
     heading: "About Us",
     paragraphs: [
       "Purrsome is an independent creative studio founded in 2020. We partner with forward-thinking brands and startups to create visual identities, digital experiences, and everything in between.",
-      "Our team blends strategy, design, and technology — because great design solves real problems.",
+      "Our team blends strategy, design, and technology, because great design solves real problems.",
     ],
     stats: [
       { value: "80+", label: "Projects Delivered" },

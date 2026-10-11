@@ -53,7 +53,7 @@ const C: Record<Lang, Content> = {
           },
           {
             type: "p",
-            text: "We also automatically collect limited technical data — such as your IP address, browser type, device information, and pages visited — through cookies and similar technologies.",
+            text: "We also automatically collect limited technical data (such as your IP address, browser type, device information, and pages visited) through cookies and similar technologies.",
           },
         ],
       },
@@ -67,7 +67,7 @@ const C: Record<Lang, Content> = {
               "Respond to your inquiries and provide quotes",
               "Deliver and manage the services you request",
               "Communicate with you about your project",
-              "Send updates, proposals, and — with your consent — marketing communications",
+              "Send updates, proposals, and, with your consent, marketing communications",
               "Improve our website and services",
               "Comply with our legal obligations",
             ],
@@ -142,9 +142,9 @@ const C: Record<Lang, Content> = {
           {
             type: "list",
             items: [
-              "Meta (Facebook & Instagram) — advertising and analytics",
-              "Google (Analytics & Ads) — analytics and advertising",
-              "Email marketing tools — to manage communications and newsletters",
+              "Meta (Facebook & Instagram): advertising and analytics",
+              "Google (Analytics & Ads): analytics and advertising",
+              "Email marketing tools: to manage communications and newsletters",
             ],
           },
           {
@@ -206,7 +206,7 @@ const C: Record<Lang, Content> = {
           },
           {
             type: "p",
-            text: "También recopilamos automáticamente datos técnicos limitados — como tu dirección IP, tipo de navegador, información del dispositivo y páginas visitadas — mediante cookies y tecnologías similares.",
+            text: "También recopilamos automáticamente datos técnicos limitados (como tu dirección IP, tipo de navegador, información del dispositivo y páginas visitadas) mediante cookies y tecnologías similares.",
           },
         ],
       },
@@ -220,7 +220,7 @@ const C: Record<Lang, Content> = {
               "Responder a tus consultas y entregarte cotizaciones",
               "Brindar y gestionar los servicios que solicitas",
               "Comunicarnos contigo sobre tu proyecto",
-              "Enviarte actualizaciones, propuestas y — con tu consentimiento — comunicaciones de marketing",
+              "Enviarte actualizaciones, propuestas y, con tu consentimiento, comunicaciones de marketing",
               "Mejorar nuestro sitio web y nuestros servicios",
               "Cumplir con nuestras obligaciones legales",
             ],
@@ -295,9 +295,9 @@ const C: Record<Lang, Content> = {
           {
             type: "list",
             items: [
-              "Meta (Facebook e Instagram) — publicidad y analítica",
-              "Google (Analytics y Ads) — analítica y publicidad",
-              "Herramientas de email marketing — para gestionar comunicaciones y boletines",
+              "Meta (Facebook e Instagram): publicidad y analítica",
+              "Google (Analytics y Ads): analítica y publicidad",
+              "Herramientas de email marketing: para gestionar comunicaciones y boletines",
             ],
           },
           {
@@ -353,7 +353,7 @@ function SectionBlock({ index, section }: { index: number; section: Section }) {
           <ul key={i} className="mb-4 space-y-2">
             {block.items.map((item, j) => (
               <li key={j} className="flex gap-3 text-gray-300 leading-relaxed">
-                <span className="text-[#14B8A6] select-none">—</span>
+                <span className="text-[#14B8A6] select-none">·</span>
                 <span>{item}</span>
               </li>
             ))}

@@ -92,8 +92,8 @@ const TESTIMONIALS = [
     name: "Sofia Reyes",
     role: { en: "Founder · Luma Skin Studio", es: "Fundadora · Luma Skin Studio" },
     quote: {
-      en: "Finally an agency that gets what my brand needed. They captured exactly the vibe I wanted — luxurious but approachable. My clients always compliment the website.",
-      es: "Por fin una agencia que entendió lo que mi marca necesitaba. Capturaron exactamente el ambiente que quería — lujoso pero accesible.",
+      en: "Finally an agency that gets what my brand needed. They captured exactly the vibe I wanted, luxurious but approachable. My clients always compliment the website.",
+      es: "Por fin una agencia que entendió lo que mi marca necesitaba. Capturaron exactamente el ambiente que quería, lujoso pero accesible.",
     },
   },
   {

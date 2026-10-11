@@ -17,7 +17,7 @@ export const META = {
   slug: "ecommerce-b2b-b2c",
   tag: "Cuestionario de descubrimiento",
   titulo: "Cuéntanos cómo funciona tu negocio.",
-  sub: "Cada respuesta define una decisión de diseño. Lo que no sepas, déjalo en blanco — lo conversamos. Toma unos 15 minutos.",
+  sub: "Cada respuesta define una decisión de diseño. Lo que no sepas, déjalo en blanco y lo conversamos. Toma unos 15 minutos.",
   gracias: {
     titulo: "¡Listo! Ya lo tenemos.",
     sub: "Con esto preparamos tu propuesta: alcance, fases, tiempos y precio. Te escribimos en los próximos días.",
@@ -31,7 +31,7 @@ export const BLOQUES: Bloque[] = [
     intro: "Para entender a quién le estamos diseñando.",
     preguntas: [
       { id: "que_hacen", tipo: "text", texto: "¿A qué se dedica la empresa, en una frase?", placeholder: "Distribuimos…" },
-      { id: "marcas", tipo: "textarea", texto: "¿Cuáles son las marcas que distribuyen?", nota: "Escríbelas todas — nos sirve para pensar cómo se organiza el catálogo.", placeholder: "Marca 1, Marca 2, Marca 3…" },
+      { id: "marcas", tipo: "textarea", texto: "¿Cuáles son las marcas que distribuyen?", nota: "Escríbelas todas, nos sirve para pensar cómo se organiza el catálogo.", placeholder: "Marca 1, Marca 2, Marca 3…" },
       { id: "tiempo", tipo: "text", texto: "¿Cuánto tiempo tienen operando?", placeholder: "Ej. 6 años" },
       { id: "zonas", tipo: "text", texto: "¿En qué ciudades o zonas venden y entregan?", placeholder: "Caracas, Valencia, todo el país…" },
       { id: "personas_pedidos", tipo: "text", texto: "¿Cuántas personas van a atender los pedidos que entren por la web?", placeholder: "Ej. 2 personas" },
@@ -42,7 +42,7 @@ export const BLOQUES: Bloque[] = [
   {
     letra: "B",
     titulo: "Sus dos tipos de cliente",
-    intro: "Aquí está el corazón del proyecto. Vender al público y vender al mayor desde la misma tienda es lo que hace este diseño distinto a uno normal — mientras más detalle, más precisa la propuesta.",
+    intro: "Aquí está el corazón del proyecto. Vender al público y vender al mayor desde la misma tienda es lo que hace este diseño distinto a uno normal: mientras más detalle, más precisa la propuesta.",
     preguntas: [
       { id: "b2b_quien", tipo: "textarea", texto: "¿Quién es su cliente mayorista? ¿Qué tipo de negocio?", nota: "Farmacias, abastos, restaurantes, tiendas, otros distribuidores…", placeholder: "Nuestros mayoristas son…" },
       { id: "b2b_precios", tipo: "select", texto: "¿Todos los mayoristas pagan el mismo precio?", opciones: [
@@ -72,8 +72,8 @@ export const BLOQUES: Bloque[] = [
       { id: "b2c_compra", tipo: "text", texto: "¿Qué compra normalmente el cliente final? ¿Uno o dos productos, o pedidos grandes?", placeholder: "Normalmente…" },
       { id: "proporcion", tipo: "text", texto: "Aproximadamente, ¿qué parte del negocio es mayorista y qué parte es al público?", nota: "Aunque sea a ojo.", placeholder: "Ej. 70% mayor / 30% detal" },
       { id: "prioridad", tipo: "select", texto: "¿Cuál de los dos canales es la prioridad para esta web?", opciones: [
-        { value: "b2b", label: "Mayorista — es donde está el negocio" },
-        { value: "b2c", label: "Público final — queremos crecer ahí" },
+        { value: "b2b", label: "Mayorista, es donde está el negocio" },
+        { value: "b2c", label: "Público final, queremos crecer ahí" },
         { value: "ambos", label: "Los dos por igual" },
       ] },
     ],
@@ -144,9 +144,9 @@ export const BLOQUES: Bloque[] = [
       { id: "sentir", tipo: "text", texto: "¿Cómo quieren que se sienta la tienda? Tres palabras.", nota: "Confiable, moderna, rápida, cercana, seria, premium…", placeholder: "Ej. confiable, rápida, moderna" },
       { id: "no_estilo", tipo: "textarea", texto: "¿Hay algún estilo que NO quieran? ¿Algo que hayan visto y no les guste?", placeholder: "No queremos que se vea…" },
       { id: "referencia", tipo: "select", texto: "De las tres referencias que te compartimos, ¿cuál se parece más a lo que tienen en mente?", opciones: [
-        { value: "amazon_business", label: "Amazon Business — misma tienda, precios según quién entra" },
-        { value: "grainger", label: "Grainger — buscador y filtros potentes, catálogo enorme" },
-        { value: "faire", label: "Faire — mayorista con diseño cuidado" },
+        { value: "amazon_business", label: "Amazon Business: misma tienda, precios según quién entra" },
+        { value: "grainger", label: "Grainger: buscador y filtros potentes, catálogo enorme" },
+        { value: "faire", label: "Faire: mayorista con diseño cuidado" },
         { value: "otra", label: "Ninguna / tengo otra referencia (cuéntanos abajo)" },
       ] },
       { id: "competidores", tipo: "textarea", texto: "¿Hay competidores o tiendas que quieran que revisemos?", placeholder: "Links o nombres" },

@@ -130,7 +130,7 @@ function Contact({ t }: { t: typeof T.en }) {
             <input type="text" placeholder={t.contact.form.biz} value={form.biz} onChange={e => setForm({ ...form, biz: e.target.value })} className="frm-input frm-input-dark" />
             <textarea rows={5} placeholder={t.contact.form.msg} value={form.msg} onChange={e => setForm({ ...form, msg: e.target.value })} className="frm-input frm-input-dark resize-none" />
             <button type="submit" disabled={loading} className="w-full cta-btn font-semibold py-4 rounded-xl text-sm tracking-wide disabled:opacity-60 disabled:cursor-not-allowed">
-              {loading ? "..." : sent ? t.contact.form.sent : error ? "Error — intenta de nuevo" : t.contact.form.send}
+              {loading ? "..." : sent ? t.contact.form.sent : error ? "Error, intenta de nuevo" : t.contact.form.send}
             </button>
           </form>
 

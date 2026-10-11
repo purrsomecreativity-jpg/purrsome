@@ -25,7 +25,7 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Purrsome™ — We see what others don't.",
+  title: "Purrsome™ · We see what others don't.",
   description: "Creative agency for businesses that refuse to blend in. Web design, SEO & paid advertising.",
 };
 
