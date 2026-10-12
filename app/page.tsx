@@ -147,6 +147,7 @@ const CARD_DESC: Record<string, { en: string; es: string }> = {
 function StackedNavCards({ t, lang }: { t: typeof T.en; lang: "en" | "es" }) {
   const refs = useRef<(HTMLDivElement | null)[]>([]);
   const [revealed, setRevealed] = useState<boolean[]>(() => NAV_CARDS.map(() => false));
+  const [active, setActive] = useState<boolean[]>(() => NAV_CARDS.map(() => false));
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
@@ -167,12 +168,34 @@ function StackedNavCards({ t, lang }: { t: typeof T.en; lang: "en" | "es" }) {
     return () => observers.forEach(obs => obs.disconnect());
   }, []);
 
+  // En movil no hay hover: el folder se abre cuando la card esta bien visible
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+    refs.current.forEach((el, i) => {
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => {
+          setActive(prev => {
+            if (prev[i] === entry.isIntersecting) return prev;
+            const next = [...prev];
+            next[i] = entry.isIntersecting;
+            return next;
+          });
+        },
+        { threshold: 0.55 }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+    return () => observers.forEach(obs => obs.disconnect());
+  }, []);
+
   return (
     <section className="relative z-10 w-full py-10">
       <svg width="0" height="0" className="absolute" aria-hidden="true">
         <defs>
           <clipPath id="folder-notch" clipPathUnits="objectBoundingBox">
-            <path d="M0.045,0.18 L0.49,0.18 Q0.535,0.18 0.535,0.235 L0.535,0.265 Q0.535,0.32 0.58,0.32 L0.955,0.32 Q1,0.32 1,0.375 L1,0.945 Q1,1 0.955,1 L0.045,1 Q0,1 0,0.945 L0,0.235 Q0,0.18 0.045,0.18 Z" />
+            <path d="M0.045,0.18 L0.49,0.18 Q0.535,0.18 0.535,0.235 L0.535,0.265 Q0.535,0.32 0.58,0.32 L0.955,0.32 Q1,0.32 1,0.375 L1,1 L0,1 L0,0.235 Q0,0.18 0.045,0.18 Z" />
           </clipPath>
         </defs>
       </svg>
@@ -181,7 +204,7 @@ function StackedNavCards({ t, lang }: { t: typeof T.en; lang: "en" | "es" }) {
         <div
           key={card.key}
           ref={el => { refs.current[i] = el; }}
-          className="w-full"
+          className="w-full max-sm:w-[78%] max-sm:mx-auto"
           style={{
             opacity: revealed[i] ? 1 : 0,
             transform: `translateY(${revealed[i] ? 0 : 40}px)`,
@@ -205,11 +228,11 @@ function StackedNavCards({ t, lang }: { t: typeof T.en; lang: "en" | "es" }) {
                 src={card.object}
                 alt=""
                 aria-hidden="true"
-                className="pointer-events-none absolute right-[5%] top-[3%] z-[1] h-[48%] w-auto object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,0.35)] transition-transform duration-500 ease-out translate-y-[45%] group-hover:translate-y-0"
+                className={`pointer-events-none absolute right-[5%] top-[3%] z-[1] h-[48%] w-auto object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,0.35)] transition-transform duration-500 ease-out translate-y-[45%] group-hover:translate-y-0 ${active[i] ? "max-lg:translate-y-0" : ""}`}
               />
               {/* Cara del folder (notch recortado con el SVG mask) */}
               <div
-                className="absolute inset-0 z-[2] transition-transform duration-500 ease-out group-hover:translate-y-[14%]"
+                className={`absolute inset-0 z-[2] transition-transform duration-500 ease-out group-hover:translate-y-[14%] ${active[i] ? "max-lg:translate-y-[14%]" : ""}`}
                 style={{
                   clipPath: "url(#folder-notch)",
                   background: `linear-gradient(160deg, ${card.accent}3D 0%, ${card.bgFill} 42%, #0B0B10 100%)`,
@@ -241,7 +264,6 @@ export default function PurrsomePage() {
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (window.innerWidth < 1024) return;
     const ctx = gsap.context(() => {
       gsap.to(".home-hero", {
         opacity: 0,
@@ -270,7 +292,7 @@ export default function PurrsomePage() {
       </div>
 
       {/* Cards folder sobre el mismo fondo animado */}
-      <div className="relative flex min-h-screen items-center lg:-mt-[40vh]">
+      <div className="relative flex min-h-screen items-center -mt-[32vh] lg:-mt-[40vh]">
         <StackedNavCards t={t} lang={lang} />
       </div>
 

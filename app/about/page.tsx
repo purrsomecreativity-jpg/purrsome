@@ -94,7 +94,7 @@ function StoryParallax({ t, lang }: { t: typeof T.en; lang: "en" | "es" }) {
         {cards.map((c) => (
           <div
             key={c.num}
-            className="ap-card absolute w-full max-w-2xl rounded-2xl border border-white/40 p-8 md:p-12 will-change-transform"
+            className="ap-card absolute w-[90%] max-w-2xl rounded-2xl border border-white/40 p-6 sm:p-8 md:p-12 will-change-transform"
             style={{
               background:
                 "linear-gradient(135deg, rgba(255,246,236,0.94) 0%, rgba(250,240,226,0.88) 55%, rgba(244,231,212,0.92) 100%)",
