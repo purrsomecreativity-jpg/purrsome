@@ -1,6 +1,6 @@
 "use client";
 
-import { Star } from "lucide-react";
+import { Star, X } from "lucide-react";
 import { motion, useAnimation, useInView, type Variants } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
@@ -14,6 +14,19 @@ export interface Testimonial {
   avatar?: string;
 }
 
+export interface ReviewFormLabels {
+  cta: string;
+  title: string;
+  name: string;
+  business: string;
+  rating: string;
+  message: string;
+  send: string;
+  sending: string;
+  thanks: string;
+  error: string;
+}
+
 export interface AnimatedTestimonialsProps {
   title: string;
   subtitle: string;
@@ -21,6 +34,7 @@ export interface AnimatedTestimonialsProps {
   testimonials: Testimonial[];
   autoRotateInterval?: number;
   className?: string;
+  reviewLabels?: ReviewFormLabels;
 }
 
 const NEON = "#DA1460";
@@ -50,8 +64,27 @@ export function AnimatedTestimonials({
   testimonials,
   autoRotateInterval = 7000,
   className,
+  reviewLabels,
 }: AnimatedTestimonialsProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [reviewOpen, setReviewOpen] = useState(false);
+  const [review, setReview] = useState({ name: "", business: "", rating: 5, message: "" });
+  const [reviewState, setReviewState] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+  const submitReview = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setReviewState("sending");
+    try {
+      const res = await fetch("https://formspree.io/f/mvzbyopz", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ form: "review", _subject: "Nueva review para purrsomecreate.com", ...review }),
+      });
+      setReviewState(res.ok ? "sent" : "error");
+    } catch {
+      setReviewState("error");
+    }
+  };
 
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
@@ -111,6 +144,16 @@ export function AnimatedTestimonials({
                   />
                 ))}
               </div>
+
+              {reviewLabels && (
+                <button
+                  type="button"
+                  onClick={() => { setReviewOpen(true); setReviewState("idle"); }}
+                  className="mt-2 w-fit rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-white/70 transition-all duration-300 hover:border-[#DA1460]/60 hover:text-white hover:shadow-[0_0_24px_rgba(218,20,96,0.2)]"
+                >
+                  {reviewLabels.cta}
+                </button>
+              )}
             </div>
           </motion.div>
 
@@ -183,6 +226,57 @@ export function AnimatedTestimonials({
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Modal: deja tu review */}
+      {reviewLabels && reviewOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/65 px-4 backdrop-blur-sm" onClick={() => setReviewOpen(false)}>
+          <div
+            className="relative w-full max-w-lg rounded-3xl border border-white/[0.12] p-6 sm:p-8"
+            style={{
+              background: "linear-gradient(145deg, rgba(14,14,18,0.95) 0%, rgba(10,10,14,0.92) 100%)",
+              backdropFilter: "blur(24px) saturate(1.5)",
+              WebkitBackdropFilter: "blur(24px) saturate(1.5)",
+              boxShadow: "0 30px 70px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.10)",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button type="button" onClick={() => setReviewOpen(false)} className="absolute right-4 top-4 text-white/40 transition-colors hover:text-white" aria-label="Cerrar">
+              <X className="h-5 w-5" />
+            </button>
+            <h3 className="text-xl font-extrabold text-white">{reviewLabels.title}</h3>
+
+            {reviewState === "sent" ? (
+              <p className="mt-6 text-white/70">{reviewLabels.thanks}</p>
+            ) : (
+              <form onSubmit={submitReview} className="mt-6 space-y-4">
+                <input type="text" required placeholder={reviewLabels.name} value={review.name} onChange={(e) => setReview({ ...review, name: e.target.value })} className="frm-input-liquid w-full rounded-xl px-5 py-4 text-sm" />
+                <input type="text" placeholder={reviewLabels.business} value={review.business} onChange={(e) => setReview({ ...review, business: e.target.value })} className="frm-input-liquid w-full rounded-xl px-5 py-4 text-sm" />
+                <div>
+                  <span className="mb-2 block text-sm text-white/50">{reviewLabels.rating}</span>
+                  <div className="flex gap-2">
+                    {[1, 2, 3, 4, 5].map((n) => (
+                      <button key={n} type="button" onClick={() => setReview({ ...review, rating: n })} aria-label={`${n} estrellas`}>
+                        <Star
+                          className="h-7 w-7 transition-transform hover:scale-110"
+                          style={{ fill: n <= review.rating ? STREET : "transparent", color: n <= review.rating ? STREET : "rgba(255,255,255,0.25)" }}
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <textarea required rows={4} placeholder={reviewLabels.message} value={review.message} onChange={(e) => setReview({ ...review, message: e.target.value })} className="frm-input-liquid w-full resize-none rounded-xl px-5 py-4 text-sm" />
+                <button
+                  type="submit"
+                  disabled={reviewState === "sending"}
+                  className="w-full rounded-xl bg-[#DA1460] py-4 text-sm font-semibold text-white transition-all duration-300 hover:shadow-[0_0_30px_rgba(218,20,96,0.35)] disabled:opacity-60"
+                >
+                  {reviewState === "sending" ? reviewLabels.sending : reviewState === "error" ? reviewLabels.error : reviewLabels.send}
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
     </section>
   );
 }

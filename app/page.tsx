@@ -113,11 +113,39 @@ function Testimonials({ lang }: { lang: "en" | "es" }) {
     },
   }[lang];
 
+  const reviewLabels = {
+    en: {
+      cta: "Leave a review",
+      title: "Tell us how it went",
+      name: "Your name",
+      business: "Your business (optional)",
+      rating: "Your rating",
+      message: "Your review...",
+      send: "Send review",
+      sending: "Sending...",
+      thanks: "Thank you! We read every review — yours will appear on the site once we confirm it with you.",
+      error: "Something failed — try again",
+    },
+    es: {
+      cta: "Deja tu review",
+      title: "Cu\u00e9ntanos c\u00f3mo te fue",
+      name: "Tu nombre",
+      business: "Tu negocio (opcional)",
+      rating: "Tu calificaci\u00f3n",
+      message: "Tu review...",
+      send: "Enviar review",
+      sending: "Enviando...",
+      thanks: "\u00a1Gracias! Leemos cada review — la tuya aparecer\u00e1 en el site apenas la confirmemos contigo.",
+      error: "Algo fall\u00f3 — intenta de nuevo",
+    },
+  }[lang];
+
   return (
     <AnimatedTestimonials
       badgeText={copy.badge}
       title={copy.title}
       subtitle={copy.subtitle}
+      reviewLabels={reviewLabels}
       testimonials={TESTIMONIALS.map((t, i) => ({
         id: i + 1,
         name: t.name,
