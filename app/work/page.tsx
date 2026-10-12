@@ -26,24 +26,13 @@ export default function WorkPage() {
   const [lang, setLang] = useLang();
   const t = T[lang];
 
-  const items: SplitRollItem[] = [
-    ...t.work.cases.map((c) => ({
-      slug: c.slug,
-      title: c.title,
-      image: c.image,
-      cat: c.cat,
-      accent: c.accent,
-    })),
-    ...t.work.items
-      .filter((m) => m.title === "Angel Mechanic Expert")
-      .map((m) => ({
-        slug: "ame",
-        title: m.title,
-        image: (m as { image?: string }).image ?? "",
-        cat: m.cat,
-        accent: m.accent,
-      })),
-  ];
+  const items: SplitRollItem[] = t.work.cases.map((c) => ({
+    slug: c.slug,
+    title: c.title,
+    image: c.image,
+    cat: c.cat,
+    accent: c.accent,
+  }));
 
   return (
     <main className="relative bg-[#050507] text-white overflow-x-clip min-h-screen">

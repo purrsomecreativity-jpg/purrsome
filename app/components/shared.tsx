@@ -37,14 +37,11 @@ export const T = {
       cases: [
         { slug: "claudia-garcia", title: "Claudia García", cat: "Fitness Coach · Branding + Web + Member Portal", year: "2026", accent: "#FF4D2E", desc: "Complete 'Tropical Heat' brand identity, a fully bilingual website, and a members-only portal with workout routines, an admin panel, and paid memberships, all for a 5.0★ fitness coach in Charlotte, NC.", image: "/work/claudia-garcia-card.webp" },
         { slug: "jimena-mora", title: "Jimena Mora Padilla", cat: "Sports Nutritionist · Web + Patient Portal", year: "2026", accent: "#2BBAA6", desc: "A website and private patient portal for a sports and bariatric nutritionist. The week's plan, progress tracked beyond the scale, and a bariatric-stage folder, with her JMP brand system applied end to end.", image: "/work/jimena-mora-card.webp" },
+        { slug: "ame", title: "Angel Mechanic Expert", cat: "Automotive · Client Work", year: "2026", accent: "#E85102", desc: "Website for an independent auto shop in Orlando, with a bold persimmon accent, a trust-first layout putting 36+ years of experience front and center, and a bilingual service flow.", image: "/work/ame.webp" },
         { slug: "riveros-street", title: "Rivero's Street", cat: "Food Truck & Restaurant · Website + Online Ordering", year: "2026", accent: "#E63946", desc: "A fast, bilingual site for a Florida food-truck family with three locations, with live menus, catering requests, and online ordering built on Square.", image: "/work/riveros-street-card.webp" },
         { slug: "angie-auto-sales", title: "Angie Auto Sales", cat: "Commercial Van Dealer · Bilingual Website", year: "2026", accent: "#94A7FF", desc: "Bilingual site for Prime One Auto Sales, with commercial van inventory presented clearly, built to turn browsers into buyers in a market that speaks two languages.", image: "/work/angie-auto-sales-card.webp" },
       ],
-      items: [
-        { title: "Magic Pets", cat: "Grooming Studio · Concept Mockup", year: "2026", accent: "#EC4899", desc: "Concept design for a premium pet grooming studio, with a bilingual layout, a drag-to-discover hero, and a playful character-driven visual system.", image: "/work/magic-pets.png" },
-        { title: "Lumière Studio", cat: "Beauty Atelier · Concept Mockup", year: "2026", accent: "#B08060", desc: "Concept design for a Miami beauty atelier, with editorial serif typography, slow considered pacing, and a listening-first experience that reads premium without being cold.", image: "/work/lumiere-studio.png" },
-        { title: "Angel Mechanic Expert", cat: "Automotive · Client Work", year: "2026", accent: "#E85102", desc: "Concept design for an independent auto shop, with a bold persimmon accent, a trust-first layout putting 36+ years of experience front and center, and a bilingual service flow.", image: "/work/ame.png" },
-      ],
+      items: [],
       cta: "View All Work →"
     },
     faq: {
@@ -132,14 +129,11 @@ export const T = {
       cases: [
         { slug: "claudia-garcia", title: "Claudia García", cat: "Coach de Fitness · Branding + Web + Portal de Miembros", year: "2026", accent: "#FF4D2E", desc: "Identidad de marca 'Tropical Heat' completa, sitio 100% bilingüe y portal privado de miembros con rutinas, panel de administración y membresías pagas, todo para una coach de fitness 5.0★ en Charlotte, NC.", image: "/work/claudia-garcia-card.webp" },
         { slug: "jimena-mora", title: "Jimena Mora Padilla", cat: "Nutricionista Deportiva · Web + Portal de Pacientes", year: "2026", accent: "#2BBAA6", desc: "Sitio y portal privado de pacientes para una nutricionista deportiva y bariátrica. La pauta de la semana, seguimiento más allá de la báscula y carpeta por etapa bariátrica, con su sistema de marca JMP aplicado de punta a punta.", image: "/work/jimena-mora-card.webp" },
+        { slug: "ame", title: "Angel Mechanic Expert", cat: "Automotriz · Caso Real", year: "2026", accent: "#E85102", desc: "Sitio web para un taller mecánico independiente en Orlando, con acento persimmon, layout enfocado en confianza con 36+ años de experiencia al frente, y flujo de servicios bilingüe.", image: "/work/ame.webp" },
         { slug: "riveros-street", title: "Rivero's Street", cat: "Food Truck & Restaurante · Web + Pedidos Online", year: "2026", accent: "#E63946", desc: "Sitio rápido y bilingüe para una familia de food trucks en Florida con tres locaciones, con menús, solicitudes de catering y pedidos online con Square.", image: "/work/riveros-street-card.webp" },
         { slug: "angie-auto-sales", title: "Angie Auto Sales", cat: "Concesionario de Vans · Sitio Bilingüe", year: "2026", accent: "#94A7FF", desc: "Sitio bilingüe para Prime One Auto Sales, con inventario de vans comerciales presentado con claridad, hecho para convertir visitas en compradores en un mercado que habla dos idiomas.", image: "/work/angie-auto-sales-card.webp" },
       ],
-      items: [
-        { title: "Magic Pets", cat: "Estudio de Grooming · Mockup", year: "2026", accent: "#EC4899", desc: "Mockup conceptual para un estudio premium de grooming canino, con diseño bilingüe, hero interactivo tipo drag y un sistema visual juguetón.", image: "/work/magic-pets.png" },
-        { title: "Lumière Studio", cat: "Atelier de Belleza · Mockup", year: "2026", accent: "#B08060", desc: "Mockup conceptual para un atelier de belleza en Miami, con tipografía serif editorial, ritmo pausado y una experiencia que escucha primero, premium sin ser fría.", image: "/work/lumiere-studio.png" },
-        { title: "Angel Mechanic Expert", cat: "Automotriz · Caso Real", year: "2026", accent: "#E85102", desc: "Mockup conceptual para un taller mecánico independiente, con acento persimmon, layout enfocado en confianza con 36+ años de experiencia al frente, y flujo de servicios bilingüe.", image: "/work/ame.png" },
-      ],
+      items: [],
       cta: "Ver Todo el Trabajo →"
     },
     faq: {

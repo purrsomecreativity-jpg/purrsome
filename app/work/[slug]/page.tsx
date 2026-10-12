@@ -143,64 +143,8 @@ function LiveSiteFrame({ url, fullpage, accent, title, embed = true }: { url: st
 }
 
 const PROJECTS: Record<string, Project> = {
-  "magic-pets": {
-    num: "01",
-    title: "Magic",
-    titleLine2: "Pets",
-    category: "Grooming Studio · Concept Mockup",
-    year: "2026",
-    heroGradient: "linear-gradient(150deg, #1A0A1F 0%, #2C0E2A 45%, #0E0E30 100%)",
-    accent: "#EC4899",
-    lede: "A playful, bold concept mockup for a premium pet grooming studio, built around an interactive drag-to-discover hero.",
-    direction:
-      "Pet grooming sites tend to lean clinical or cookie-cutter. The brief was to imagine something that feels as warm and fun as the in-studio experience while still reading premium.",
-    approach:
-      "Bold pink + cream palette, character-driven photography, and a draggable hero that lets visitors swipe through featured pups. Designed bilingual EN/ES from the ground up, mobile-first.",
-    services: ["UI Design", "Brand Visuals", "Bilingual Copy Direction", "Interaction Design"],
-    highlights: [
-      { stat: "Drag", label: "Hero Interaction", sub: "Custom swipe-to-explore" },
-      { stat: "EN/ES", label: "Bilingual Layout", sub: "Built into the system" },
-      { stat: "Mobile", label: "First", sub: "Responsive across breakpoints" },
-    ],
-    showcase: ["/work/magic-pets.png", "/work/magic-pets-2.png"],
-    heroMockup: "/work/magic-pets-laptop.png?v=7",
-    palette: [
-      { name: "Hot Pink", hex: "#EC4899" },
-      { name: "Cream", hex: "#F5E6D3" },
-      { name: "Charcoal", hex: "#0A0A0A" },
-      { name: "White", hex: "#FFFFFF" },
-    ],
-  },
-  "lumiere-studio": {
-    num: "02",
-    title: "Lumière",
-    titleLine2: "Studio",
-    category: "Beauty Atelier · Concept Mockup",
-    year: "2026",
-    heroGradient: "linear-gradient(150deg, #1F1612 0%, #2A1E17 45%, #140D0A 100%)",
-    accent: "#B08060",
-    lede: "A slow, considered concept mockup for a Miami beauty atelier, built around the idea that the first twenty minutes of listening matter more than the haircut.",
-    direction:
-      "Beauty sites tend to shout. The brief was to imagine a hair house that reads like an editorial: serif typography, generous whitespace, and pacing that signals craft without announcing it.",
-    approach:
-      "Cream palette, italic serif display type, and a layout that prioritizes philosophy and specialists before services. A booking CTA is always in reach, but never the loudest thing on the page.",
-    services: ["UI Design", "Typography System", "Editorial Art Direction", "Booking Flow"],
-    highlights: [
-      { stat: "Editorial", label: "Serif System", sub: "Display italic + quiet sans" },
-      { stat: "Slow", label: "Pacing", sub: "Philosophy → specialists → services" },
-      { stat: "Cream", label: "Neutral Palette", sub: "Warm, skin-friendly tones" },
-    ],
-    showcase: ["/work/lumiere-studio.png", "/work/lumiere-studio-2.png", "/work/lumiere-studio-3.png", "/work/lumiere-studio-4.png"],
-    heroMockup: "/work/lumiere-studio-laptop.png",
-    palette: [
-      { name: "Cream", hex: "#F6EAD4" },
-      { name: "Warm Taupe", hex: "#B08060" },
-      { name: "Dusty Rose", hex: "#D4A5A5" },
-      { name: "Ink", hex: "#1A1410" },
-    ],
-  },
   "ame": {
-    num: "03",
+    num: "01",
     title: "Angel Mechanic",
     titleLine2: "Expert",
     category: "Automotive · Client Work",
@@ -218,7 +162,7 @@ const PROJECTS: Record<string, Project> = {
       { stat: "Owner", label: "Led Hero", sub: "Face of the business up top" },
       { stat: "EN/ES", label: "Bilingual", sub: "Toggle in the nav" },
     ],
-    showcase: ["/work/ame.png", "/work/ame-2.png", "/work/ame-3.png", "/work/ame-4.png"],
+    showcase: ["/work/ame.webp", "/work/ame-2.webp", "/work/ame-3.webp", "/work/ame-4.webp"],
     heroMockup: "/work/ame-laptop.webp",
     palette: [
       { name: "Persimmon", hex: "#E85102" },
@@ -228,7 +172,7 @@ const PROJECTS: Record<string, Project> = {
     ],
   },
   "claudia-garcia": {
-    num: "04",
+    num: "02",
     title: "Claudia",
     titleLine2: "García",
     category: "Fitness Coach · Client Work",
@@ -257,7 +201,7 @@ const PROJECTS: Record<string, Project> = {
     heroMockup: "/work/claudia-garcia-laptop.webp",
   },
   "riveros-street": {
-    num: "05",
+    num: "03",
     title: "Rivero's",
     titleLine2: "Street",
     category: "Food Truck & Restaurant · Client Work",
@@ -286,7 +230,7 @@ const PROJECTS: Record<string, Project> = {
     heroMockup: "/work/riveros-street-laptop.webp",
   },
   "angie-auto-sales": {
-    num: "06",
+    num: "04",
     title: "Angie",
     titleLine2: "Auto Sales",
     category: "Commercial Van Dealer · Client Work",
@@ -318,7 +262,7 @@ const PROJECTS: Record<string, Project> = {
   // y capturas. Dio el si verbal en la llamada del 28-ago; falta el escrito.
   // TODO: agregar liveUrl + fullpage cuando jimenamorapadilla.app este desplegado.
   "jimena-mora": {
-    num: "07",
+    num: "05",
     title: "Jimena",
     titleLine2: "Mora Padilla",
     category: "Sports & Bariatric Nutritionist · Client Work",
