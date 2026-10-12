@@ -256,9 +256,14 @@ export default function CircularSplitRoll({
       {/* Movil / reduced-motion: grilla clickeable */}
       <div className={`w-full px-5 py-10 max-md:px-4 max-md:py-8 ${reducedMotion ? "block" : "min-[1026px]:hidden"}`}>
         {header}
-        <div className="mx-auto grid w-full max-w-5xl grid-cols-2 gap-5 max-md:grid-cols-1 max-md:gap-6">
-          {safeItems.map((item) => (
-            <a key={item.id} href={`/work/${item.slug}`} className="block w-full">
+        <div className="mx-auto grid w-full max-w-5xl grid-cols-2 gap-5 max-md:block">
+          {safeItems.map((item, index) => (
+            <a
+              key={item.id}
+              href={`/work/${item.slug}`}
+              className="block w-full max-md:sticky max-md:top-20 max-md:mb-8 max-md:rounded-2xl max-md:border max-md:border-white/[0.08] max-md:bg-[#0A0A0C] max-md:p-3 max-md:shadow-[0_-14px_36px_rgba(0,0,0,0.55)]"
+              style={{ zIndex: index + 1 }}
+            >
               <div className="w-full overflow-hidden rounded-[18px] border border-white/[0.08] bg-[#0A0A0C] shadow-[0_18px_38px_rgba(0,0,0,0.4)] max-md:rounded-[14px]">
                 {item.cat && (
                   <div className="flex items-center justify-center bg-[#E9ECF1] px-4 py-2.5">
