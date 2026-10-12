@@ -13,7 +13,11 @@ const COLORS: [string, string, string, string, string, string, string, string] =
   "#050507",
 ];
 
-export function MeshGradientBackground() {
+export function MeshGradientBackground({
+  colors = COLORS,
+}: {
+  colors?: [string, string, string, string, string, string, string, string];
+} = {}) {
   const [dimensions, setDimensions] = useState({ width: 1920, height: 1080 });
   const [mounted, setMounted] = useState(false);
 
@@ -33,7 +37,7 @@ export function MeshGradientBackground() {
       <MeshGradient
         width={dimensions.width}
         height={dimensions.height}
-        colors={COLORS}
+        colors={colors}
         distortion={1.4}
         swirl={0.9}
         grainMixer={0}

@@ -43,7 +43,7 @@ export const T = {
       items: [
         { title: "Magic Pets", cat: "Grooming Studio · Concept Mockup", year: "2026", accent: "#EC4899", desc: "Concept design for a premium pet grooming studio, with a bilingual layout, a drag-to-discover hero, and a playful character-driven visual system.", image: "/work/magic-pets.png" },
         { title: "Lumière Studio", cat: "Beauty Atelier · Concept Mockup", year: "2026", accent: "#B08060", desc: "Concept design for a Miami beauty atelier, with editorial serif typography, slow considered pacing, and a listening-first experience that reads premium without being cold.", image: "/work/lumiere-studio.png" },
-        { title: "Angel Mechanic Expert", cat: "Automotive · Concept Mockup", year: "2026", accent: "#E85102", desc: "Concept design for an independent auto shop, with a bold persimmon accent, a trust-first layout putting 36+ years of experience front and center, and a bilingual service flow.", image: "/work/ame.png" },
+        { title: "Angel Mechanic Expert", cat: "Automotive · Client Work", year: "2026", accent: "#E85102", desc: "Concept design for an independent auto shop, with a bold persimmon accent, a trust-first layout putting 36+ years of experience front and center, and a bilingual service flow.", image: "/work/ame.png" },
       ],
       cta: "View All Work →"
     },
@@ -138,7 +138,7 @@ export const T = {
       items: [
         { title: "Magic Pets", cat: "Estudio de Grooming · Mockup", year: "2026", accent: "#EC4899", desc: "Mockup conceptual para un estudio premium de grooming canino, con diseño bilingüe, hero interactivo tipo drag y un sistema visual juguetón.", image: "/work/magic-pets.png" },
         { title: "Lumière Studio", cat: "Atelier de Belleza · Mockup", year: "2026", accent: "#B08060", desc: "Mockup conceptual para un atelier de belleza en Miami, con tipografía serif editorial, ritmo pausado y una experiencia que escucha primero, premium sin ser fría.", image: "/work/lumiere-studio.png" },
-        { title: "Angel Mechanic Expert", cat: "Automotriz · Mockup", year: "2026", accent: "#E85102", desc: "Mockup conceptual para un taller mecánico independiente, con acento persimmon, layout enfocado en confianza con 36+ años de experiencia al frente, y flujo de servicios bilingüe.", image: "/work/ame.png" },
+        { title: "Angel Mechanic Expert", cat: "Automotriz · Caso Real", year: "2026", accent: "#E85102", desc: "Mockup conceptual para un taller mecánico independiente, con acento persimmon, layout enfocado en confianza con 36+ años de experiencia al frente, y flujo de servicios bilingüe.", image: "/work/ame.png" },
       ],
       cta: "Ver Todo el Trabajo →"
     },

@@ -203,7 +203,7 @@ const PROJECTS: Record<string, Project> = {
     num: "03",
     title: "Angel Mechanic",
     titleLine2: "Expert",
-    category: "Automotive · Concept Mockup",
+    category: "Automotive · Client Work",
     year: "2026",
     heroGradient: "linear-gradient(150deg, #1A0A05 0%, #2C1508 45%, #0F0804 100%)",
     accent: "#E85102",

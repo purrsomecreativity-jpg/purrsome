@@ -3,8 +3,9 @@ import { useState, useEffect, useRef } from "react";
 import { T, Nav, Footer, useReveal, useLang } from "./components/shared";
 import { FAQ } from "./components/FAQ";
 import { MeshGradientBackground } from "./components/ui/hero-section-with-smooth-bg-shader";
-import { WavyBackground } from "./components/ui/wavy-background";
 import { GradientBackground } from "./components/ui/gradient-background";
+import AnimatedTestimonials from "./components/ui/animated-testimonials";
+import RevealStack from "./components/ui/reveal-stack";
 
 /* ── Hero ────────────────────────────────────────────────── */
 function Hero({ t }: { t: typeof T.en }) {
@@ -70,141 +71,85 @@ function Marquee({ text }: { text: string }) {
 /* ── Testimonials ────────────────────────────────────────── */
 const TESTIMONIALS = [
   {
-    accent: "#F59E0B",
-    name: "María González",
-    role: { en: "Owner · Bella Cucina Restaurant", es: "Dueña · Bella Cucina Restaurant" },
+    accent: "#DA1460",
+    name: "Jimena Mora Padilla",
+    role: { en: "Sports & Bariatric Nutritionist", es: "Nutricionista deportiva y bariátrica" },
     quote: {
-      en: "Purrsome completely transformed our online presence. In less than 3 months we went from being invisible on Google to having reservations every weekend.",
-      es: "Purrsome transformó nuestra presencia online completamente. En menos de 3 meses pasamos de ser invisibles en Google a tener reservaciones todos los fines de semana.",
+      en: "I always believed that what I dreamed of would take a long time to become real — but with Andre and Grecia it was so much more than I dreamed. They got involved in my project and made it so much their own that they faaaar exceeded my expectations. They are two wonderful human beings who I feel I've known for yeeeears; they've had my back and give me the confidence to hand them my tools so they can make them real.",
+      es: "Siempre creí que lo que soñaba… tardaría mucho en hacerse realidad; pero con Andre y Grecia… todo fue mucho más de lo que soñé, se involucraron en mi proyecto y lo hicieron tan suyo; que superaron lejoooos mis expectativas. Son dos seres humanos maravillosos, a quienes siento que conozco de añoooos, me han respaldado y me dan la confianza de entregarles mis herramientas para que ellas las hagan realidad.",
     },
   },
   {
-    accent: "#14B8A6",
-    name: "James Whitfield",
-    role: { en: "Owner · ProFix Plumbing", es: "Dueño · ProFix Plumbing" },
+    accent: "#F5B400",
+    name: "Angel",
+    role: { en: "Owner · Angel Mechanic Expert", es: "Dueño · Angel Mechanic Expert" },
     quote: {
-      en: "I was skeptical about investing in a website, but Purrsome made it easy. Now I get more calls in a week than I used to get in a month.",
-      es: "Era escéptico sobre invertir en un sitio web, pero Purrsome lo hizo fácil. Ahora recibo más llamadas en una semana que antes en un mes.",
+      en: "Working with Purrsome has been a great experience. Andrea understood from the start what we needed for Angel Mechanic Expert and has helped us tremendously to improve our image and the way we present the business online. What I like most is that she is always on top of the details, brings ideas, and makes sure everything looks professional without losing the essence of our business. You can tell she truly cares that things work — not just posting for the sake of it. I recommend her 100%.",
+      es: "Trabajar con Purrsome ha sido una muy buena experiencia. Andrea entendió desde el principio lo que necesitábamos para Angel Mechanic Expert y nos ha ayudado muchísimo a mejorar nuestra imagen y la manera en que presentamos el negocio en redes. Lo que más me gusta es que siempre está pendiente de los detalles, aporta ideas y busca que todo se vea profesional sin perder la esencia de nuestro negocio. Se nota que realmente le importa que las cosas funcionen y no simplemente hacer una publicación y ya. La recomiendo 100%.",
     },
   },
   {
-    accent: "#EC4899",
-    name: "Sofia Reyes",
-    role: { en: "Founder · Luma Skin Studio", es: "Fundadora · Luma Skin Studio" },
+    accent: "#DA1460",
+    name: "Claudia Garcia",
+    role: { en: "Fitness Coach · claudiavgarcia.com", es: "Coach de Fitness · claudiavgarcia.com" },
     quote: {
-      en: "Finally an agency that gets what my brand needed. They captured exactly the vibe I wanted, luxurious but approachable. My clients always compliment the website.",
-      es: "Por fin una agencia que entendió lo que mi marca necesitaba. Capturaron exactamente el ambiente que quería, lujoso pero accesible.",
+      en: "Purrsome helped me bring my brand to life from scratch — from the full branding to the design of my member portal. They captured exactly what I wanted and turned it into something that truly feels like me and my brand. I loved the result and the whole process. 🤍",
+      es: "Purrsome me ayudó a darle vida a mi marca desde cero, desde todo el branding hasta el diseño de mi portal de miembros. Supieron captar exactamente lo que quería y llevarlo a algo que realmente se siente como yo y mi marca. Amé el resultado y todo el proceso. 🤍",
     },
   },
   {
-    accent: "#9333EA",
-    name: "Daniel Park",
-    role: { en: "Co-founder · Verdant Market", es: "Co-fundador · Verdant Market" },
+    accent: "#F5B400",
+    name: "Mariana Delgado",
+    role: { en: "Purrsome Client", es: "Cliente de Purrsome" },
     quote: {
-      en: "Our weekend foot traffic tripled after the campaign they ran for us. Best investment we've made for the business this year.",
-      es: "El tráfico de los fines de semana se triplicó después de la campaña que hicieron. La mejor inversión del año para el negocio.",
+      en: "Super happy with Purrsome\u2019s work. From the very start they understood what I had in mind, even when I didn\u2019t quite know how to explain it myself \ud83d\ude02. Communication was great and the result turned out way better than I imagined. I\u2019d definitely work with them again.",
+      es: "S\u00faper contento con el trabajo de Purrsome. Desde el principio entendieron lo que ten\u00eda en mente, incluso cuando yo mismo no sab\u00eda muy bien c\u00f3mo explicarlo \ud83d\ude02. La comunicaci\u00f3n fue muy buena y el resultado qued\u00f3 mucho mejor de lo que imaginaba. Definitivamente volver\u00eda a trabajar con ellos.",
     },
   },
 ];
 
 function Testimonials({ lang }: { lang: "en" | "es" }) {
-  const headerRef = useRef<HTMLDivElement>(null);
-  const [headerVis, setHeaderVis] = useState(false);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [revealed, setRevealed] = useState([false, false, false, false]);
-
-  useEffect(() => {
-    const el = headerRef.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setHeaderVis(true); obs.unobserve(el); } },
-      { threshold: 0.1 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const observers: IntersectionObserver[] = [];
-    cardRefs.current.forEach((el, i) => {
-      if (!el) return;
-      const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setRevealed(prev => { const next = [...prev]; next[i] = true; return next; });
-            obs.unobserve(el);
-          }
-        },
-        { threshold: 0.08 }
-      );
-      obs.observe(el);
-      observers.push(obs);
-    });
-    return () => observers.forEach(obs => obs.disconnect());
-  }, []);
+  const copy = {
+    en: {
+      badge: "Real clients",
+      title: "Our clients say it best.",
+      subtitle: "Real projects, real words — from the people we\u2019ve built brands, websites and portals with.",
+    },
+    es: {
+      badge: "Clientes reales",
+      title: "Nuestros clientes lo dicen mejor.",
+      subtitle: "Proyectos reales, palabras reales — de la gente con la que hemos construido marcas, webs y portales.",
+    },
+  }[lang];
 
   return (
-    <section className="relative z-10 py-16 md:py-24 bg-[#050507]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-12">
-        <div
-          ref={headerRef}
-          className="mb-16 transition-all duration-700 flex items-center justify-between gap-8"
-          style={{ opacity: headerVis ? 1 : 0, transform: `translateY(${headerVis ? 0 : 20}px)` }}
-        >
-          <div>
-            <span className="text-[11px] tracking-[0.3em] uppercase text-white/25 font-medium block mb-4">
-              {lang === "en" ? "What Clients Say" : "Lo Que Dicen los Clientes"}
-            </span>
-            <h2 className="text-2xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.02] tracking-tight mb-3">
-              {lang === "en" ? "Results they didn't expect." : "Resultados que no esperaban."}
-            </h2>
-            <p className="text-white/30 text-lg">
-              {lang === "en" ? "Real businesses. Real growth." : "Negocios reales. Crecimiento real."}
-            </p>
-          </div>
-          <img
-            src="/stocks/purrsome-isotipo.png"
-            alt="Purrsome"
-            className="hidden md:block w-36 lg:w-48 h-auto object-contain flex-shrink-0 -mt-16"
-          />
-        </div>
-
-        <div className="grid sm:grid-cols-2 gap-3 md:gap-4">
-          {TESTIMONIALS.map((card, i) => (
-            <div
-              key={i}
-              ref={el => { cardRefs.current[i] = el; }}
-              className="bg-white/[0.05] border border-white/[0.08] rounded-2xl p-6 md:p-8 hover:bg-white/[0.08] hover:border-white/[0.18] transition-colors duration-300"
-              style={{
-                opacity: revealed[i] ? 1 : 0,
-                transform: `translateY(${revealed[i] ? 0 : 30}px)`,
-                transition: `opacity 0.7s ease ${i * 150}ms, transform 0.7s cubic-bezier(0.4,0,0.2,1) ${i * 150}ms, background-color 0.3s, border-color 0.3s`,
-              }}
-            >
-              <span className="text-6xl font-bold leading-none block mb-3 select-none" style={{ color: card.accent, opacity: 0.8 }}>"</span>
-              <p className="text-white text-lg leading-relaxed">{card.quote[lang]}</p>
-              <div className="border-t border-white/10 mt-5 pt-5">
-                <div className="font-bold text-white text-sm">{card.name}</div>
-                <div className="text-sm text-white/45 mt-0.5">{card.role[lang]}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <AnimatedTestimonials
+      badgeText={copy.badge}
+      title={copy.title}
+      subtitle={copy.subtitle}
+      testimonials={TESTIMONIALS.map((t, i) => ({
+        id: i + 1,
+        name: t.name,
+        role: t.role[lang],
+        content: t.quote[lang],
+        rating: 5,
+        accent: t.accent,
+      }))}
+    />
   );
 }
 
+
 /* ── Horizontal Scroll Nav Cards ─────────────────────────── */
 const NAV_CARDS = [
-  { key: "work",     href: "/work",     gradient: "from-pink-950 via-amber-950 to-purple-950",  accent: "#EC4899", num: "01", waves: ["#EC4899", "#F59E0B", "#9333EA", "#DC4A0A"], bgFill: "#1A0614" },
-  { key: "services", href: "/services", gradient: "from-teal-950 via-indigo-950 to-pink-950",   accent: "#14B8A6", num: "02", waves: ["#14B8A6", "#4F46E5", "#EC4899", "#0F766E"], bgFill: "#071A1F" },
-  { key: "contact",  href: "/start",    gradient: "from-purple-950 via-pink-950 to-amber-950",  accent: "#9333EA", num: "03", waves: ["#9333EA", "#EC4899", "#F59E0B", "#7C3AED"], bgFill: "#0E0620" },
-  { key: "about",    href: "/about",    gradient: "from-indigo-950 via-teal-950 to-orange-950", accent: "#4F46E5", num: "04", waves: ["#4F46E5", "#14B8A6", "#DC4A0A", "#0EA5E9"], bgFill: "#07101E" },
+  { key: "work",     href: "/work", object: "/images/folder-clientes.webp",     gradient: "from-pink-950 via-amber-950 to-purple-950",  accent: "#EC4899", num: "01", waves: ["#EC4899", "#F59E0B", "#9333EA", "#DC4A0A"], bgFill: "#1A0614" },
+  { key: "services", href: "/services", object: "/images/gear-servicios.webp", gradient: "from-teal-950 via-indigo-950 to-pink-950",   accent: "#14B8A6", num: "02", waves: ["#14B8A6", "#4F46E5", "#EC4899", "#0F766E"], bgFill: "#071A1F" },
+  { key: "contact",  href: "/start", object: "/images/phone-contacto.webp",    gradient: "from-purple-950 via-pink-950 to-amber-950",  accent: "#9333EA", num: "03", waves: ["#9333EA", "#EC4899", "#F59E0B", "#7C3AED"], bgFill: "#0E0620" },
+  { key: "about",    href: "/about", object: "/images/isotipo-neon.webp",    gradient: "from-indigo-950 via-teal-950 to-orange-950", accent: "#4F46E5", num: "04", waves: ["#4F46E5", "#14B8A6", "#DC4A0A", "#0EA5E9"], bgFill: "#07101E" },
 ] as const;
 
 const CARD_DESC: Record<string, { en: string; es: string }> = {
-  work:     { en: "Real client work & concept mockups.", es: "Casos reales y mockups de diseño." },
+  work:     { en: "Real projects for real clients.", es: "Proyectos reales para clientes reales." },
   services: { en: "Design, SEO, ads & branding.", es: "Diseño, SEO, anuncios y branding." },
   contact:  { en: "Tell us about your project.", es: "Cuéntanos sobre tu proyecto." },
   about:    { en: "Who we are and how we think.", es: "Quiénes somos y cómo pensamos." },
@@ -212,23 +157,7 @@ const CARD_DESC: Record<string, { en: string; es: string }> = {
 
 function StackedNavCards({ t, lang }: { t: typeof T.en; lang: "en" | "es" }) {
   const refs = useRef<(HTMLDivElement | null)[]>([]);
-  const [depths, setDepths] = useState<number[]>(() => NAV_CARDS.map(() => 0));
   const [revealed, setRevealed] = useState<boolean[]>(() => NAV_CARDS.map(() => false));
-
-  useEffect(() => {
-    const NAV_TOP = 82;
-    const update = () => {
-      const stuck = refs.current.map(el =>
-        el ? el.getBoundingClientRect().top <= NAV_TOP : false
-      );
-      setDepths(stuck.map((s, i) =>
-        s ? stuck.slice(i + 1).filter(Boolean).length : 0
-      ));
-    };
-    window.addEventListener("scroll", update, { passive: true });
-    update();
-    return () => window.removeEventListener("scroll", update);
-  }, []);
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
@@ -251,65 +180,67 @@ function StackedNavCards({ t, lang }: { t: typeof T.en; lang: "en" | "es" }) {
 
   return (
     <section className="relative z-10 pt-24">
+      <svg width="0" height="0" className="absolute" aria-hidden="true">
+        <defs>
+          <clipPath id="folder-notch" clipPathUnits="objectBoundingBox">
+            <path d="M0.045,0.18 L0.49,0.18 Q0.535,0.18 0.535,0.235 L0.535,0.265 Q0.535,0.32 0.58,0.32 L0.955,0.32 Q1,0.32 1,0.375 L1,0.945 Q1,1 0.955,1 L0.045,1 Q0,1 0,0.945 L0,0.235 Q0,0.18 0.045,0.18 Z" />
+          </clipPath>
+        </defs>
+      </svg>
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-5 px-4 pb-6 sm:grid-cols-2 sm:px-6 lg:px-12 min-[1100px]:grid-cols-4">
       {NAV_CARDS.map((card, i) => (
         <div
           key={card.key}
           ref={el => { refs.current[i] = el; }}
-          style={{ position: "sticky", top: 80, zIndex: i + 1, height: "clamp(220px, 44vh, 380px)" }}
-          className="px-3 sm:px-5 pb-3 flex justify-center"
+          className="w-full"
+          style={{
+            opacity: revealed[i] ? 1 : 0,
+            transform: `translateY(${revealed[i] ? 0 : 40}px)`,
+            transition: `opacity 0.7s ease ${i * 150}ms, transform 0.7s cubic-bezier(0.4,0,0.2,1) ${i * 150}ms`,
+          }}
         >
-          <div
-            className="w-full max-w-lg h-full"
-            style={{
-              opacity: revealed[i] ? 1 : 0,
-              transform: `translateY(${revealed[i] ? 0 : 40}px)`,
-              transition: `opacity 0.7s ease ${i * 150}ms, transform 0.7s cubic-bezier(0.4,0,0.2,1) ${i * 150}ms`,
-            }}
-          >
             <a
               href={card.href}
-              className={`group block w-full h-full rounded-2xl overflow-hidden relative`}
-              style={{
-                transform: `scale(${1 - depths[i] * 0.03})`,
-                transformOrigin: "top center",
-                transition: "transform 0.5s cubic-bezier(0.4,0,0.2,1)",
-              }}
+              className={`group block w-full aspect-[3/4] rounded-2xl overflow-hidden relative transition-transform duration-500 hover:-translate-y-1`}
             >
-              <WavyBackground
-                containerClassName="absolute inset-0"
-                colors={[...card.waves]}
-                backgroundFill={card.bgFill}
-                blur={8}
-                speed="slow"
-                waveOpacity={0.55}
-                waveWidth={45}
-              />
+              {/* Capa iridiscente debajo del folder */}
               <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ background: `radial-gradient(ellipse 80% 60% at 30% 70%, ${card.accent}22, transparent)` }}
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(115deg, #F1E9DC 0%, #FFFFFF 28%, #FAF6EF 52%, #F4D7E6 78%, #EDBFD8 100%)",
+                }}
               />
-              <div className="relative z-10 h-full p-5 sm:p-8 lg:p-10 flex flex-col justify-between">
-                <div className="flex items-start justify-between">
-                  <span className="text-[11px] font-mono tracking-[0.25em] text-white/15">{card.num}</span>
-                  <span className="text-white/20 group-hover:text-white/60 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 text-xl">↗</span>
-                </div>
-                <div>
-                  <p className="text-xs tracking-[0.3em] uppercase mb-4 font-bold text-white/50">
-                    {CARD_DESC[card.key][lang]}
-                  </p>
-                  <h3 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white/80 group-hover:text-white transition-colors duration-300 tracking-tight leading-[0.9]">
+              {/* Objeto recortado que sube desde atras del folder */}
+              <img
+                src={card.object}
+                alt=""
+                aria-hidden="true"
+                className="pointer-events-none absolute right-[5%] top-[3%] z-[1] h-[48%] w-auto object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,0.35)] transition-transform duration-500 ease-out translate-y-[45%] group-hover:translate-y-0"
+              />
+              {/* Cara del folder (notch recortado con el SVG mask) */}
+              <div
+                className="absolute inset-0 z-[2] transition-transform duration-500 ease-out group-hover:translate-y-[14%]"
+                style={{
+                  clipPath: "url(#folder-notch)",
+                  background: `linear-gradient(160deg, ${card.accent}3D 0%, ${card.bgFill} 42%, #0B0B10 100%)`,
+                }}
+              >
+                <span className="absolute left-[6%] top-[23%] text-3xl sm:text-5xl font-extrabold tracking-tight text-white">{card.num}</span>
+                <span className="absolute right-[5%] top-[36%] text-xl text-white/30 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-white/80">↗</span>
+                <div className="absolute bottom-[9%] left-[6%] right-[6%]">
+                  <h3 className="text-xl sm:text-3xl lg:text-4xl font-extrabold text-white/90 group-hover:text-white transition-colors duration-300 tracking-tight leading-[0.95]">
                     {t.nav[card.key]}
                   </h3>
+                  <p className="mt-2 text-[11px] sm:text-xs tracking-[0.2em] uppercase font-medium text-white/40">
+                    {CARD_DESC[card.key][lang]}
+                  </p>
                 </div>
               </div>
-              <div
-                className="absolute bottom-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{ background: `linear-gradient(to right, transparent, ${card.accent}80, transparent)` }}
-              />
             </a>
-          </div>
         </div>
       ))}
+      </div>
     </section>
   );
 }
@@ -320,22 +251,26 @@ export default function PurrsomePage() {
   const t = T[lang];
   return (
     <main className="relative text-white overflow-x-hidden">
-      <div className="absolute top-0 left-0 right-0 h-[115vh] -z-10 pointer-events-none overflow-hidden bg-black">
-        <MeshGradientBackground />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent from-40% to-[#050507]" />
-      </div>
       <Nav lang={lang} setLang={setLang} t={t} />
-      <Hero t={t} />
-      <Marquee text={t.marquee} />
-      <div className="relative">
+      <RevealStack>
+        <div className="relative h-full min-h-screen overflow-hidden bg-black">
+          <div className="pointer-events-none absolute inset-0">
+            <MeshGradientBackground />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent from-40% to-[#050507]" />
+          </div>
+          <div className="relative">
+            <Hero t={t} />
+          </div>
+        </div>
+        <div className="relative flex h-full min-h-screen flex-col justify-center">
         <GradientBackground
           gradients={[
-            "linear-gradient(135deg, #0C0A2E 0%, #120838 50%, #1a0533 100%)",
-            "linear-gradient(135deg, #0d0a30 0%, #2d1b69 50%, #11998e 100%)",
-            "linear-gradient(135deg, #160530 0%, #8e2de2 50%, #4a00e0 100%)",
-            "linear-gradient(135deg, #0a1535 0%, #0f3460 50%, #e94560 100%)",
-            "linear-gradient(135deg, #0d0a30 0%, #4a00e0 50%, #ec4899 100%)",
-            "linear-gradient(135deg, #0C0A2E 0%, #120838 50%, #1a0533 100%)",
+            "linear-gradient(135deg, #F5B400 0%, #E8A800 55%, #FFD966 100%)",
+            "linear-gradient(135deg, #F5B400 0%, #FFE2A0 50%, #FFFFFF 100%)",
+            "linear-gradient(135deg, #FFC72E 0%, #F5B400 55%, #FFF3D6 100%)",
+            "linear-gradient(135deg, #E8A800 0%, #F5B400 45%, #FFFFFF 100%)",
+            "linear-gradient(135deg, #F5B400 0%, #FFD966 50%, #F5B400 100%)",
+            "linear-gradient(135deg, #F5B400 0%, #E8A800 55%, #FFD966 100%)",
           ]}
           animationDuration={10}
           animationDelay={0}
@@ -344,8 +279,11 @@ export default function PurrsomePage() {
           className="absolute inset-0 !min-h-0"
         />
         <StackedNavCards t={t} lang={lang} />
-      </div>
-      <Testimonials lang={lang} />
+        </div>
+        <div className="flex h-full min-h-screen flex-col justify-center bg-[#050507]">
+          <Testimonials lang={lang} />
+        </div>
+      </RevealStack>
       <FAQ t={t} />
       <Footer t={t} />
     </main>

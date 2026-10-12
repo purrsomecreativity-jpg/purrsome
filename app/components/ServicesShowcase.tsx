@@ -6,13 +6,13 @@ import { T, useReveal } from "./shared";
  * The pairs are language-independent, so they live here and not in the T
  * dictionary — index-matched to `t.services.items`.
  */
-const SHOTS: { back: string; front: string; accent: string }[] = [
-  { back: "/services/web-1.webp", front: "/services/web-2.webp", accent: "#14B8A6" },
-  { back: "/services/seo-1.webp", front: "/services/seo-2.webp", accent: "#F59E0B" },
-  { back: "/services/ads-1.webp", front: "/services/ads-2.webp", accent: "#EC4899" },
-  { back: "/services/brand-1.webp", front: "/services/brand-2.webp", accent: "#DC4A0A" },
-  { back: "/services/portal-1.webp", front: "/services/portal-2.webp", accent: "#9333EA" },
-  { back: "/services/ai-1.webp", front: "/services/ai-2.webp", accent: "#4F46E5" },
+const SHOTS: { back: string; front: string; accent: string; round?: boolean; extra?: string; logos?: boolean; icons?: boolean; spread?: boolean }[] = [
+  { back: "/services/web-1.webp", front: "/services/web-2.webp", accent: "#DA1460", spread: true },
+  { back: "/services/seo-1.webp", front: "/services/seo-2.webp", accent: "#F5B400", round: true },
+  { back: "/services/ads-1.webp", front: "/services/ads-2.webp", extra: "/services/ads-3.webp", accent: "#EC4899", logos: true },
+  { back: "/services/brand-1.webp", front: "/services/brand-2.webp", accent: "#F5B400", spread: true },
+  { back: "/services/portal-1.webp", front: "/services/portal-2.webp", accent: "#DA1460", spread: true },
+  { back: "/services/ai-1.webp", front: "/services/ai-2.webp", accent: "#DA1460", round: true },
 ];
 
 export function ServicesShowcase({ t }: { t: typeof T.en }) {
@@ -53,21 +53,81 @@ export function ServicesShowcase({ t }: { t: typeof T.en }) {
                     className="pointer-events-none absolute h-32 w-48 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-60 motion-reduce:transition-none"
                     style={{ background: shot.accent }}
                   />
-                  <img
-                    src={shot.back}
-                    alt=""
-                    aria-hidden
-                    loading="lazy"
-                    decoding="async"
-                    className="shot absolute w-40 sm:w-48 h-auto rounded-xl border border-white/10 shadow-[0_18px_40px_rgba(0,0,0,0.55)] -translate-x-9 -translate-y-5 -rotate-6 transition-transform duration-500 ease-out group-hover:-translate-x-12 group-hover:-translate-y-7 group-hover:-rotate-[10deg] motion-reduce:transform-none motion-reduce:transition-none"
-                  />
-                  <img
-                    src={shot.front}
-                    alt={`${s.title} — Purrsome client work`}
-                    loading="lazy"
-                    decoding="async"
-                    className="shot absolute w-44 sm:w-52 h-auto rounded-xl border border-white/10 shadow-[0_26px_60px_rgba(0,0,0,0.65)] translate-x-6 translate-y-4 rotate-3 transition-transform duration-500 ease-out group-hover:translate-x-9 group-hover:translate-y-6 group-hover:rotate-[6deg] group-hover:scale-[1.03] motion-reduce:transform-none motion-reduce:transition-none"
-                  />
+                  {shot.icons ? (
+                    <>
+                      <img
+                        src={shot.back}
+                        alt=""
+                        aria-hidden
+                        loading="lazy"
+                        decoding="async"
+                        className="shot absolute w-28 sm:w-32 h-auto -translate-x-20 -translate-y-2 drop-shadow-[0_14px_28px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-out group-hover:-translate-x-24 group-hover:-translate-y-4 motion-reduce:transform-none motion-reduce:transition-none"
+                      />
+                      <img
+                        src={shot.front}
+                        alt={`${s.title} — Purrsome client work`}
+                        loading="lazy"
+                        decoding="async"
+                        className="shot absolute z-10 w-32 sm:w-36 h-auto translate-x-20 translate-y-3 drop-shadow-[0_18px_36px_rgba(0,0,0,0.55)] transition-transform duration-500 ease-out group-hover:translate-x-24 group-hover:translate-y-5 group-hover:scale-[1.04] motion-reduce:transform-none motion-reduce:transition-none"
+                      />
+                    </>
+                  ) : shot.logos && shot.extra ? (
+                    <>
+                      <img
+                        src={shot.back}
+                        alt=""
+                        aria-hidden
+                        loading="lazy"
+                        decoding="async"
+                        className="shot absolute w-20 sm:w-24 h-auto -translate-x-24 -translate-y-2 drop-shadow-[0_14px_28px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-out group-hover:-translate-x-28 group-hover:-translate-y-4 motion-reduce:transform-none motion-reduce:transition-none"
+                      />
+                      <img
+                        src={shot.front}
+                        alt=""
+                        aria-hidden
+                        loading="lazy"
+                        decoding="async"
+                        className="shot absolute w-20 sm:w-24 h-auto translate-x-24 -translate-y-2 drop-shadow-[0_14px_28px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-out group-hover:translate-x-28 group-hover:-translate-y-4 motion-reduce:transform-none motion-reduce:transition-none"
+                      />
+                      <img
+                        src={shot.extra}
+                        alt={`${s.title} — Purrsome client work`}
+                        loading="lazy"
+                        decoding="async"
+                        className="shot absolute z-10 w-28 sm:w-32 h-auto translate-y-5 rounded-full border border-white/10 shadow-[0_26px_60px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-out group-hover:translate-y-7 group-hover:scale-[1.05] motion-reduce:transform-none motion-reduce:transition-none"
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <img
+                        src={shot.back}
+                        alt=""
+                        aria-hidden
+                        loading="lazy"
+                        decoding="async"
+                        className={`shot absolute h-auto border border-white/10 transition-transform duration-500 ease-out motion-reduce:transform-none motion-reduce:transition-none ${
+                          shot.round
+                            ? "w-32 sm:w-36 rounded-full shadow-[0_18px_40px_rgba(0,0,0,0.45)] -translate-x-16 -translate-y-3 group-hover:-translate-x-20 group-hover:-translate-y-5"
+                            : shot.spread
+                            ? "w-28 sm:w-32 rounded-xl shadow-[0_18px_40px_rgba(0,0,0,0.55)] -translate-x-16 -translate-y-4 -rotate-6 group-hover:-translate-x-20 group-hover:-translate-y-6 group-hover:-rotate-[9deg]"
+                            : "w-40 sm:w-48 rounded-xl shadow-[0_18px_40px_rgba(0,0,0,0.55)] -translate-x-9 -translate-y-5 -rotate-6 group-hover:-translate-x-12 group-hover:-translate-y-7 group-hover:-rotate-[10deg]"
+                        }`}
+                      />
+                      <img
+                        src={shot.front}
+                        alt={`${s.title} — Purrsome client work`}
+                        loading="lazy"
+                        decoding="async"
+                        className={`shot absolute h-auto border border-white/10 transition-transform duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transform-none motion-reduce:transition-none ${
+                          shot.round
+                            ? "w-36 sm:w-40 rounded-full shadow-[0_26px_60px_rgba(0,0,0,0.5)] translate-x-16 translate-y-3 group-hover:translate-x-20 group-hover:translate-y-5"
+                            : shot.spread
+                            ? "w-32 sm:w-36 rounded-xl shadow-[0_26px_60px_rgba(0,0,0,0.65)] translate-x-16 translate-y-5 rotate-3 group-hover:translate-x-20 group-hover:translate-y-7 group-hover:rotate-[6deg]"
+                            : "w-44 sm:w-52 rounded-xl shadow-[0_26px_60px_rgba(0,0,0,0.65)] translate-x-6 translate-y-4 rotate-3 group-hover:translate-x-9 group-hover:translate-y-6 group-hover:rotate-[6deg]"
+                        }`}
+                      />
+                    </>
+                  )}
                 </div>
 
                 <div className="mt-6 flex items-start justify-between gap-4">
