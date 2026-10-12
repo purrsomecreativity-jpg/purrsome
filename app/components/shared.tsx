@@ -61,7 +61,7 @@ export const T = {
     },
     about: {
       tag: "About",
-      title: "We started Purrsome because every business deserves to look like itself.",
+      title: "We create concepts, not templates.",
       p1: "Purrsome was founded by Andrea Villafañe, an artist, designer, and developer who grew up obsessed with color, form, and the way visuals make you feel before you even read a word.",
       p2: "The idea was simple: small businesses deserve the same level of intentional, artistic brand identity that big companies pay millions for. Not templates. Not generic. Something that actually represents who they are.",
       p3: "So we built Purrsome for the businesses that have a story worth telling and needed someone to help them tell it visually.",
@@ -156,7 +156,7 @@ export const T = {
     },
     about: {
       tag: "Nosotros",
-      title: "Fundamos Purrsome porque cada negocio merece verse como él mismo.",
+      title: "Creamos conceptos, no plantillas.",
       p1: "Purrsome fue fundado por Andrea Villafañe, artista, diseñadora y desarrolladora, que creció obsesionada con el color, la forma y la manera en que los visuales te hacen sentir antes de leer una sola palabra.",
       p2: "La idea era simple: los pequeños negocios merecen el mismo nivel de identidad de marca intencional y artística que las grandes empresas pagan millones por tener. Sin templates. Sin lo genérico. Algo que realmente los represente.",
       p3: "Por eso construimos Purrsome para los negocios que tienen una historia que vale la pena contar y necesitaban a alguien que les ayudara a contarla visualmente.",

@@ -25,10 +25,10 @@ function StoryParallax({ t, lang }: { t: typeof T.en; lang: "en" | "es" }) {
         gsap.fromTo(w, { yPercent: 120 }, { yPercent: 0, duration: 0.8, ease: "power3.out", delay: 0.1 + i * 0.035 });
       });
       gsap.to(".ap-hero", {
-        yPercent: -14,
-        opacity: 0.2,
+        opacity: 0,
+        filter: "blur(16px)",
         ease: "none",
-        scrollTrigger: { trigger: ".ap-hero", start: "top top", end: "bottom top", scrub: true },
+        scrollTrigger: { trigger: ".ap-hero", start: "top 6%", end: "+=45%", pin: true, pinSpacing: true, scrub: true },
       });
 
       // Ruleta de cartas: una a la vez
@@ -73,16 +73,15 @@ function StoryParallax({ t, lang }: { t: typeof T.en; lang: "en" | "es" }) {
   return (
     <div ref={rootRef}>
       {/* Hero */}
-      <div className="ap-hero mx-auto flex min-h-[72vh] max-w-7xl flex-col justify-center px-4 sm:px-6 lg:px-12">
-        <span className="text-[11px] tracking-[0.3em] uppercase font-medium" style={{ color: "#F5B400" }}>{t.about.tag}</span>
-        <h1 className="mt-5 max-w-5xl text-3xl font-extrabold leading-[1.06] tracking-tight text-white md:text-5xl lg:text-7xl">
+      <div className="ap-hero mx-auto flex min-h-[82vh] max-w-7xl flex-col items-center justify-center px-4 text-center sm:px-6 lg:px-12">
+        <h1 className="mx-auto mt-5 max-w-5xl text-3xl font-extrabold leading-[1.06] tracking-tight text-white md:text-5xl lg:text-7xl">
           {t.about.title.split(" ").map((w, i) => (
             <span key={i} className="inline-block overflow-hidden pb-1 align-top">
               <span className="ap-word inline-block">{w}&nbsp;</span>
             </span>
           ))}
         </h1>
-        <div className="mt-10 flex items-center gap-2 text-[11px] uppercase tracking-[0.25em] text-white/40">
+        <div className="mt-10 flex items-center justify-center gap-2 text-[11px] uppercase tracking-[0.25em] text-white/40">
           <span>{lang === "es" ? "Baja para conocernos" : "Scroll to meet us"}</span>
           <svg className="h-4 w-4 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M12 5v14M5 12l7 7 7-7" strokeLinecap="round" strokeLinejoin="round" />
@@ -91,7 +90,7 @@ function StoryParallax({ t, lang }: { t: typeof T.en; lang: "en" | "es" }) {
       </div>
 
       {/* Ruleta de cartas */}
-      <div className="ap-deck relative flex h-screen items-center justify-center overflow-hidden px-4">
+      <div className="ap-deck relative -mt-[42vh] flex h-screen items-center justify-center overflow-hidden px-4">
         {cards.map((c) => (
           <div
             key={c.num}

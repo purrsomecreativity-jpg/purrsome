@@ -3,9 +3,11 @@ import { useState, useEffect, useRef } from "react";
 import { T, Nav, Footer, useReveal, useLang } from "./components/shared";
 import { FAQ } from "./components/FAQ";
 import { MeshGradientBackground } from "./components/ui/hero-section-with-smooth-bg-shader";
-import { GradientBackground } from "./components/ui/gradient-background";
 import AnimatedTestimonials from "./components/ui/animated-testimonials";
-import RevealStack from "./components/ui/reveal-stack";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 /* ── Hero ────────────────────────────────────────────────── */
 function Hero({ t }: { t: typeof T.en }) {
@@ -42,29 +44,6 @@ function Hero({ t }: { t: typeof T.en }) {
         </div>
       </div>
     </section>
-  );
-}
-
-/* ── Marquee ─────────────────────────────────────────────── */
-function Marquee({ text }: { text: string }) {
-  const words = text.split("·").map(w => w.trim()).filter(Boolean);
-  return (
-    <div className="relative py-5 overflow-hidden border-y border-white/[0.03] bg-[#050507]">
-      <div className="absolute inset-y-0 left-0 w-32 z-10 pointer-events-none" style={{ background: "linear-gradient(to right, #050507, transparent)" }} />
-      <div className="absolute inset-y-0 right-0 w-32 z-10 pointer-events-none" style={{ background: "linear-gradient(to left, #050507, transparent)" }} />
-      <div className="marquee-track flex whitespace-nowrap items-center">
-        {[0, 1, 2, 3].map(i => (
-          <span key={i} className="inline-flex items-center flex-shrink-0">
-            {words.map((w, j) => (
-              <span key={j} className="inline-flex items-center">
-                <span className="text-[13px] tracking-[0.35em] uppercase text-white/[0.04] font-bold px-4">{w}</span>
-                <img src="/stocks/purrsome-isotipo.png" alt="" className="w-4 h-4 opacity-[0.07] object-contain flex-shrink-0" />
-              </span>
-            ))}
-          </span>
-        ))}
-      </div>
-    </div>
   );
 }
 
@@ -179,7 +158,7 @@ function StackedNavCards({ t, lang }: { t: typeof T.en; lang: "en" | "es" }) {
   }, []);
 
   return (
-    <section className="relative z-10 pt-24">
+    <section className="relative z-10 w-full py-10">
       <svg width="0" height="0" className="absolute" aria-hidden="true">
         <defs>
           <clipPath id="folder-notch" clipPathUnits="objectBoundingBox">
@@ -249,43 +228,48 @@ function StackedNavCards({ t, lang }: { t: typeof T.en; lang: "en" | "es" }) {
 export default function PurrsomePage() {
   const [lang, setLang] = useLang();
   const t = T[lang];
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (window.innerWidth < 1024) return;
+    const ctx = gsap.context(() => {
+      gsap.to(".home-hero", {
+        opacity: 0,
+        filter: "blur(16px)",
+        ease: "none",
+        scrollTrigger: { trigger: ".home-hero", start: "top top", end: "+=45%", pin: true, pinSpacing: true, scrub: true },
+      });
+    });
+    return () => ctx.revert();
+  }, []);
+
   return (
     <main className="relative text-white overflow-x-hidden">
       <Nav lang={lang} setLang={setLang} t={t} />
-      <RevealStack>
-        <div className="relative h-full min-h-screen overflow-hidden bg-black">
-          <div className="pointer-events-none absolute inset-0">
-            <MeshGradientBackground />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent from-40% to-[#050507]" />
-          </div>
-          <div className="relative">
-            <Hero t={t} />
-          </div>
-        </div>
-        <div className="relative flex h-full min-h-screen flex-col justify-center">
-        <GradientBackground
-          gradients={[
-            "linear-gradient(135deg, #F5B400 0%, #E8A800 55%, #FFD966 100%)",
-            "linear-gradient(135deg, #F5B400 0%, #FFE2A0 50%, #FFFFFF 100%)",
-            "linear-gradient(135deg, #FFC72E 0%, #F5B400 55%, #FFF3D6 100%)",
-            "linear-gradient(135deg, #E8A800 0%, #F5B400 45%, #FFFFFF 100%)",
-            "linear-gradient(135deg, #F5B400 0%, #FFD966 50%, #F5B400 100%)",
-            "linear-gradient(135deg, #F5B400 0%, #E8A800 55%, #FFD966 100%)",
-          ]}
-          animationDuration={10}
-          animationDelay={0}
-          overlay={true}
-          overlayOpacity={0.25}
-          className="absolute inset-0 !min-h-0"
+
+      {/* Mesh animado fijo detras del hero y las cards */}
+      <div className="pointer-events-none fixed inset-0 -z-10 bg-black">
+        <MeshGradientBackground
+          colors={["#050507", "#DA1460", "#F5B400", "#050507", "#DA1460", "#ECECEC", "#F5B400", "#050507"]}
         />
+      </div>
+
+      {/* Hero: fijo mientras se desvanece con blur */}
+      <div className="home-hero relative">
+        <Hero t={t} />
+      </div>
+
+      {/* Cards folder sobre el mismo fondo animado */}
+      <div className="relative flex min-h-screen items-center lg:-mt-[40vh]">
         <StackedNavCards t={t} lang={lang} />
-        </div>
-        <div className="flex h-full min-h-screen flex-col justify-center bg-[#050507]">
-          <Testimonials lang={lang} />
-        </div>
-      </RevealStack>
-      <FAQ t={t} />
-      <Footer t={t} />
+      </div>
+
+      {/* Resto en fondo solido */}
+      <div className="relative bg-[#050507]">
+        <Testimonials lang={lang} />
+        <FAQ t={t} />
+        <Footer t={t} />
+      </div>
     </main>
   );
 }

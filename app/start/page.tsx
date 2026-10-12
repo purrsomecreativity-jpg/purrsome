@@ -82,51 +82,6 @@ const T = {
           } as Question,
         ],
       },
-      {
-        label: "Your Goals",
-        questions: [
-          {
-            id: "main_goal",
-            question: "What's your #1 goal right now?",
-            type: "select",
-            options: [
-              { value: "more_customers",   label: "Get more customers / leads" },
-              { value: "online_presence",  label: "Build a professional online presence" },
-              { value: "more_calls",       label: "Get more phone calls / bookings" },
-              { value: "beat_competition", label: "Stand out from competitors" },
-              { value: "credibility",      label: "Build credibility and trust" },
-            ],
-          } as Question,
-        ],
-      },
-      {
-        label: "Budget & Timeline",
-        questions: [
-          {
-            id: "budget",
-            question: "What's your approximate budget?",
-            subtitle: "No judgment, this helps us recommend the right package",
-            type: "select",
-            options: [
-              { value: "under1000", label: "Under $1,000" },
-              { value: "1000_3000", label: "$1,000 – $3,000" },
-              { value: "3000_5000", label: "$3,000 – $5,000" },
-              { value: "5000_plus", label: "$5,000+" },
-            ],
-          } as Question,
-          {
-            id: "timeline",
-            question: "How soon do you need this?",
-            type: "select",
-            options: [
-              { value: "asap",     label: "ASAP, yesterday if possible" },
-              { value: "2weeks",   label: "Within 1-2 weeks" },
-              { value: "month",    label: "Within a month" },
-              { value: "no_rush",  label: "No rush, just exploring" },
-            ],
-          } as Question,
-        ],
-      },
     ] as Section[],
     contact: {
       label: "Your Info",
@@ -203,51 +158,6 @@ const T = {
               { value: "ads",     label: "Publicidad (Meta / Google Ads)" },
               { value: "brand",   label: "Logo / Identidad de Marca" },
               { value: "unsure",  label: "No estoy seguro, aconséjenme" },
-            ],
-          } as Question,
-        ],
-      },
-      {
-        label: "Tus Metas",
-        questions: [
-          {
-            id: "main_goal",
-            question: "¿Cuál es tu meta #1 ahora mismo?",
-            type: "select",
-            options: [
-              { value: "more_customers",   label: "Conseguir más clientes / leads" },
-              { value: "online_presence",  label: "Tener presencia online profesional" },
-              { value: "more_calls",       label: "Recibir más llamadas / reservaciones" },
-              { value: "beat_competition", label: "Destacar sobre la competencia" },
-              { value: "credibility",      label: "Generar confianza y credibilidad" },
-            ],
-          } as Question,
-        ],
-      },
-      {
-        label: "Presupuesto y Tiempo",
-        questions: [
-          {
-            id: "budget",
-            question: "¿Cuál es tu presupuesto aproximado?",
-            subtitle: "Sin juicio, esto nos ayuda a recomendar el paquete correcto",
-            type: "select",
-            options: [
-              { value: "under1000", label: "Menos de $1,000" },
-              { value: "1000_3000", label: "$1,000 – $3,000" },
-              { value: "3000_5000", label: "$3,000 – $5,000" },
-              { value: "5000_plus", label: "$5,000+" },
-            ],
-          } as Question,
-          {
-            id: "timeline",
-            question: "¿Qué tan pronto lo necesitas?",
-            type: "select",
-            options: [
-              { value: "asap",    label: "ASAP, ayer si fuera posible" },
-              { value: "2weeks",  label: "En 1-2 semanas" },
-              { value: "month",   label: "En un mes" },
-              { value: "no_rush", label: "Sin prisa, solo estoy explorando" },
             ],
           } as Question,
         ],
@@ -453,15 +363,15 @@ function SelectQuestion({ question, subtitle, options, value, onChange }: {
 }) {
   return (
     <div className="mb-8">
-      <label className="block text-white/80 font-semibold text-base mb-1.5">{question}</label>
-      {subtitle && <p className="text-white/25 text-sm mb-4">{subtitle}</p>}
+      <label className="block text-white/85 font-semibold text-base mb-1.5">{question}</label>
+      {subtitle && <p className="text-white/40 text-sm mb-4">{subtitle}</p>}
       <div className="grid gap-2.5">
         {options.map((opt) => (
           <button key={opt.value} type="button" onClick={() => onChange(opt.value)}
             className={`text-left px-5 py-4 rounded-xl liquid-glass-btn text-sm flex items-center gap-3 ${
               value === opt.value
-                ? "!border-amber-500/40 !bg-white/[0.10] text-white shadow-[0_0_24px_rgba(245,158,11,0.08)]"
-                : "text-white/50"
+                ? "!border-[#DA1460]/60 !bg-white/[0.10] text-white shadow-[0_0_24px_rgba(218,20,96,0.18)]"
+                : "text-white/55"
             }`}>
             {ICONS[opt.value] && (
               <span
@@ -489,8 +399,8 @@ function MultiQuestion({ question, subtitle, options, values, onChange }: {
     onChange(values.includes(val) ? values.filter((v) => v !== val) : [...values, val]);
   return (
     <div className="mb-8">
-      <label className="block text-white/80 font-semibold text-base mb-1.5">{question}</label>
-      {subtitle && <p className="text-white/25 text-sm mb-4">{subtitle}</p>}
+      <label className="block text-white/85 font-semibold text-base mb-1.5">{question}</label>
+      {subtitle && <p className="text-white/40 text-sm mb-4">{subtitle}</p>}
       <div className="grid gap-2.5">
         {options.map((opt) => {
           const selected = values.includes(opt.value);
@@ -498,10 +408,10 @@ function MultiQuestion({ question, subtitle, options, values, onChange }: {
             <button key={opt.value} type="button" onClick={() => toggle(opt.value)}
               className={`text-left px-5 py-4 rounded-xl liquid-glass-btn text-sm flex items-center gap-3 ${
                 selected
-                  ? "!border-amber-500/40 !bg-white/[0.10] text-white shadow-[0_0_24px_rgba(245,158,11,0.08)]"
-                  : "text-white/50"
+                  ? "!border-[#DA1460]/60 !bg-white/[0.10] text-white shadow-[0_0_24px_rgba(218,20,96,0.18)]"
+                  : "text-white/55"
               }`}>
-              <span className={`w-5 h-5 rounded-md border-2 flex items-center justify-center flex-shrink-0 transition-all duration-300 ${selected ? "border-amber-500 bg-amber-500/20" : "border-white/15"}`}>
+              <span className={`w-5 h-5 rounded-md border-2 flex items-center justify-center flex-shrink-0 transition-all duration-300 ${selected ? "border-[#DA1460] bg-[#DA1460]/20" : "border-white/20"}`}>
                 {selected && (
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                     <path d="M2 6L5 9L10 3" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -531,10 +441,10 @@ function TextQuestion({ question, placeholder, value, onChange, multiline = fals
   question: string; placeholder: string; value: string;
   onChange: (v: string) => void; multiline?: boolean;
 }) {
-  const cls = "w-full bg-white/[0.02] border border-white/[0.06] rounded-xl px-5 py-4 text-white text-sm placeholder:text-white/15 focus:outline-none focus:border-amber-500/25 focus:bg-white/[0.03] focus:shadow-[0_0_25px_rgba(245,158,11,0.04)] transition-all duration-300";
+  const cls = "w-full frm-input-liquid rounded-xl px-5 py-4 text-sm transition-all duration-300";
   return (
     <div className="mb-8">
-      <label className="block text-white/80 font-semibold text-base mb-3">{question}</label>
+      <label className="block text-white/85 font-semibold text-base mb-3">{question}</label>
       {multiline
         ? <textarea rows={4} placeholder={placeholder} value={value} onChange={(e) => onChange(e.target.value)} className={`${cls} resize-none`} />
         : <input type="text" placeholder={placeholder} value={value} onChange={(e) => onChange(e.target.value)} className={cls} />
@@ -550,18 +460,15 @@ export default function StartProject() {
   const [multiAnswers, setMultiAnswers] = useState<Record<string, string[]>>({ services_needed: [] });
   const [contact, setContact] = useState({ name: "", email: "", phone: "", extra: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [step, setStep] = useState(0);
   const [sending, setSending] = useState(false);
 
   const t = T[lang];
   const set = (id: string, val: string) => setAnswers((prev) => ({ ...prev, [id]: val }));
   const setMulti = (id: string, val: string[]) => setMultiAnswers((prev) => ({ ...prev, [id]: val }));
 
-  const filled = [
-    answers.business_type, answers.business_name, answers.current_site,
-    (multiAnswers.services_needed?.length ?? 0) > 0 ? "x" : "",
-    answers.main_goal, answers.budget, answers.timeline,
-  ].filter(Boolean).length;
-  const progress = Math.round((filled / 7) * 100);
+  const totalSteps = t.sections.reduce((n, sec) => n + sec.questions.length, 0) + 1;
+  const progress = Math.round((step / totalSteps) * 100);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -587,11 +494,11 @@ export default function StartProject() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-[#050507] flex items-center justify-center px-6">
+      <div className="min-h-screen flex items-center justify-center px-6" style={{ background: "linear-gradient(165deg, #FFFFFF 0%, #FAEFF4 38%, #F2C8DB 72%, #E487AF 100%)" }}>
         <div className="text-center max-w-md">
           <img src="/stocks/cat2.jpg" alt="cat" className="w-40 h-40 object-cover rounded-2xl mx-auto mb-6" />
-          <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-4">{t.submitted.title}</h1>
-          <p className="text-white/40 mb-10 leading-relaxed">{t.submitted.sub}</p>
+          <h1 className="text-3xl md:text-4xl font-extrabold text-[#140309] mb-4">{t.submitted.title}</h1>
+          <p className="text-[#140309]/50 mb-10 leading-relaxed">{t.submitted.sub}</p>
           <a href="/" className="text-sm text-amber-400/80 hover:text-amber-400 transition-colors">{t.submitted.back}</a>
         </div>
       </div>
@@ -599,90 +506,114 @@ export default function StartProject() {
   }
 
   return (
-    <div className="min-h-screen bg-[#050507] text-white">
-      {/* Background */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute w-[500px] h-[500px] rounded-full bg-amber-500/10 blur-[120px] -top-32 -right-32 animate-drift" />
-        <div className="absolute w-[400px] h-[400px] rounded-full bg-purple-600/8 blur-[100px] bottom-0 -left-32 animate-drift" style={{ animationDelay: "3s" }} />
-      </div>
+    <div className="min-h-screen text-[#140309]" style={{ background: "linear-gradient(165deg, #FFFFFF 0%, #FAEFF4 38%, #F2C8DB 72%, #E487AF 100%)" }}>
 
       {/* Nav */}
-      <nav className="sticky top-0 z-50 bg-[#050507]/80 backdrop-blur-xl border-b border-white/[0.03]">
+      <nav className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-black/[0.06]">
         <div className="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
-          <a href="/" className="text-sm text-white/30 hover:text-white/60 transition-colors">{t.nav.back}</a>
+          <a href="/" className="text-sm text-[#140309]/45 hover:text-[#140309]/65 transition-colors">{t.nav.back}</a>
           <div className="relative inline-block">
             <div style={{ height: "24px", width: "120px", background: "#000000", WebkitMaskImage: "url(/stocks/PURRSOME-logo-oficial.svg)", maskImage: "url(/stocks/PURRSOME-logo-oficial.svg)", WebkitMaskSize: "contain", maskSize: "contain", WebkitMaskRepeat: "no-repeat", maskRepeat: "no-repeat", WebkitMaskPosition: "left center", maskPosition: "left center" }} />
           </div>
-          <button onClick={() => setLang(lang === "en" ? "es" : "en")} className="text-[11px] text-white/20 hover:text-white/50 border border-white/[0.06] rounded-full px-3 py-1 tracking-widest transition-all">
+          <button onClick={() => setLang(lang === "en" ? "es" : "en")} className="text-[11px] text-[#140309]/40 hover:text-[#140309]/60 border border-black/10 rounded-full px-3 py-1 tracking-widest transition-all">
             {lang === "en" ? "ES" : "EN"}
           </button>
         </div>
       </nav>
 
       {/* Progress bar */}
-      <div className="sticky top-16 z-40 bg-[#050507]/60 backdrop-blur-md">
+      <div className="sticky top-16 z-40 bg-white/60 backdrop-blur-md">
         <div className="max-w-3xl mx-auto px-6 py-3 flex items-center gap-4">
-          <div className="flex-1 h-1.5 bg-white/[0.04] rounded-full overflow-hidden">
-            <div className="h-full rounded-full transition-all duration-700 ease-out" style={{ width: `${progress}%`, background: "linear-gradient(90deg, #F59E0B, #DC4A0A, #9333EA, #14B8A6)", backgroundSize: "200% 100%", animation: "iri 4s ease-in-out infinite" }} />
+          <div className="flex-1 h-1.5 bg-black/[0.08] rounded-full overflow-hidden">
+            <div className="h-full rounded-full transition-all duration-700 ease-out" style={{ width: `${progress}%`, background: "linear-gradient(90deg, #DA1460, #F5B400)", backgroundSize: "200% 100%", animation: "iri 4s ease-in-out infinite" }} />
           </div>
-          <span className="text-[11px] text-white/20 tracking-widest tabular-nums">{progress}% {t.progress}</span>
+          <span className="text-[11px] text-[#140309]/40 tracking-widest tabular-nums">{progress}% {t.progress}</span>
         </div>
       </div>
 
       {/* Header */}
       <div className="relative z-10 max-w-3xl mx-auto px-6 pt-16 pb-10">
         <span className="text-[11px] tracking-[0.3em] uppercase text-amber-400/70 font-medium">{t.header.tag}</span>
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mt-3 mb-4 leading-[1.08] tracking-tight">{t.header.title}</h1>
-        <p className="text-white/30 text-base">{t.header.sub}</p>
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#140309] mt-3 mb-4 leading-[1.08] tracking-tight">{t.header.title}</h1>
+        <p className="text-[#140309]/45 text-base">{t.header.sub}</p>
       </div>
 
       {/* Form */}
       <form onSubmit={handleSubmit} className="relative z-10 max-w-3xl mx-auto px-6 pb-32">
-        {t.sections.map((section, si) => (
-          <div key={si} className="mb-12">
-            <div className="flex items-center gap-4 mb-8">
-              <span className="text-[11px] tracking-[0.25em] uppercase text-white/15 font-medium">{String(si + 1).padStart(2, "0")}</span>
-              <span className="text-[13px] tracking-[0.15em] uppercase text-white/30 font-semibold">{section.label}</span>
-              <div className="flex-1 h-px bg-white/[0.04]" />
+        {(() => {
+          const stepsQ = t.sections.flatMap((sec) => sec.questions.map((q) => ({ ...q, section: sec.label })));
+          const total = stepsQ.length + 1;
+          const nextLbl = lang === "en" ? "Continue" : "Continuar";
+          const backLbl = lang === "en" ? "Back" : "Atr\u00e1s";
+          const counter = lang === "en" ? `Question ${Math.min(step + 1, total)} of ${total}` : `Pregunta ${Math.min(step + 1, total)} de ${total}`;
+          const isContact = step >= stepsQ.length;
+          const q = isContact ? null : stepsQ[step];
+          const canNext = q ? (q.type === "multi" ? (multiAnswers[q.id]?.length ?? 0) > 0 : (answers[q.id] ?? "").trim() !== "") : false;
+          return (
+            <div
+              key={step}
+              className="animate-fade-up rounded-3xl border border-white/[0.12] p-6 sm:p-10"
+              style={{
+                background: "linear-gradient(145deg, rgba(14,14,18,0.88) 0%, rgba(10,10,14,0.82) 100%)",
+                backdropFilter: "blur(24px) saturate(1.5)",
+                WebkitBackdropFilter: "blur(24px) saturate(1.5)",
+                boxShadow: "0 30px 70px rgba(20,3,9,0.35), inset 0 1px 0 rgba(255,255,255,0.10)",
+              }}
+            >
+              <div className="mb-6 flex items-center justify-between">
+                <span className="text-[12px] tracking-[0.2em] uppercase text-white/50 font-semibold">{isContact ? t.contact.label : q!.section}</span>
+                <span className="text-[11px] text-white/35">{counter}</span>
+              </div>
+
+              {!isContact && q!.type === "select" && (
+                <SelectQuestion question={q!.question} subtitle={q!.subtitle} options={q!.options!} value={answers[q!.id] ?? ""} onChange={(v) => { set(q!.id, v); setTimeout(() => setStep((st) => Math.min(st + 1, total - 1)), 250); }} />
+              )}
+              {!isContact && q!.type === "multi" && (
+                <MultiQuestion question={q!.question} subtitle={q!.subtitle} options={q!.options!} values={multiAnswers[q!.id] ?? []} onChange={(v) => setMulti(q!.id, v)} />
+              )}
+              {!isContact && q!.type === "text" && (
+                <TextQuestion question={q!.question} placeholder={q!.placeholder!} value={answers[q!.id] ?? ""} onChange={(v) => set(q!.id, v)} />
+              )}
+
+              {isContact && (
+                <>
+                  <div className="grid sm:grid-cols-2 gap-x-5">
+                    <TextQuestion question={t.contact.name.question}  placeholder={t.contact.name.placeholder}  value={contact.name}  onChange={(v) => setContact({ ...contact, name: v })} />
+                    <TextQuestion question={t.contact.email.question} placeholder={t.contact.email.placeholder} value={contact.email} onChange={(v) => setContact({ ...contact, email: v })} />
+                  </div>
+                  <TextQuestion question={t.contact.phone.question} placeholder={t.contact.phone.placeholder} value={contact.phone} onChange={(v) => setContact({ ...contact, phone: v })} />
+                  <TextQuestion question={t.contact.extra.question} placeholder={t.contact.extra.placeholder} value={contact.extra} onChange={(v) => setContact({ ...contact, extra: v })} multiline />
+                  <button type="submit" disabled={!contact.name || !contact.email || sending}
+                    className={`w-full py-5 rounded-2xl font-semibold text-sm tracking-wide transition-all duration-500 ${
+                      contact.name && contact.email && !sending
+                        ? "bg-[#DA1460] text-white cursor-pointer hover:shadow-[0_0_40px_rgba(218,20,96,0.35)]"
+                        : "bg-white/[0.05] text-white/25 border border-white/[0.10] cursor-not-allowed"
+                    }`}>
+                    {sending ? (lang === "en" ? "Sending..." : "Enviando...") : t.submit}
+                  </button>
+                  {(!contact.name || !contact.email) && (
+                    <p className="text-center text-white/35 text-xs mt-3">
+                      {lang === "en" ? "Fill in your name and email to submit" : "Ingresa tu nombre y email para enviar"}
+                    </p>
+                  )}
+                </>
+              )}
+
+              <div className="mt-8 flex items-center justify-between">
+                <button type="button" onClick={() => setStep((st) => Math.max(st - 1, 0))}
+                  className={`text-sm text-white/50 transition-colors hover:text-white/85 ${step === 0 ? "invisible" : ""}`}>
+                  ← {backLbl}
+                </button>
+                {!isContact && q!.type !== "select" && (
+                  <button type="button" disabled={!canNext} onClick={() => setStep((st) => Math.min(st + 1, total - 1))}
+                    className={`rounded-full px-6 py-3 text-sm font-semibold transition-all ${canNext ? "bg-[#DA1460] text-white hover:shadow-[0_0_30px_rgba(218,20,96,0.3)]" : "bg-white/[0.05] text-white/25 cursor-not-allowed"}`}>
+                    {nextLbl} →
+                  </button>
+                )}
+              </div>
             </div>
-            {section.questions.map((q) => {
-              if (q.type === "select") return <SelectQuestion key={q.id} question={q.question} subtitle={q.subtitle} options={q.options!} value={answers[q.id] ?? ""} onChange={(v) => set(q.id, v)} />;
-              if (q.type === "multi")  return <MultiQuestion  key={q.id} question={q.question} subtitle={q.subtitle} options={q.options!} values={multiAnswers[q.id] ?? []} onChange={(v) => setMulti(q.id, v)} />;
-              if (q.type === "text")   return <TextQuestion   key={q.id} question={q.question} placeholder={q.placeholder!} value={answers[q.id] ?? ""} onChange={(v) => set(q.id, v)} />;
-              return null;
-            })}
-          </div>
-        ))}
-
-        {/* Contact */}
-        <div className="mb-12">
-          <div className="flex items-center gap-4 mb-8">
-            <span className="text-[11px] tracking-[0.25em] uppercase text-white/15 font-medium">05</span>
-            <span className="text-[13px] tracking-[0.15em] uppercase text-white/30 font-semibold">{t.contact.label}</span>
-            <div className="flex-1 h-px bg-white/[0.04]" />
-          </div>
-          <div className="grid sm:grid-cols-2 gap-x-5">
-            <TextQuestion question={t.contact.name.question}  placeholder={t.contact.name.placeholder}  value={contact.name}  onChange={(v) => setContact({ ...contact, name: v })} />
-            <TextQuestion question={t.contact.email.question} placeholder={t.contact.email.placeholder} value={contact.email} onChange={(v) => setContact({ ...contact, email: v })} />
-          </div>
-          <TextQuestion question={t.contact.phone.question} placeholder={t.contact.phone.placeholder} value={contact.phone} onChange={(v) => setContact({ ...contact, phone: v })} />
-          <TextQuestion question={t.contact.extra.question} placeholder={t.contact.extra.placeholder} value={contact.extra} onChange={(v) => setContact({ ...contact, extra: v })} multiline />
-        </div>
-
-        {/* Submit */}
-        <button type="submit" disabled={!contact.name || !contact.email || sending}
-          className={`w-full py-5 rounded-2xl font-semibold text-sm tracking-wide transition-all duration-500 ${
-            contact.name && contact.email && !sending
-              ? "liquid-glass-btn cursor-pointer hover:shadow-[0_0_40px_rgba(245,158,11,0.12)]"
-              : "bg-white/[0.03] text-white/15 border border-white/[0.04] cursor-not-allowed"
-          }`}>
-          {sending ? (lang === "en" ? "Sending..." : "Enviando...") : t.submit}
-        </button>
-        {(!contact.name || !contact.email) && (
-          <p className="text-center text-white/15 text-xs mt-3">
-            {lang === "en" ? "Fill in your name and email to submit" : "Ingresa tu nombre y email para enviar"}
-          </p>
-        )}
+          );
+        })()}
       </form>
 
       {/* FAQ */}

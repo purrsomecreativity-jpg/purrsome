@@ -375,3 +375,25 @@
   transform: translateY(-2px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
+
+/* ─── Light liquid option (pagina /start) ─── */
+.start-opt {
+  position: relative;
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  border: 1px solid rgba(20,3,9,0.10);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.start-opt:hover {
+  background: rgba(255,255,255,0.75);
+  border-color: rgba(20,3,9,0.18);
+  transform: translateY(-1px);
+}
+
+/* body base (antes inline en layout; causaba aviso de hidratacion) */
+.site-body {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  isolation: isolate;
+}
