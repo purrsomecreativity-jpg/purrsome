@@ -68,41 +68,42 @@ function Marquee({ text }: { text: string }) {
 }
 
 /* ── Testimonials ────────────────────────────────────────── */
+/**
+ * Testimonios reales de clientas y clientes. El original de cada uno esta en
+ * espanol; el campo `es` respeta su voz tal cual (incluidas las vocales
+ * alargadas de Jimena, que son parte de como escribe) y el `en` es traduccion.
+ * El acento de cada tarjeta es el color de marca de su propio proyecto.
+ * No agregar testimonios sin autorizacion escrita de la persona.
+ */
 const TESTIMONIALS = [
   {
-    accent: "#F59E0B",
-    name: "María González",
-    role: { en: "Owner · Bella Cucina Restaurant", es: "Dueña · Bella Cucina Restaurant" },
+    accent: "#2BBAA6",
+    name: "Jimena Mora Padilla",
+    role: {
+      en: "Sports & Bariatric Nutritionist",
+      es: "Nutricionista Deportiva y Bariátrica",
+    },
     quote: {
-      en: "Purrsome completely transformed our online presence. In less than 3 months we went from being invisible on Google to having reservations every weekend.",
-      es: "Purrsome transformó nuestra presencia online completamente. En menos de 3 meses pasamos de ser invisibles en Google a tener reservaciones todos los fines de semana.",
+      en: "I always thought what I dreamed of would take forever to become real, but with Andre and Grecia it turned out to be so much more than I dreamed. They got involved in my project and made it their own, and they went waaay beyond my expectations. They're two wonderful human beings who I feel like I've known for yeeears. They've had my back, and they give me the confidence to hand over my tools so they can bring them to life.",
+      es: "Siempre creí que lo que soñaba… tardaría mucho en hacerse realidad; pero con Andre y Grecia… todo fue mucho más de lo que soñé, se involucraron en mi proyecto y lo hicieron tan suyo que superaron lejoooos mis expectativas. Son dos seres humanos maravillosos, a quienes siento que conozco de añoooos, me han respaldado y me dan la confianza de entregarles mis herramientas para que ellas las hagan realidad.",
     },
   },
   {
-    accent: "#14B8A6",
-    name: "James Whitfield",
-    role: { en: "Owner · ProFix Plumbing", es: "Dueño · ProFix Plumbing" },
+    accent: "#FF4D2E",
+    name: "Claudia García",
+    role: { en: "Fitness Coach · Charlotte, NC", es: "Coach de Fitness · Charlotte, NC" },
     quote: {
-      en: "I was skeptical about investing in a website, but Purrsome made it easy. Now I get more calls in a week than I used to get in a month.",
-      es: "Era escéptico sobre invertir en un sitio web, pero Purrsome lo hizo fácil. Ahora recibo más llamadas en una semana que antes en un mes.",
+      en: "Purrsome brought my brand to life from scratch, from all the branding to the design of my member portal. They knew exactly how to capture what I wanted and turn it into something that really feels like me and my brand. I loved the result and the whole process. 🤍",
+      es: "Purrsome me ayudó a darle vida a mi marca desde cero, desde todo el branding hasta el diseño de mi portal de miembros. Supieron captar exactamente lo que quería y llevarlo a algo que realmente se siente como yo y mi marca. Amé el resultado y todo el proceso. 🤍",
     },
   },
   {
-    accent: "#EC4899",
-    name: "Sofia Reyes",
-    role: { en: "Founder · Luma Skin Studio", es: "Fundadora · Luma Skin Studio" },
+    accent: "#E85102",
+    name: "Angel",
+    role: { en: "Owner · Angel Mechanic Expert", es: "Dueño · Angel Mechanic Expert" },
     quote: {
-      en: "Finally an agency that gets what my brand needed. They captured exactly the vibe I wanted, luxurious but approachable. My clients always compliment the website.",
-      es: "Por fin una agencia que entendió lo que mi marca necesitaba. Capturaron exactamente el ambiente que quería, lujoso pero accesible.",
-    },
-  },
-  {
-    accent: "#9333EA",
-    name: "Daniel Park",
-    role: { en: "Co-founder · Verdant Market", es: "Co-fundador · Verdant Market" },
-    quote: {
-      en: "Our weekend foot traffic tripled after the campaign they ran for us. Best investment we've made for the business this year.",
-      es: "El tráfico de los fines de semana se triplicó después de la campaña que hicieron. La mejor inversión del año para el negocio.",
+      en: "Andrea understood from the start what we needed for Angel Mechanic Expert, and she has helped us enormously to improve our image and the way we present the business on social. What I like most is that she's always on top of the details and makes sure everything looks professional without losing the essence of our business. You can tell she genuinely cares that things work, not just posting something and calling it a day. I recommend her 100%.",
+      es: "Andrea entendió desde el principio lo que necesitábamos para Angel Mechanic Expert y nos ha ayudado muchísimo a mejorar nuestra imagen y la manera en que presentamos el negocio en redes. Lo que más me gusta es que siempre está pendiente de los detalles y busca que todo se vea profesional sin perder la esencia de nuestro negocio. Se nota que realmente le importa que las cosas funcionen y no simplemente hacer una publicación y ya. La recomiendo 100%.",
     },
   },
 ];
@@ -111,7 +112,7 @@ function Testimonials({ lang }: { lang: "en" | "es" }) {
   const headerRef = useRef<HTMLDivElement>(null);
   const [headerVis, setHeaderVis] = useState(false);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [revealed, setRevealed] = useState([false, false, false, false]);
+  const [revealed, setRevealed] = useState<boolean[]>(() => TESTIMONIALS.map(() => false));
 
   useEffect(() => {
     const el = headerRef.current;
@@ -169,12 +170,18 @@ function Testimonials({ lang }: { lang: "en" | "es" }) {
           />
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-3 md:gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 items-start gap-3 md:gap-4">
           {TESTIMONIALS.map((card, i) => (
             <div
-              key={i}
+              key={card.name}
               ref={el => { cardRefs.current[i] = el; }}
-              className="bg-white/[0.05] border border-white/[0.08] rounded-2xl p-6 md:p-8 hover:bg-white/[0.08] hover:border-white/[0.18] transition-colors duration-300"
+              className={`bg-white/[0.05] border border-white/[0.08] rounded-2xl p-6 md:p-8 hover:bg-white/[0.08] hover:border-white/[0.18] transition-colors duration-300 ${
+                // Con 3 tarjetas, la ultima queda huerfana en la rejilla de 2
+                // columnas; se estira para ocupar la fila completa.
+                i === TESTIMONIALS.length - 1 && TESTIMONIALS.length % 2 === 1
+                  ? "sm:col-span-2 lg:col-span-1"
+                  : ""
+              }`}
               style={{
                 opacity: revealed[i] ? 1 : 0,
                 transform: `translateY(${revealed[i] ? 0 : 30}px)`,
