@@ -48,36 +48,46 @@ function Hero({ t }: { t: typeof T.en }) {
 }
 
 /* ── Testimonials ────────────────────────────────────────── */
+/**
+ * Testimonios reales de clientas y clientes. El original de cada uno esta en
+ * espanol; el campo `es` respeta su voz tal cual (incluidas las vocales
+ * alargadas de Jimena, que son parte de como escribe) y el `en` es traduccion.
+ * El acento de cada tarjeta es el color de marca de su propio proyecto.
+ * No agregar testimonios sin autorizacion escrita de la persona.
+ */
 const TESTIMONIALS = [
   {
-    accent: "#DA1460",
+    accent: "#2BBAA6",
     name: "Jimena Mora Padilla",
-    role: { en: "Sports & Bariatric Nutritionist", es: "Nutricionista deportiva y bariátrica" },
+    role: {
+      en: "Sports & Bariatric Nutritionist",
+      es: "Nutricionista Deportiva y Bariátrica",
+    },
     quote: {
-      en: "I always believed that what I dreamed of would take a long time to become real — but with Andre and Grecia it was so much more than I dreamed. They got involved in my project and made it so much their own that they faaaar exceeded my expectations. They are two wonderful human beings who I feel I've known for yeeeears; they've had my back and give me the confidence to hand them my tools so they can make them real.",
-      es: "Siempre creí que lo que soñaba… tardaría mucho en hacerse realidad; pero con Andre y Grecia… todo fue mucho más de lo que soñé, se involucraron en mi proyecto y lo hicieron tan suyo; que superaron lejoooos mis expectativas. Son dos seres humanos maravillosos, a quienes siento que conozco de añoooos, me han respaldado y me dan la confianza de entregarles mis herramientas para que ellas las hagan realidad.",
+      en: "I always thought what I dreamed of would take forever to become real, but with Andre and Grecia it turned out to be so much more than I dreamed. They got involved in my project and made it their own, and they went waaay beyond my expectations. They're two wonderful human beings who I feel like I've known for yeeears. They've had my back, and they give me the confidence to hand over my tools so they can bring them to life.",
+      es: "Siempre creí que lo que soñaba… tardaría mucho en hacerse realidad; pero con Andre y Grecia… todo fue mucho más de lo que soñé, se involucraron en mi proyecto y lo hicieron tan suyo que superaron lejoooos mis expectativas. Son dos seres humanos maravillosos, a quienes siento que conozco de añoooos, me han respaldado y me dan la confianza de entregarles mis herramientas para que ellas las hagan realidad.",
     },
   },
   {
-    accent: "#F5B400",
+    accent: "#FF4D2E",
+    name: "Claudia García",
+    role: { en: "Fitness Coach · Charlotte, NC", es: "Coach de Fitness · Charlotte, NC" },
+    quote: {
+      en: "Purrsome brought my brand to life from scratch, from all the branding to the design of my member portal. They knew exactly how to capture what I wanted and turn it into something that really feels like me and my brand. I loved the result and the whole process. \ud83e\udd0d",
+      es: "Purrsome me ayudó a darle vida a mi marca desde cero, desde todo el branding hasta el diseño de mi portal de miembros. Supieron captar exactamente lo que quería y llevarlo a algo que realmente se siente como yo y mi marca. Amé el resultado y todo el proceso. \ud83e\udd0d",
+    },
+  },
+  {
+    accent: "#E85102",
     name: "Angel",
     role: { en: "Owner · Angel Mechanic Expert", es: "Dueño · Angel Mechanic Expert" },
     quote: {
-      en: "Working with Purrsome has been a great experience. Andrea understood from the start what we needed for Angel Mechanic Expert and has helped us tremendously to improve our image and the way we present the business online. What I like most is that she is always on top of the details, brings ideas, and makes sure everything looks professional without losing the essence of our business. You can tell she truly cares that things work — not just posting for the sake of it. I recommend her 100%.",
-      es: "Trabajar con Purrsome ha sido una muy buena experiencia. Andrea entendió desde el principio lo que necesitábamos para Angel Mechanic Expert y nos ha ayudado muchísimo a mejorar nuestra imagen y la manera en que presentamos el negocio en redes. Lo que más me gusta es que siempre está pendiente de los detalles, aporta ideas y busca que todo se vea profesional sin perder la esencia de nuestro negocio. Se nota que realmente le importa que las cosas funcionen y no simplemente hacer una publicación y ya. La recomiendo 100%.",
+      en: "Andrea understood from the start what we needed for Angel Mechanic Expert, and she has helped us enormously to improve our image and the way we present the business on social. What I like most is that she's always on top of the details and makes sure everything looks professional without losing the essence of our business. You can tell she genuinely cares that things work, not just posting something and calling it a day. I recommend her 100%.",
+      es: "Andrea entendió desde el principio lo que necesitábamos para Angel Mechanic Expert y nos ha ayudado muchísimo a mejorar nuestra imagen y la manera en que presentamos el negocio en redes. Lo que más me gusta es que siempre está pendiente de los detalles y busca que todo se vea profesional sin perder la esencia de nuestro negocio. Se nota que realmente le importa que las cosas funcionen y no simplemente hacer una publicación y ya. La recomiendo 100%.",
     },
   },
   {
     accent: "#DA1460",
-    name: "Claudia Garcia",
-    role: { en: "Fitness Coach · claudiavgarcia.com", es: "Coach de Fitness · claudiavgarcia.com" },
-    quote: {
-      en: "Purrsome helped me bring my brand to life from scratch — from the full branding to the design of my member portal. They captured exactly what I wanted and turned it into something that truly feels like me and my brand. I loved the result and the whole process. 🤍",
-      es: "Purrsome me ayudó a darle vida a mi marca desde cero, desde todo el branding hasta el diseño de mi portal de miembros. Supieron captar exactamente lo que quería y llevarlo a algo que realmente se siente como yo y mi marca. Amé el resultado y todo el proceso. 🤍",
-    },
-  },
-  {
-    accent: "#F5B400",
     name: "Mariana Delgado",
     role: { en: "Purrsome Client", es: "Cliente de Purrsome" },
     quote: {
