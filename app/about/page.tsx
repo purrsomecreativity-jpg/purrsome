@@ -90,7 +90,7 @@ function StoryParallax({ t, lang }: { t: typeof T.en; lang: "en" | "es" }) {
       </div>
 
       {/* Ruleta de cartas */}
-      <div className="ap-deck relative -mt-[42vh] flex h-screen items-center justify-center overflow-hidden px-4">
+      <div className="ap-deck relative -mt-[42vh] flex h-screen items-center justify-center px-4">
         {cards.map((c) => (
           <div
             key={c.num}
