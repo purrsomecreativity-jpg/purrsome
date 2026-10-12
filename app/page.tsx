@@ -73,8 +73,10 @@ const TESTIMONIALS = [
     name: "Claudia García",
     role: { en: "Fitness Coach · Charlotte, NC", es: "Coach de Fitness · Charlotte, NC" },
     quote: {
-      en: "Purrsome brought my brand to life from scratch, from all the branding to the design of my member portal. They knew exactly how to capture what I wanted and turn it into something that really feels like me and my brand. I loved the result and the whole process. \ud83e\udd0d",
-      es: "Purrsome me ayudó a darle vida a mi marca desde cero, desde todo el branding hasta el diseño de mi portal de miembros. Supieron captar exactamente lo que quería y llevarlo a algo que realmente se siente como yo y mi marca. Amé el resultado y todo el proceso. \ud83e\udd0d",
+      en: "First of all, THANK YOU, Purrsome, for literally reading my mind and creating the website I wanted so badly \ud83d\udc9b Communicating with the team was super easy, fast and effective. Before, during and after the site was ready, they were always making sure everything worked perfectly and that I was happy with the result. I truly can\u2019t recommend working with Purrsome enough. Pure talent and human quality in one project! Thank you so much for making something I dreamed of come true! \ud83d\udc9b",
+
+      es: "Primero que todo, GRACIAS, Purrsome, por literalmente leerme la mente y crear la p\u00e1gina web que tanto quer\u00eda \ud83d\udc9b Comunicarme con el equipo fue s\u00faper f\u00e1cil, r\u00e1pido y efectivo. Antes, durante y despu\u00e9s de tener la p\u00e1gina lista, siempre estuvieron pendientes de que todo funcionara perfectamente y de que yo estuviera feliz con el resultado. De verdad, no puedo recomendar m\u00e1s trabajar con Purrsome. Puro talento y calidad humana en un solo proyecto! Muchas gracias por hacer realidad algo que so\u00f1aba tanto! \ud83d\udc9b",
+
     },
   },
   {
@@ -240,7 +242,7 @@ function StackedNavCards({ t, lang }: { t: typeof T.en; lang: "en" | "es" }) {
               >
                 <span className="absolute left-[6%] top-[23%] text-3xl sm:text-5xl font-extrabold tracking-tight text-white">{card.num}</span>
                 <span className="absolute right-[5%] top-[36%] text-xl text-white/30 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-white/80">↗</span>
-                <div className="absolute bottom-[9%] left-[6%] right-[6%]">
+                <div className={`absolute bottom-[9%] left-[6%] right-[6%] transition-transform duration-500 ease-out group-hover:-translate-y-14 ${active[i] ? "max-lg:-translate-y-14" : ""}`}>
                   <h3 className="text-xl sm:text-3xl lg:text-4xl font-extrabold text-white/90 group-hover:text-white transition-colors duration-300 tracking-tight leading-[0.95]">
                     {t.nav[card.key]}
                   </h3>
