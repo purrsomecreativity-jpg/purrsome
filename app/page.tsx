@@ -329,6 +329,31 @@ export default function PurrsomePage() {
       {/* Resto en fondo solido */}
       <div className="relative bg-[#050507]">
         <Testimonials lang={lang} />
+
+        {/* CTA: revisor de sitios */}
+        <section className="relative z-10 px-4 py-16 md:py-20">
+          <div
+            className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-6 rounded-3xl border border-white/10 bg-white/[0.04] p-8 text-center md:flex-row md:p-12 md:text-left"
+          >
+            <div>
+              <h3 className="text-2xl font-extrabold tracking-tight text-white md:text-3xl">
+                {lang === "en" ? "Does your website pass the test?" : "¿Tu web pasa la prueba?"}
+              </h3>
+              <p className="mt-2 max-w-xl text-white/40">
+                {lang === "en"
+                  ? "Free checkup: drop your URL and get your speed and SEO scorecard by email."
+                  : "Chequeo gratis: pon tu URL y recibe la nota de velocidad y SEO de tu sitio por correo."}
+              </p>
+            </div>
+            <a
+              href="/revisor"
+              className="shrink-0 rounded-full bg-[#DA1460] px-7 py-4 text-sm font-semibold text-white transition-all hover:shadow-[0_0_30px_rgba(218,20,96,0.35)]"
+            >
+              {lang === "en" ? "Check my site" : "Revisar mi sitio"} →
+            </a>
+          </div>
+        </section>
+
         <FAQ t={t} />
         <Footer t={t} />
       </div>
