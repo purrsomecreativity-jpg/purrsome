@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { BLOQUES, META, TOTAL, type Opcion } from "./preguntas";
+import CatWavy from "../components/ui/cat-wavy";
 import { MeshGradientBackground } from "../components/ui/hero-section-with-smooth-bg-shader";
 
 /* Mismo mesh animado del hero de Purrsome, con una capa oscura para que se lea el formulario */
@@ -136,7 +137,7 @@ export default function EncuestaWeb() {
       <div className="min-h-screen bg-[#050507] flex items-center justify-center px-6">
         <Fondo />
         <div className="relative z-10 text-center max-w-md">
-          <img src="/stocks/cat2.jpg" alt="" className="w-40 h-40 object-cover rounded-2xl mx-auto mb-6" />
+          <CatWavy className="w-56 mx-auto mb-6" />
           <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-4">{META.gracias.titulo}</h1>
           <p className="text-white/40 mb-10 leading-relaxed">{META.gracias.sub}</p>
           <a href="/" className="text-sm text-amber-400/80 hover:text-amber-400 transition-colors">← Volver a Purrsome</a>

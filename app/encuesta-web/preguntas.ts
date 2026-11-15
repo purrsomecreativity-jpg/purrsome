@@ -21,7 +21,7 @@ export const META = {
   titulo: "Cuéntanos cómo será tu web.",
   sub: "Preguntas cortas, unos 5 minutos. Responde con lo primero que sientas y, si algo no aplica, déjalo en blanco.",
   gracias: {
-    titulo: "¡Listo! Ya lo tenemos.",
+    titulo: "Listo, ya lo tenemos.",
     sub: "Con tus respuestas ya podemos darle forma a tu web. Te escribimos muy pronto por WhatsApp.",
   },
 };
