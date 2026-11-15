@@ -54,7 +54,7 @@ export const BLOQUES: Bloque[] = [
     preguntas: [
       { id: "estilo", tipo: "multi", texto: "¿Qué palabras describen el estilo de tu marca?", nota: "Marca hasta 3.", opciones: op("Cercano", "Profesional", "Inspirador", "Directo", "Elegante", "Divertido", "Atrevido", "Cálido", "Minimalista", "Artesanal", "Moderno", "Clásico") },
       { id: "diferencia", tipo: "textarea", texto: "¿Qué te diferencia de otras marcas como la tuya?", placeholder: "Lo que nos hace distintos es…" },
-      { id: "tono", tipo: "select", texto: "¿Cómo quieres hablarle a tus clientes?", opciones: op("De tú, casual y cercano", "De tú, pero profesional", "De usted, formal", "Mezcla según la ocasión") },
+      { id: "tono", tipo: "select", texto: "Si tu marca fuera una persona hablando, ¿cómo sonaría?", nota: "Elige la que más se acerque.", opciones: op("Como un amigo: cercano y relajado", "Como un experto: seguro y profesional", "Como un guía que inspira: motivador y con energía", "Como una marca de lujo: elegante y reservado", "Como alguien divertido: con humor y atrevido") },
     ],
   },
   {
