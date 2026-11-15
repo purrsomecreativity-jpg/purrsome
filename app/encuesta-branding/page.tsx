@@ -1,6 +1,19 @@
 "use client";
 import { useState } from "react";
 import { BLOQUES, META, TOTAL, type Opcion } from "./preguntas";
+import { MeshGradientBackground } from "../components/ui/hero-section-with-smooth-bg-shader";
+
+/* Mismo mesh animado del hero de Purrsome, con una capa oscura para que se lea el formulario */
+function Fondo() {
+  return (
+    <div className="fixed inset-0 pointer-events-none z-0 bg-black overflow-hidden">
+      <MeshGradientBackground
+        colors={["#050507", "#DA1460", "#F5B400", "#050507", "#DA1460", "#ECECEC", "#F5B400", "#050507"]}
+      />
+      <div className="absolute inset-0 bg-black/40" />
+    </div>
+  );
+}
 
 /* ─── COMPONENTES (mismo lenguaje visual que /start) ─── */
 function Select({ texto, nota, opciones, value, onChange }: {
@@ -121,7 +134,8 @@ export default function EncuestaBranding() {
   if (enviado) {
     return (
       <div className="min-h-screen bg-[#050507] flex items-center justify-center px-6">
-        <div className="text-center max-w-md">
+        <Fondo />
+        <div className="relative z-10 text-center max-w-md">
           <img src="/stocks/cat2.jpg" alt="" className="w-40 h-40 object-cover rounded-2xl mx-auto mb-6" />
           <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-4">{META.gracias.titulo}</h1>
           <p className="text-white/40 mb-10 leading-relaxed">{META.gracias.sub}</p>
@@ -133,10 +147,7 @@ export default function EncuestaBranding() {
 
   return (
     <div className="min-h-screen bg-[#050507] text-white">
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute w-[500px] h-[500px] rounded-full bg-amber-500/10 blur-[120px] -top-32 -right-32 animate-drift" />
-        <div className="absolute w-[400px] h-[400px] rounded-full bg-purple-600/8 blur-[100px] bottom-0 -left-32 animate-drift" style={{ animationDelay: "3s" }} />
-      </div>
+      <Fondo />
 
       <nav className="sticky top-0 z-50 bg-[#050507]/80 backdrop-blur-xl border-b border-white/[0.03]">
         <div className="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
