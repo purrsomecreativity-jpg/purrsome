@@ -71,10 +71,9 @@ export const BLOQUES: Bloque[] = [
   },
   {
     letra: "E",
-    titulo: "Uso y objetivos",
+    titulo: "Uso de tu marca",
     preguntas: [
       { id: "donde", tipo: "multi", texto: "¿Dónde usarás tu marca?", opciones: op("Instagram", "TikTok", "Página web", "Presentaciones", "PDFs o ebooks", "Empaques y etiquetas", "Ropa o merch", "Local físico o vehículos", "Eventos", "Tarjetas y papelería", "YouTube") },
-      { id: "objetivo", tipo: "select", texto: "¿Qué quieres lograr en los próximos 6 a 12 meses?", opciones: op("Conseguir más clientes", "Subir mis precios", "Lanzar un producto o servicio", "Verme más profesional", "Construir comunidad", "Renovar una marca existente", "Otro objetivo") },
     ],
   },
 ];
