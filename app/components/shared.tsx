@@ -306,7 +306,7 @@ export function Nav({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => vo
 
         {/* Col 3 — always visible: right nav (desktop) / empty spacer (mobile) */}
         <div className="flex items-center gap-1 justify-end">
-          <a href="/about#contact" className="hidden md:flex text-[12px] tracking-[0.12em] uppercase font-medium px-3 py-1.5 rounded-full border border-transparent text-white/40 hover:text-[#050507] hover:bg-white hover:border-white/0 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">{t.nav.contact}</a>
+          <a href="/start" className="hidden md:flex text-[12px] tracking-[0.12em] uppercase font-medium px-3 py-1.5 rounded-full border border-transparent text-white/40 hover:text-[#050507] hover:bg-white hover:border-white/0 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">{t.nav.contact}</a>
           <button onClick={() => setLang(lang === "en" ? "es" : "en")} className="hidden md:flex text-[11px] tracking-[0.2em] font-medium px-3 py-1.5 rounded-full border border-transparent text-white/40 hover:text-[#050507] hover:bg-white hover:border-white/0 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]">
             {lang === "en" ? "ES" : "EN"}
           </button>
@@ -319,7 +319,7 @@ export function Nav({ lang, setLang, t }: { lang: Lang; setLang: (l: Lang) => vo
           {(["work", "services", "about"] as const).map(k => (
             <a key={k} href={`/${k}`} onClick={() => setOpen(false)} className="text-lg text-white/50 hover:text-white tracking-wide">{t.nav[k]}</a>
           ))}
-          <a href="/about#contact" onClick={() => setOpen(false)} className="text-lg text-white/50 hover:text-white tracking-wide">{t.nav.contact}</a>
+          <a href="/start" onClick={() => setOpen(false)} className="text-lg text-white/50 hover:text-white tracking-wide">{t.nav.contact}</a>
           <div className="flex gap-3 pt-4">
             <button onClick={() => { setLang(lang === "en" ? "es" : "en"); setOpen(false); }} className="text-sm text-white/25 border border-white/[0.08] rounded-full px-5 py-2">
               {lang === "en" ? "Español" : "English"}
